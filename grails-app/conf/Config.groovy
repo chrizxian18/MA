@@ -121,6 +121,8 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'MerchantAcquisition.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'MerchantAcquisition.UserRole'
 grails.plugin.springsecurity.authority.className = 'MerchantAcquisition.Role'
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/../MerchantAcquisition/secure/'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
