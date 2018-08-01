@@ -30,4 +30,6 @@
 /web-app/plugins
 
 # "temporary" build files
+*.class
+*.log
 /target
