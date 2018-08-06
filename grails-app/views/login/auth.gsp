@@ -18,7 +18,8 @@
 						<div class="col-md-11 col-md-offset-1">
 							<h3>Please Login</h3>
 							<g:if test='${flash.message}'>
-								<div class='login_message'>${flash.message}></div>
+								%{-- <div class='login_message'>${flash.message}</div> --}%
+								<div style="background-color:#FFF3F3; color:red; border: solid thin; padding: 10px;" clas="material-icons" id="message"><i class="material-icons" style="color:red; font-size:15px;">warning</i> ${flash.message}</div>
 								</g:if>
 
 								<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
@@ -50,7 +51,7 @@
 							<p>Forgot Password</p>
 						</div>
 						<div class="col-md-5 col-md-offset-1">
-							<p>Register</p>
+							<p><g:link action="create" controller="user">Sign Up</g:link></p>
 							<br>
 							<br>
 						</div>

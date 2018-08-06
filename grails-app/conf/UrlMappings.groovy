@@ -9,6 +9,6 @@ class UrlMappings {
 
         // "/"(view:"/index")
         "/"(view:"/secure/index")
-        "500"(view:'/error')
+        // "500"(view:'/error')
 	}
 }
