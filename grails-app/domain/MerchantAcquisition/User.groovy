@@ -16,6 +16,8 @@ class User implements Serializable {
 	String email
     String telephone
     String mobileNo
+    String confirmCode
+    Date dateCreated
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -53,6 +55,8 @@ class User implements Serializable {
 		email(email:true, nullable:true)
 	    telephone(nullable:true)
 	    mobileNo(nullable:true)
+	    confirmCode(nullable:true)
+	    dateCreated(nullable:true)
 	}
 
 	static mapping = {

@@ -5,12 +5,13 @@
 
 body {
     /*background-color: #DEFCDE;*/
+    color:black;
 }
 
 .wrapper {
     margin-top: 4%;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
     margin-bottom:  4%;
     background-color: white;
     /*padding: 2%;*/
@@ -33,3 +34,4 @@ body {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
+

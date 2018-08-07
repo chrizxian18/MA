@@ -64,16 +64,17 @@
 	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 
 </div>
+--}%
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
+%{-- <div style="display:none" class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
 		
 	</label>
-	<g:checkBox name="enabled" value="${userInstance?.enabled}" />
+	<g:checkBox name="enabled" value="${userInstance?.enabled = false}" />
 
-</div>
-
+</div> --}%
+%{--  
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordExpired', 'error')} ">
 	<label for="passwordExpired">
 		<g:message code="user.passwordExpired.label" default="Password Expired" />
@@ -81,5 +82,5 @@
 	</label>
 	<g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
 
-</div> --}%
-
+</div> 
+--}%

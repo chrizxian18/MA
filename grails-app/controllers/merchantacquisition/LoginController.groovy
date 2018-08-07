@@ -114,7 +114,7 @@ class LoginController {
 				msg = g.message(code: "springSecurity.errors.login.passwordExpired")
 			}
 			else if (exception instanceof DisabledException) {
-				msg = g.message(code: "springSecurity.errors.login.disabled")
+				msg = g.message(code: " Sorry, your account is not activated.")
 			}
 			else if (exception instanceof LockedException) {
 				msg = g.message(code: "springSecurity.errors.login.locked")

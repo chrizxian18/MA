@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Merchant Acquisition</title>
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'myStyle.css')}" type="text/css" async title="Light">
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'myStyle.css')}" type="text/css">
 
   </head>
   <body>
@@ -51,7 +51,7 @@
 							<p>Forgot Password</p>
 						</div>
 						<div class="col-md-5 col-md-offset-1">
-							<p><g:link action="create" controller="user">Sign Up</g:link></p>
+							<p><g:link action="create" controller="user" style="color:black">Sign Up</g:link></p>
 							<br>
 							<br>
 						</div>
