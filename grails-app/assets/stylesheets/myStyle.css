@@ -18,7 +18,7 @@ body {
 }
 
 .container-fluid {
-	background-color: #A98D8D;
+	background-color: #FC9E58;
 	margin-top: 5%;
     margin-left: 27%;
     margin-right: 27%;
@@ -35,3 +35,10 @@ body {
     padding-bottom: 99999px;
 }
 
+.transbox {
+  /*margin: 30px;*/
+  /*background-color: #ffffff;*/
+  border: 1px solid black;
+  opacity: 0.2;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}

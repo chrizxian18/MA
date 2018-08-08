@@ -13,7 +13,7 @@
 	<div class="container-fluid">
 		<div class="wrapper">
 			<div class="row"> %{-- outer row --}%
-				<div class="col-md-6" style="background-color: #DBC8C0"> %{-- outer column1 --}%
+				<div class="col-md-6" style="background-color: #00b33c;"> %{-- outer column1 --}%
 					<div class="row"> %{-- row1-1 --}%
 						<div class="col-md-11 col-md-offset-1">
 							<h3>Please Login</h3>
@@ -59,7 +59,7 @@
 					</div>%{-- end row1-2 --}%	
 				</div> %{-- end outer column1 --}%
 
-				<div class="col-md-6 " style="background-color: #DBC8C8"> %{-- outer column2 --}%
+				<div class="col-md-6" style="background-color: #009933;"> %{-- outer column2 --}%
 					%{-- <div class="row">row 2-1
 						<div class="col-md-12"> --}%
 							<br><br>

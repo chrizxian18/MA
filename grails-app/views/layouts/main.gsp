@@ -17,11 +17,15 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner" style="padding:2%; color:black;"><h1 style="color:black;">Merchant Acquisition</h1></div>
+		<div id="grailsLogo" role="banner" style="padding:2%; color:black;"><h1 style="color:black;">&nbsp;</h1></div>
 		
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><a href="${createLink(uri: '/applicationForm/create')}"><g:message code="Application Form"/></a></li>
+				<li><a href="#"><g:message code="My Account"/></a></li>
+				<li><a href="#"><g:message code="Contact Us"/></a></li>
+				<li><g:link controller="logout"> Log Out</g:link></li>
 			</ul>
 		</div>
 		<g:layoutBody/>
