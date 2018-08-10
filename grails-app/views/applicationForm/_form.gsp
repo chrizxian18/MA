@@ -279,3 +279,12 @@
 
 </div>
 
+%{-- <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'corIssuedByBir', 'error')} ">
+	<label for="corIssuedByBir">
+		<g:message code="applicationForm.corIssuedByBir.label" default="COR Issued By BIR" />
+		
+	</label>
+	<input type="file" name="corIssuedByBir" />
+</div>
+
+ --}%

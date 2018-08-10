@@ -1,5 +1,7 @@
 package merchantacquisition
 
+import MerchantAcquisition.User
+
 class ApplicationForm {
 	// 7-Connect Model
 	Boolean sConnectWebIntegration
@@ -32,12 +34,15 @@ class ApplicationForm {
 	String itContactPerson
 	String afterSalesContactPerson
 	String financeContactPerson
+	// String corIssuedByBir
 
 	String status
-	// String createdBy
-	// String updatedBy
+	User createdBy
+	User updatedBy
 	Date dateCreated
 	Date lastUpdated
+	Boolean	drafts
+	
 
 
 
@@ -75,5 +80,8 @@ class ApplicationForm {
 			afterSalesContactPerson(nullable:true)
 			financeContactPerson(nullable:true)
 			status(nullable:true)
+			createdBy(nullable:true)
+			updatedBy(nullable:true)
+			drafts(nullable:true)
     }
 }
