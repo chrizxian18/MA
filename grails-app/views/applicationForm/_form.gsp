@@ -82,18 +82,16 @@
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyType', 'error')} required">
 	<label>Company Type: <b class="required-indicator">*</b></label>
 </div>
+
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyType', 'error')} required">
-	%{-- <label for="companyType">
-		<g:message code="applicationForm.companyType.label" default="Company Type" />
-		<span class="required-indicator">*</span>
+<label for="Single Proprietorship">
+	<g:message code="applicationForm.companyType.label" default="Single Proprietorship" />
 	</label>
-	<g:textField name="companyType" required="" value="${applicationFormInstance?.companyType}"/> --}%
-<fieldset name="companyType">
-	<label for="SingleProprietorship">Single Proprietorship</label>
-	<input type="radio" name="companyType" id="SingleProprietorship" value="Single Proprietorship" />
-	<label for="Corporation"> Corporation</label>
-	<input type="radio" name="companyType" id="Corporation" value="Corporation" />
-</fieldset>
+	<g:radio name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
+	<label for="Corporation">
+	<g:message code="applicationForm.companyType.label" default="Corporation"/>
+</label>
+	<g:radio name="companyType" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyAddress', 'error')} required">
@@ -212,17 +210,14 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'accountType', 'error')} ">
-	%{-- <label for="accountType">
-		<g:message code="applicationForm.accountType.label" default="Account Type" />
-		
-	</label> --}%
-	%{-- <g:textField name="accountType" value="${applicationFormInstance?.accountType}"/> --}%
-	<label for="Savings"> Savings</label>
-	<input type="radio" name="accountType" id="Savings" value="Savings" />
-	<label for="Check"> Check</label>
-	<input type="radio" name="accountType" id="Check" value="Check" />
-
-
+	<label for="Savings">
+	<g:message code="applicationForm.accountType.label" default="Savings" />
+	</label>
+	<g:radio name="accountType" value="Savings" checked="${applicationFormInstance?.accountType.equals('Savings')}"/>
+	<label for="Check">
+	<g:message code="applicationForm.accountType.label" default="Check"/>
+	</label>
+	<g:radio name="accountType" value="Check" checked="${applicationFormInstance?.accountType.equals('Check')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'moaSignatory', 'error')} ">

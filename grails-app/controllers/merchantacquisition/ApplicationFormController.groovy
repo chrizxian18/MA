@@ -9,7 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class ApplicationFormController {
     // def user = new MerchantAcquisition.User
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def showDrafts(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -29,28 +29,36 @@ class ApplicationFormController {
         respond new ApplicationForm(params)
     }
 
-    // @Transactional
-    // def update(ApplicationForm applicationFormInstance) {
-    //     if (applicationFormInstance == null) {
-    //         notFound()
-    //         return
-    //     }
 
-    //     if (applicationFormInstance.hasErrors()) {
-    //         respond applicationFormInstance.errors, view:'edit'
-    //         return
-    //     }
+    @Transactional
+    def updateDrafts(ApplicationForm applicationFormInstance) {
 
-    //     applicationFormInstance.save flush:true
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
 
-    //     request.withFormat {
-    //         form multipartForm {
-    //             flash.message = message(code: 'default.updated.message', args: [message(code: 'ApplicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-    //             redirect applicationFormInstance
-    //         }
-    //         '*'{ respond applicationFormInstance, [status: OK] }
-    //     }
-    // }
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'edit'
+            return
+        }
+
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.save flush:true
+        // redirect(controller:'applicationForm', action: 'showDrafts') 
+        // flash.message = "Updated!"
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = "Application has been updated, Saved to Drafts. To submit application, click on Submit button"
+                // redirect applicationFormInstance
+                redirect uri:"/applicationForm/viewSelected/${applicationFormInstance.id}"
+                // redirect(controller:'applicationForm', action: 'showDrafts') 
+                
+            }
+            // '*'{ respond applicationFormInstance, [status: OK] }
+        }
+    }
 
     @Transactional
     def save(ApplicationForm applicationFormInstance) {
@@ -72,7 +80,7 @@ class ApplicationFormController {
         applicationFormInstance.updatedBy = user
         applicationFormInstance.dateCreated = new Date()
         applicationFormInstance.lastUpdated = new Date()
-        applicationFormInstance.status = "New"
+        applicationFormInstance.status = "None"
         applicationFormInstance.drafts = true
 
         //  def file1 = request.getFile('corIssuedByBir')//.getInputSTream()
@@ -92,10 +100,12 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-                redirect applicationFormInstance
+                flash.message = "Application has been successfully saved as draft. To submit application, click on Submit button"
+                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                // redirect applicationFormInstance
+                redirect uri:"/applicationForm/viewSelected/${applicationFormInstance.id}"
             }
-            '*' { respond applicationFormInstance, [status: CREATED] }
+            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
     }
 
@@ -127,19 +137,16 @@ class ApplicationFormController {
         //     applicationFormInstance.corIssuedByBir = file1.originalFilename
         //     def fullPath1 = grailsApplication.config.uploadFolder + applicationFormInstance.corIssuedByBir
         //     file1.transferTo(new File(fullPath1))
-            
-        
-        
-
 
         applicationFormInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                flash.message = "Application has been submitted for review. Kindly check your email for more details."
                 redirect applicationFormInstance
             }
-            '*' { respond applicationFormInstance, [status: CREATED] }
+            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
         sendMail {
@@ -156,8 +163,6 @@ class ApplicationFormController {
         respond applicationFormInstance
     }
 
-    
-
     // @Transactional
     def delete(ApplicationForm applicationFormInstance) {
 
@@ -170,10 +175,10 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'ApplicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                flash.message = "Application has been deleted"
                 redirect action:"showDrafts", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+            // '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -181,7 +186,7 @@ class ApplicationFormController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), params.id])
-                redirect action: "showDrafts", method: "GET"
+                redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

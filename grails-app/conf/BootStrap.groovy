@@ -10,7 +10,8 @@ class BootStrap {
       def userRole = new Role('ROLE_USER').save()
 
       def testUser = new User('me', 'password').save()
-
+      testUser.email = "janchristian@apollo.com.ph"
+      testUser.save()
       UserRole.create testUser, adminRole, true
 
       assert User.count() == 1

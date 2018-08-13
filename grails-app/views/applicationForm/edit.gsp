@@ -1,4 +1,4 @@
-<%@ page import="merchantacquisition.ApplicationForm" %>
+%{-- <%@ page import="merchantacquisition.ApplicationForm" %> --}%
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,14 +30,13 @@
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset> --}%
 
-				<g:form controller="applicationForm" enctype="multipart/form-data" method="PUT" >
+				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit action="save" class="save" value="Save as Draft" />
+					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />
 					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
-					%{-- <g:submitButton name="submit" action="saveAndSend"class="save" value="Submit" /> --}%
 				</fieldset>
 			</g:form>
 			
