@@ -42,6 +42,7 @@ class ApplicationForm {
 	Date dateCreated
 	Date lastUpdated
 	Boolean	drafts
+	AppFormFiles appFormFiles
 	
 
 

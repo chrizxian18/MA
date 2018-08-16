@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = false)
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class ApplicationFormController {
-    // def user = new MerchantAcquisition.User
+    // def applicationFormService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def showDrafts(Integer max) {
@@ -22,7 +22,9 @@ class ApplicationFormController {
     }
 
     def viewSelected(ApplicationForm applicationFormInstance) {
+        // def test = "${applicationFormInstance.appFormFiles.corFullPath-grailsApplication.config.uploadFolder}"
         respond applicationFormInstance
+        // respond applicationFormInstance, model:[uploadfolder: grailsApplication.config.uploadFolder, coralksdjf :test]
     }
 
     def create() {
@@ -42,11 +44,34 @@ class ApplicationFormController {
             respond applicationFormInstance.errors, view:'edit'
             return
         }
+        //upload files
+        def corFullPath = request.getFile('corFullPath')
+        def dtiCertFullPath = request.getFile('dtiCertFullPath')
+         AppFormFiles appFiles = applicationFormInstance.appFormFiles
+        if(corFullPath == null) {
+           appFiles.corFullPath = appFiles.corFullPath
+            // redirect (action:'index')
+        } 
+         else {
+            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+            corFullPath.transferTo(new File(appFiles.corFullPath))
+        }
+            if(dtiCertFullPath == null) {
+           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
+            // redirect (action:'index')
+        } else {
+            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+            appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
+            dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
+
+            }
+           appFiles.save()
+        
+        //end upload
 
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.save flush:true
-        // redirect(controller:'applicationForm', action: 'showDrafts') 
-        // flash.message = "Updated!"
 
         request.withFormat {
             form multipartForm {
@@ -54,7 +79,6 @@ class ApplicationFormController {
                 // redirect applicationFormInstance
                 redirect uri:"/applicationForm/viewSelected/${applicationFormInstance.id}"
                 // redirect(controller:'applicationForm', action: 'showDrafts') 
-                
             }
             // '*'{ respond applicationFormInstance, [status: OK] }
         }
@@ -72,9 +96,33 @@ class ApplicationFormController {
             return
         }
 
-        // def username = "${sec.loggedInUserInfo(field:'username')}"
-        // applicationFormInstance.createdBy = username
-        // applicationFormInstance.updatedBy = username
+        //upload files
+        def corFullPath = request.getFile('corFullPath')
+        def dtiCertFullPath = request.getFile('dtiCertFullPath')
+         AppFormFiles appFiles = applicationFormInstance.appFormFiles
+        if(corFullPath == null) {
+           appFiles.corFullPath = appFiles.corFullPath
+            // redirect (action:'index')
+        } 
+         else {
+            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+            corFullPath.transferTo(new File(appFiles.corFullPath))
+        }
+            if(dtiCertFullPath == null) {
+           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
+            // redirect (action:'index')
+        } else {
+            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+            appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
+            dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
+
+            }
+           appFiles.save()
+        
+        //end upload
+
+
         User user = authenticatedUser
         applicationFormInstance.createdBy = user
         applicationFormInstance.updatedBy = user
@@ -82,19 +130,6 @@ class ApplicationFormController {
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.status = "None"
         applicationFormInstance.drafts = true
-
-        //  def file1 = request.getFile('corIssuedByBir')//.getInputSTream()
-        // // if(file1.empty) {
-        // // // if(file1.empty || file2.empty) {
-        // //     flash.message = "File cannot be empty"
-        // // } else {
-        //     applicationFormInstance.corIssuedByBir = file1.originalFilename
-        //     def fullPath1 = grailsApplication.config.uploadFolder + applicationFormInstance.corIssuedByBir
-        //     file1.transferTo(new File(fullPath1))
-            
-        
-        
-
 
         applicationFormInstance.save flush:true
 
@@ -120,23 +155,39 @@ class ApplicationFormController {
             return
         }
 
-        User user = authenticatedUser
+        //upload files
+        def corFullPath = request.getFile('corFullPath')
+        def dtiCertFullPath = request.getFile('dtiCertFullPath')
+         AppFormFiles appFiles = applicationFormInstance.appFormFiles
+        if(corFullPath == null) {
+           appFiles.corFullPath = appFiles.corFullPath
+            // redirect (action:'index')
+        } 
+         else {
+            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+            corFullPath.transferTo(new File(appFiles.corFullPath))
+        }
+            if(dtiCertFullPath == null) {
+           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
+            // redirect (action:'index')
+        } else {
+            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+            appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
+            dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
 
+            }
+           appFiles.save()
+        
+        //end upload
+
+        User user = authenticatedUser
         applicationFormInstance.createdBy = user
         applicationFormInstance.updatedBy = user
         applicationFormInstance.dateCreated = new Date()
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.status = "New"
         applicationFormInstance.drafts = false
-
-        //  def file1 = request.getFile('corIssuedByBir')//.getInputSTream()
-        // // if(file1.empty) {
-        // // // if(file1.empty || file2.empty) {
-        // //     flash.message = "File cannot be empty"
-        // // } else {
-        //     applicationFormInstance.corIssuedByBir = file1.originalFilename
-        //     def fullPath1 = grailsApplication.config.uploadFolder + applicationFormInstance.corIssuedByBir
-        //     file1.transferTo(new File(fullPath1))
 
         applicationFormInstance.save flush:true
 
@@ -191,4 +242,32 @@ class ApplicationFormController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    
+
+
+
+    // def download(ApplicationForm applicationFormInstance) {
+
+    //     if ( applicationFormInstance.appFormFiles == null) {
+    //         notFound()
+    //         return
+    //     } else {
+    //         response.setContentType("APPLICATION/OCTET-STREAM")
+    //         def filename = ("${applicationFormInstance.appFormFiles.corFullPath - grailsApplication.config.uploadFolder}")
+    //         response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+    //         def file = new File(applicationFormInstance.appFormFiles.corFullPath)
+    //         def fileInputStream = new FileInputStream(file)
+    //         def outputStream = response.getOutputStream()
+    //         byte[] buffer = new byte[4096];
+    //         int len;
+    //         while ((len = fileInputStream.read(buffer)) > 0) {
+    //             outputStream.write(buffer, 0, len);
+    //         }
+    //         outputStream.flush()
+    //         outputStream.close()
+    //         fileInputStream.close()
+
+    //     }
+    // }
 }

@@ -13,10 +13,10 @@
 	<div class="container-fluid">
 		<div class="wrapper">
 			<div class="row"> %{-- outer row --}%
-				<div class="col-md-6" style="background-color: #00b33c;"> %{-- outer column1 --}%
+				<div class="col-md-6 login_left" > %{-- outer column1 --}%
 					<div class="row"> %{-- row1-1 --}%
 						<div class="col-md-11 col-md-offset-1">
-							<h3>Please Login</h3>
+							<h3 style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Please Login</h3>
 							<g:if test='${flash.message}'>
 								%{-- <div class='login_message'>${flash.message}</div> --}%
 								<div style="background-color:#FFF3F3; color:red; border: solid thin; padding: 10px;" clas="material-icons" id="message"><i class="material-icons" style="color:red; font-size:15px;">warning</i> ${flash.message}</div>
@@ -25,7 +25,7 @@
 								<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
 									<p>
 										<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
-										<input type='text' class='text_' name='j_username' id='username'/>
+										<input type='text' class='' name='j_username' id='username'/>
 									</p>
 
 									<p>
@@ -59,11 +59,11 @@
 					</div>%{-- end row1-2 --}%	
 				</div> %{-- end outer column1 --}%
 
-				<div class="col-md-6" style="background-color: #009933;"> %{-- outer column2 --}%
+				<div class="col-md-6 login_right"> %{-- outer column2 --}%
 					%{-- <div class="row">row 2-1
 						<div class="col-md-12"> --}%
 							<br><br>
-							<h2 style="text-align:center;">Merchant Acquisition</h2>
+							<h2 style="text-align:center; font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Merchant Acquisition</h2>
 							<br><br><br>
 							<p style="text-align:center;">Contact Us</p>
 						%{-- </div>

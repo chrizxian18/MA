@@ -122,7 +122,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'MerchantAcquisiti
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'MerchantAcquisition.UserRole'
 grails.plugin.springsecurity.authority.className = 'MerchantAcquisition.Role'
 grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/../MerchantAcquisition/secure/'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/../MerchantAcquisition/'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
@@ -138,7 +138,7 @@ grails {
     mail {
         host = "smtp.gmail.com"
         'default' {
-            from = "<username>@gmail.com"
+            from = "test.noreply.Merchant@gmail.com"
         }
         port = 465
         // username = "<username>@gmail.com"
@@ -149,5 +149,18 @@ grails {
           "mail.smtp.socketFactory.port":"465",
           "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
           "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
+
+
+environments {
+    development {
+        uploadFolder = "/home/xtian/Desktop/uploads/upload:"
+    }
+    test {
+        uploadFolder = "/home/xtian/Desktop/uploads/"
+    }
+    production {
+        uploadFolder = "/home/xtian/Desktop/uploads/"
     }
 }

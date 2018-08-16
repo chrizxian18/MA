@@ -87,7 +87,7 @@
 <label for="Single Proprietorship">
 	<g:message code="applicationForm.companyType.label" default="Single Proprietorship" />
 	</label>
-	<g:radio name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
+	<g:radio id="companyType" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
 	<label for="Corporation">
 	<g:message code="applicationForm.companyType.label" default="Corporation"/>
 </label>
@@ -274,12 +274,3 @@
 
 </div>
 
-%{-- <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'corIssuedByBir', 'error')} ">
-	<label for="corIssuedByBir">
-		<g:message code="applicationForm.corIssuedByBir.label" default="COR Issued By BIR" />
-		
-	</label>
-	<input type="file" name="corIssuedByBir" />
-</div>
-
- --}%

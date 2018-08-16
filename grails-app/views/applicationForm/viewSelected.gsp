@@ -311,7 +311,26 @@
 					
 				</li>
 				</g:if>
-			
+
+				%{-- uploadedFiles --}%
+
+				<g:if test="${applicationFormInstance?.appFormFiles}">
+				<li class="fieldcontain">
+					<span id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR" /></span>
+					
+						<span class="property-value" aria-labelledby="appFormFiles-label">${applicationFormInstance.appFormFiles.corFullPath-grailsApplication.config.uploadFolder}</span>
+					%{-- <span class="property-value"><g:link action="download" id="${applicationFormInstance.appFormFiles.id}">click to download and view attachment</g:link></span> --}%
+				</li>
+				</g:if>
+				<g:if test="${applicationFormInstance?.appFormFiles}">
+				<li class="fieldcontain">
+					<span id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR" /></span>
+					
+						<span class="property-value" aria-labelledby="appFormFiles-label">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</span>
+					
+				</li>
+				</g:if>
+			 
 			</ol>
 			%{-- <g:form url="[resource:applicationFormInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
@@ -324,6 +343,7 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${applicationFormInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					%{-- <g:link class="edit" action="edit" resource="${applicationFormInstance.appFormFiles}"><g:message code="default.button.edit.label" default="Edit" /></g:link> --}%
 					<g:actionSubmit action="delete" class="delete" value="Delete" />
 					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
 				</fieldset>

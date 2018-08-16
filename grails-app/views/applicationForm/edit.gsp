@@ -33,6 +33,7 @@
 				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
 				<fieldset class="form">
 					<g:render template="form"/>
+					<g:render template="formFiles"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />
