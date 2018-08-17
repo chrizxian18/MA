@@ -13,7 +13,7 @@ class ApplicationFormController {
 
     def showDrafts(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ApplicationForm.findAllByDrafts(true), model:[applicationFormInstanceCount: ApplicationForm.count()]
+        respond ApplicationForm.findAllByDraftsAndCreatedBy(true, authenticatedUser), model:[applicationFormInstanceCount: ApplicationForm.count()]
 
     }
 
@@ -22,9 +22,7 @@ class ApplicationFormController {
     }
 
     def viewSelected(ApplicationForm applicationFormInstance) {
-        // def test = "${applicationFormInstance.appFormFiles.corFullPath-grailsApplication.config.uploadFolder}"
         respond applicationFormInstance
-        // respond applicationFormInstance, model:[uploadfolder: grailsApplication.config.uploadFolder, coralksdjf :test]
     }
 
     def create() {
@@ -44,32 +42,50 @@ class ApplicationFormController {
             respond applicationFormInstance.errors, view:'edit'
             return
         }
-        //upload files
+         //upload files
         def corFullPath = request.getFile('corFullPath')
         def dtiCertFullPath = request.getFile('dtiCertFullPath')
          AppFormFiles appFiles = applicationFormInstance.appFormFiles
+         def corfilename
+         def dtiCertfilename
         if(corFullPath == null) {
-           appFiles.corFullPath = appFiles.corFullPath
-            // redirect (action:'index')
+                appFiles.corFullPath = appFiles.corFullPath
+        } 
+       else if(corFullPath.empty) {
+                appFiles.corFullPath = appFiles.corFullPath
         } 
          else {
-            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
-            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
-            corFullPath.transferTo(new File(appFiles.corFullPath))
+                if (appFiles.id == null) {
+                    corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+                }
+                else {corfilename = "cor${appFiles.id}_${corFullPath.originalFilename}"
+                }
+                
+                appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+                corFullPath.transferTo(new File(appFiles.corFullPath))
         }
-            if(dtiCertFullPath == null) {
-           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
-            // redirect (action:'index')
+
+        if(dtiCertFullPath == null) {
+        appFiles.corFullPath = appFiles.corFullPath
+        } 
+        else if(dtiCertFullPath.empty) {
+                appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } else {
-            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                 if (appFiles.id == null) {
+                    dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                }
+                else {
+                     dtiCertfilename = "dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
+                }
+            
             appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
             dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
 
             }
            appFiles.save()
-        
         //end upload
-
+        User user = authenticatedUser
+        applicationFormInstance.updatedBy = user
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.save flush:true
 
@@ -100,26 +116,43 @@ class ApplicationFormController {
         def corFullPath = request.getFile('corFullPath')
         def dtiCertFullPath = request.getFile('dtiCertFullPath')
          AppFormFiles appFiles = applicationFormInstance.appFormFiles
+         def corfilename
+         def dtiCertfilename
         if(corFullPath == null) {
-           appFiles.corFullPath = appFiles.corFullPath
-            // redirect (action:'index')
+                appFiles.corFullPath = appFiles.corFullPath
+        } 
+       else if(corFullPath.empty) {
+                appFiles.corFullPath = appFiles.corFullPath
         } 
          else {
-            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
-            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
-            corFullPath.transferTo(new File(appFiles.corFullPath))
+                if (appFiles.id == null) {
+                    corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+                }
+                else {corfilename = "cor${appFiles.id}_${corFullPath.originalFilename}"
+                }
+                
+                appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+                corFullPath.transferTo(new File(appFiles.corFullPath))
         }
-            if(dtiCertFullPath == null) {
-           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
-            // redirect (action:'index')
+
+        if(dtiCertFullPath == null) {
+        appFiles.corFullPath = appFiles.corFullPath
+        } 
+        else if(dtiCertFullPath.empty) {
+                appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } else {
-            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                 if (appFiles.id == null) {
+                    dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                }
+                else {
+                     dtiCertfilename = "dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
+                }
+            
             appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
             dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
 
             }
            appFiles.save()
-        
         //end upload
 
 
@@ -159,35 +192,60 @@ class ApplicationFormController {
         def corFullPath = request.getFile('corFullPath')
         def dtiCertFullPath = request.getFile('dtiCertFullPath')
          AppFormFiles appFiles = applicationFormInstance.appFormFiles
+         def corfilename
+         def dtiCertfilename
         if(corFullPath == null) {
-           appFiles.corFullPath = appFiles.corFullPath
-            // redirect (action:'index')
+                appFiles.corFullPath = appFiles.corFullPath
+        } 
+       else if(corFullPath.empty) {
+                appFiles.corFullPath = appFiles.corFullPath
         } 
          else {
-            def corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
-            appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
-            corFullPath.transferTo(new File(appFiles.corFullPath))
+                if (appFiles.id == null) {
+                    corfilename = "cor${appFiles.count()+1}_${corFullPath.originalFilename}"
+                }
+                else {corfilename = "cor${appFiles.id}_${corFullPath.originalFilename}"
+                }
+                
+                appFiles.corFullPath = grailsApplication.config.uploadFolder + corfilename
+                corFullPath.transferTo(new File(appFiles.corFullPath))
         }
-            if(dtiCertFullPath == null) {
-           appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
-            // redirect (action:'index')
+
+        if(dtiCertFullPath == null) {
+        appFiles.corFullPath = appFiles.corFullPath
+        } 
+        else if(dtiCertFullPath.empty) {
+                appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } else {
-            def dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                 if (appFiles.id == null) {
+                    dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                }
+                else {
+                     dtiCertfilename = "dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
+                }
+            
             appFiles.dtiCertFullPath = grailsApplication.config.uploadFolder + dtiCertfilename
             dtiCertFullPath.transferTo(new File(appFiles.dtiCertFullPath))
 
             }
            appFiles.save()
-        
         //end upload
 
         User user = authenticatedUser
         applicationFormInstance.createdBy = user
         applicationFormInstance.updatedBy = user
-        applicationFormInstance.dateCreated = new Date()
+        
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.status = "New"
         applicationFormInstance.drafts = false
+
+        if (applicationFormInstance.dateCreated == null) {
+            applicationFormInstance.dateCreated = new Date()
+        } else {applicationFormInstance.dateCreated = applicationFormInstance.dateCreated}
+
+        if (applicationFormInstance.createdBy == null) {
+            applicationFormInstance.createdBy = user
+        } else {applicationFormInstance.createdBy = applicationFormInstance.createdBy}
 
         applicationFormInstance.save flush:true
 
