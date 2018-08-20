@@ -77,9 +77,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="merchantName" required="" value="${applicationFormInstance?.merchantName}"/>
-
 </div>
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyType', 'error')} required">
+<div class="fieldcontain">
 	<label>Company Type: <b class="required-indicator">*</b></label>
 </div>
 
@@ -87,11 +86,11 @@
 <label for="Single Proprietorship">
 	<g:message code="applicationForm.companyType.label" default="Single Proprietorship" />
 	</label>
-	<g:radio id="companyType" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
+	<g:radio id="companyType" required="" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
 	<label for="Corporation">
 	<g:message code="applicationForm.companyType.label" default="Corporation"/>
 </label>
-	<g:radio name="companyType" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
+	<g:radio name="companyType" required="" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyAddress', 'error')} required">
@@ -219,6 +218,8 @@
 	</label>
 	<g:radio name="accountType" value="Check" checked="${applicationFormInstance?.accountType.equals('Check')}"/>
 </div>
+
+<div><h1></h1></div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'moaSignatory', 'error')} ">
 	<label for="moaSignatory">

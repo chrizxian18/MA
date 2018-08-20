@@ -34,7 +34,7 @@ class ApplicationForm {
 	String itContactPerson
 	String afterSalesContactPerson
 	String financeContactPerson
-	// String corIssuedByBir
+	Date dateApplied
 
 	String status
 	User createdBy
@@ -43,6 +43,7 @@ class ApplicationForm {
 	Date lastUpdated
 	Boolean	drafts
 	AppFormFiles appFormFiles
+	String remarks
 	
 
 
@@ -84,5 +85,7 @@ class ApplicationForm {
 			createdBy(nullable:true)
 			updatedBy(nullable:true)
 			drafts(nullable:true)
+			dateApplied(nullable:true)
+			remarks(nullable:true)
     }
 }

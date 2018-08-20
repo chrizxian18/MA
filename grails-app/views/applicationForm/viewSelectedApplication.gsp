@@ -373,6 +373,11 @@
 				
 			 
 			</ol>
+			</div>
+			
+			%{-- <g:render template="remarks"/> --}%
+		
+
 			%{-- <g:form url="[resource:applicationFormInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${applicationFormInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -381,14 +386,15 @@
 
 				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="POST" >
 				<fieldset class="form">
+					<g:render template="remarks"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${applicationFormInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" action="editApplication" resource="${applicationFormInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit action="withdraw" class="save" value="Withdraw" />
 					%{-- <g:link class="edit" action="edit" resource="${applicationFormInstance.appFormFiles}"><g:message code="default.button.edit.label" default="Edit" /></g:link> --}%
-					<g:actionSubmit action="delete" class="delete" value="Delete" />
-					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
+					 
 				</fieldset>
 			</g:form>
-		</div>
+		
 	</body>
 </html>

@@ -4,36 +4,43 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
-		<script>
-			function checkFiles() {
+	 	<script>
+	// 		function checkFiles() {
 				
-				var dtiCert = document.getElementById("dtiCertFullPath").files.length;
-				var cor = document.getElementById("corFullPath").files.length;
-				if (dtiCert  == 0 || cor == 0){
-				// if( document.getElementById("uploadRequired").files.length == 0 ){
-			    alert("Please select files to upload")
-			    return false
-			}	else { return true}
-						}
+	// 			var birCorFullPath = document.getElementById("birCorFullPath").files.length;
+	// 			var dtiCertFullPath = document.getElementById("dtiCertFullPath").files.length;
+	// 			var bizPermFullPath = document.getElementById("bizPermFullPath").files.length;
+	// 			var govIdFullPath = document.getElementById("govIdFullPath").files.length;
+	// 			var secCertFullPath = document.getElementById("secCertFullPath").files.length;
+	// 			var gsisFullPath = document.getElementById("gsisFullPath").files.length;
+	// 			var articleFullPath = document.getElementById("articleFullPath").files.length;
+	// 			var byLawFullPath = document.getElementById("byLawFullPath").files.length;
+	// 			var finStateFullPath = document.getElementById("finStateFullPath").files.length;
+	// 			if (birCorFullPath  == 0 || dtiCertFullPath == 0 || bizPermFullPath == 0 || govIdFullPath == 0 || secCertFullPath == 0 || gsisFullPath == 0 || articleFullPath == 0 || byLawFullPath == 0 || finStateFullPath == 0){
+	// 			// if( document.getElementById("uploadRequired").files.length == 0 ){
+	// 		    alert("Please select all the required files to be uploaded")
+	// 		    return false
+	// 		}	else { return true}
+	// 					}
 			
-		function validate() {
-		var a = 0, rdbtn=document.getElementsByName("companyType")
-		for(i=0;i<rdbtn.length;i++) {
-		if(rdbtn.item(i).checked == false) {
-		a++;
-		}
-		}
-		if(a == rdbtn.length) {
-		alert("Please select Company Type")
+	// 	function validate() {
+	// 	var a = 0, rdbtn=document.getElementsByName("companyType")
+	// 	for(i=0;i<rdbtn.length;i++) {
+	// 	if(rdbtn.item(i).checked == false) {
+	// 	a++;
+	// 	}
+	// 	}
+	// 	if(a == rdbtn.length) {
+	// 	alert("Please select Company Type")
 
-		return false
-		} else {
-		// return true
-		return checkFiles()
-		}
-	}
+	// 	return false
+	// 	} else {
+	// 	// return true
+	// 	return checkFiles()
+	// 	}
+	// }
 
-		</script>
+	</script>
 	</head>
 	<body>
 		<a href="#create-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

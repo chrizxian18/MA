@@ -49,11 +49,13 @@
 					<g:render template="formFilesEdit"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />
-					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
+					<g:actionSubmit action="saveAndSend" class="save" value="Resubmit" />
 				</fieldset>
 			</g:form>
 			
 		</div>
+		<g:javascript library="jquery">
+
+</g:javascript>
 	</body>
 </html>
