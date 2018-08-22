@@ -35,6 +35,10 @@ class ApplicationFormController {
         respond applicationFormInstance
     }
 
+    def merchantAppDetails(ApplicationForm applicationFormInstance) {
+        respond applicationFormInstance
+    }
+
     def create() {
         respond new ApplicationForm(params)
     }
@@ -464,8 +468,16 @@ class ApplicationFormController {
         }
 
         if (applicationFormInstance.hasErrors()) {
+            if (applicationFormInstance.drafts == true) {
+                respond applicationFormInstance.errors, view:'edit'
+                return
+            } else if (applicationFormInstance.drafts == false) {
+                 respond applicationFormInstance.errors, view:'editApplication'
+                return
+            } else {
             respond applicationFormInstance.errors, view:'create'
             return
+            }
         }
 
         //upload files
@@ -757,6 +769,109 @@ class ApplicationFormController {
         }
     }
 
+    def inReview(ApplicationForm applicationFormInstance) {
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
+
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'merchantAppDetails'
+            return
+        }
+
+
+        User user = authenticatedUser
+        applicationFormInstance.updatedBy = user
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.status = "In-Review"
+        applicationFormInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                flash.message = "Status has been changed to In-Review!"
+                redirect applicationFormInstance
+            }
+            // '*' { respond applicationFormInstance, [status: CREATED] }
+        }
+
+    }
+
+    def onHold(ApplicationForm applicationFormInstance) {
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
+
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'merchantAppDetails'
+            return
+        }
+
+        User merchant = applicationFormInstance.createdBy
+        User admin = authenticatedUser
+        applicationFormInstance.updatedBy = admin
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.status = "On-hold"
+        applicationFormInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                flash.message = "Status has been changed to On-hold!"
+                redirect applicationFormInstance
+            }
+            // '*' { respond applicationFormInstance, [status: CREATED] }
+        }
+
+        sendMail {
+             def recipient = merchant.email
+            to recipient
+            subject "7-Connect Application - Status: On-hold"
+            html g.render(template:"applicationOnHoldEmail", model:[remarks:applicationFormInstance.remarks])
+            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
+        }
+    }
+
+
+    def declined(ApplicationForm applicationFormInstance) {
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
+
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'merchantAppDetails'
+            return
+        }
+
+        User merchant = applicationFormInstance.createdBy
+        User admin = authenticatedUser
+        applicationFormInstance.updatedBy = admin
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.status = "Declined"
+        applicationFormInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
+                flash.message = "Status has been changed to Declined"
+                redirect applicationFormInstance
+            }
+            // '*' { respond applicationFormInstance, [status: CREATED] }
+        }
+
+        sendMail {
+             def recipient = merchant.email
+            to recipient
+            cc admin.email
+            subject "7-Connect Application - Status: Declined"
+            html g.render(template:"applicationDeclinedEmail", model:[remarks:applicationFormInstance.remarks])
+            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
+        }
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -771,27 +886,27 @@ class ApplicationFormController {
 
 
 
-    // def download(ApplicationForm applicationFormInstance) {
+    def download(ApplicationForm applicationFormInstance) {
 
-    //     if ( applicationFormInstance.appFormFiles == null) {
-    //         notFound()
-    //         return
-    //     } else {
-    //         response.setContentType("APPLICATION/OCTET-STREAM")
-    //         def filename = ("${applicationFormInstance.appFormFiles.birCorFullPath - grailsApplication.config.uploadFolder}")
-    //         response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
-    //         def file = new File(applicationFormInstance.appFormFiles.birCorFullPath)
-    //         def fileInputStream = new FileInputStream(file)
-    //         def outputStream = response.getOutputStream()
-    //         byte[] buffer = new byte[4096];
-    //         int len;
-    //         while ((len = fileInputStream.read(buffer)) > 0) {
-    //             outputStream.write(buffer, 0, len);
-    //         }
-    //         outputStream.flush()
-    //         outputStream.close()
-    //         fileInputStream.close()
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.birCorFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.birCorFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
 
-    //     }
-    // }
+        }
+    }
 }

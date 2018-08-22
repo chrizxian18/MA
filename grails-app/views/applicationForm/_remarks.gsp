@@ -7,5 +7,5 @@
 		<g:message code="applicationForm.remarks.label" default="Remarks" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="remarks" required="" value="${applicationFormInstance?.remarks}"/>
+	<g:textArea name="remarks" required="" value="${applicationFormInstance?.remarks}"/>
 </div>
