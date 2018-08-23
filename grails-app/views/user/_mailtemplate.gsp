@@ -9,8 +9,4 @@
     <p>1. Log in</p>
     <p>2. Go to Application Form</p>
     <p>3. Fill Up and Submit the form</p>
-    <br>
-    <p><strong>Note: </strong></p>
-    <p>Account status will change to Activated.</p>
-    <p>Account will be deleted/archived if not activated within 24 hours</p>
 </div>

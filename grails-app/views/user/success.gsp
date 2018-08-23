@@ -19,6 +19,9 @@
     <h1>Registration</h1>
      <div class="alert alert-success">
         ${message}
+        <g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>
      </div>
      <div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

@@ -53,6 +53,7 @@ class UserController {
         }
 
         render(view: "index", model: [userInstance: userInstance])
+        flash.message = "Your account has been created. Please confirm your email address. Confirmation link has been sent to your account"
         redirect(action: "success")
 
         // userInstance.save flush:true
@@ -67,8 +68,7 @@ class UserController {
     }
 
     def success(){
-        render(view:'success', model: [message: 'Your account has been creeated. Please confirm your email address. Confirmation link has been sent to your account']);
-    }
+    }   
 
 
     def confirm(String id)
@@ -81,14 +81,13 @@ class UserController {
             return
         }
 
-        //userInstance.confirmCode= '';
-
         userInstance.enabled=true;
         if (!userInstance.save(flush: true)) {
             render(view: "success", model: [message: 'Problem activating account.'])
             return
         }
-        render(view: "success", model: [message: 'Your account has been successfully activated.'])
+        flash.message = "Your account has been successfully activated!"
+        redirect(action: "success")
     }
 
 

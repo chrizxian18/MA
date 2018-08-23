@@ -241,11 +241,8 @@ class ApplicationFormController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Application has been updated, Saved to Drafts. To submit application, click on Submit button"
-                // redirect applicationFormInstance
                 redirect uri:"/applicationForm/viewSelected/${applicationFormInstance.id}"
-                // redirect(controller:'applicationForm', action: 'showDrafts') 
             }
-            // '*'{ respond applicationFormInstance, [status: OK] }
         }
     }
 
@@ -453,11 +450,8 @@ class ApplicationFormController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Application has been successfully saved as draft. To submit application, click on Submit button"
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-                // redirect applicationFormInstance
                 redirect uri:"/applicationForm/viewSelected/${applicationFormInstance.id}"
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
     }
 
@@ -664,8 +658,14 @@ class ApplicationFormController {
         
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.dateApplied = new Date()
-        applicationFormInstance.status = "New"
         applicationFormInstance.drafts = false
+
+        if (applicationFormInstance.status == "Declined") {
+            applicationFormInstance.status = "Resubmitted"
+        }
+        else {
+        applicationFormInstance.status = "New"
+        }
 
         if (applicationFormInstance.dateCreated == null) {
             applicationFormInstance.dateCreated = new Date()
@@ -679,29 +679,23 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
                 flash.message = "Application has been submitted for review. Kindly check your email for more details."
                 redirect applicationFormInstance
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
         sendMail {
              def recipient = user.email
             to recipient
-            // to "janchristian@apollo.com.ph"
-            subject "7-Connect Application - Status: New"
+            subject "7-Connect Application - Status: ${applicationFormInstance.status}"
             html g.render(template:"acknowledgementEmail")
-            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
         }
 
         sendMail {
              def recipient = "janjanoracion18@gmail.com" //admin's email
             to recipient
-            // to "janchristian@apollo.com.ph"
-            subject "7-Connect Application For Review - ${user.username} - Status: New"
+            subject "7-Connect Application For Review - ${user.username} - Status: ${applicationFormInstance.status}"
             html g.render(template:"newApplicationEmail", model:[user:user.username, id:applicationFormInstance.id])
-            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
         }
     }
 
@@ -728,7 +722,6 @@ class ApplicationFormController {
                 flash.message = "Application has been deleted"
                 redirect action:"showDrafts", method:"GET"
             }
-            // '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -752,20 +745,16 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
                 flash.message = "Your Application has been withdrawn!"
                 redirect applicationFormInstance
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
         sendMail {
              def recipient = "janjanoracion18@gmail.com"
             to recipient
-            // to "janchristian@apollo.com.ph"
             subject "7-Connect Application Withdrawn - ${user.username}"
             html g.render(template:"applicationWithdrawnEmail", model:[user:user.username, id:applicationFormInstance.id, remarks:applicationFormInstance.remarks])
-            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
         }
     }
 
@@ -789,11 +778,9 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-                flash.message = "Status has been changed to In-Review!"
-                redirect applicationFormInstance
+                flash.message = "Application is now In-Review!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
     }
@@ -818,11 +805,9 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-                flash.message = "Status has been changed to On-hold!"
-                redirect applicationFormInstance
+                flash.message = "Application has been put on-hold!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
         sendMail {
@@ -830,7 +815,39 @@ class ApplicationFormController {
             to recipient
             subject "7-Connect Application - Status: On-hold"
             html g.render(template:"applicationOnHoldEmail", model:[remarks:applicationFormInstance.remarks])
-            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
+        }
+    }
+
+    def forApproval(ApplicationForm applicationFormInstance) {
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
+
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'merchantAppDetails'
+            return
+        }
+
+        User merchant = applicationFormInstance.createdBy
+        User admin = authenticatedUser
+        applicationFormInstance.updatedBy = admin
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.status = "For Approval"
+        applicationFormInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = "Application has been reviewed and is now ready for approval"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+            }
+        }
+
+        sendMail {
+             def recipient = "janchristian.apollo.com.ph@gmail.com" //manager's email
+            to recipient
+            subject "7-Connect Application For Approval - ${merchant.username}"
+            html g.render(template:"applicationForApprovalEmail", model:[user:merchant.username, id:applicationFormInstance.id] )
         }
     }
 
@@ -855,11 +872,9 @@ class ApplicationFormController {
 
         request.withFormat {
             form multipartForm {
-                // flash.message = message(code: 'default.created.message', args: [message(code: 'applicationForm.label', default: 'ApplicationForm'), applicationFormInstance.id])
-                flash.message = "Status has been changed to Declined"
-                redirect applicationFormInstance
+                flash.message = "Application has been Declined"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
             }
-            // '*' { respond applicationFormInstance, [status: CREATED] }
         }
 
         sendMail {
@@ -868,7 +883,6 @@ class ApplicationFormController {
             cc admin.email
             subject "7-Connect Application - Status: Declined"
             html g.render(template:"applicationDeclinedEmail", model:[remarks:applicationFormInstance.remarks])
-            // html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
         }
     }
 
@@ -886,7 +900,7 @@ class ApplicationFormController {
 
 
 
-    def download(ApplicationForm applicationFormInstance) {
+    def downloadcor(ApplicationForm applicationFormInstance) {
 
         if ( applicationFormInstance.appFormFiles == null) {
             notFound()
@@ -909,4 +923,199 @@ class ApplicationFormController {
 
         }
     }
+
+
+    def downloaddtiCert(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.dtiCertFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.dtiCertFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+     def downloadbizPerm(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.bizPermFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.bizPermFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+     def downloadgovId(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.govIdFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.govIdFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+    def downloadsecCert(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.secCertFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.secCertFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+    def downloadgsis(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.gsisFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.gsisFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+    def downloadarticle(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.articleFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.articleFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+    def downloadbyLaw(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.byLawFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.byLawFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+    def downloadfinState(ApplicationForm applicationFormInstance) {
+
+        if ( applicationFormInstance.appFormFiles == null) {
+            notFound()
+            return
+        } else {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            def filename = ("${applicationFormInstance.appFormFiles.finStateFullPath - grailsApplication.config.uploadFolder}")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
+            def file = new File(applicationFormInstance.appFormFiles.finStateFullPath)
+            def fileInputStream = new FileInputStream(file)
+            def outputStream = response.getOutputStream()
+            byte[] buffer = new byte[4096];
+            int len;
+            while ((len = fileInputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, len);
+            }
+            outputStream.flush()
+            outputStream.close()
+            fileInputStream.close()
+
+        }
+    }
+
+
 }

@@ -1,10 +1,8 @@
 <div>
-    <p>You application has been declined.</p>
+    <p>Your application has been declined. Please see remarks below.</p>
     <br>
     <p>Remarks:</p>
     <p>${remarks}</p>
     <br>
-    <p>You may re-submit your application by going back to the Application Form page</p>
-
-    
+    <p>You may go back to Application Form to update and resubmit your application.</p>    
 </div>

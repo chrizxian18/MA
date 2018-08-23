@@ -315,52 +315,52 @@
 		<li class="fieldcontain">
 			<span id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></span>
 			
-				<span class="property-value" aria-labelledby="appFormFiles-label" id="birCorFullPath"><g:link action="download" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</g:link></span>
+				<span class="property-value" aria-labelledby="appFormFiles-label"><g:link action="downloadcor" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 		</g:if>
 		<li class="fieldcontain">
 			<span class="property-label">DTI Certificate</span>
 			
-				<span class="property-value">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloaddtiCert" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">Business/Mayor’s Permit</span>
 			
-				<span class="property-value">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadbizPerm" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 
 		<li class="fieldcontain">
 			<span class="property-label">Copy of gov’t issued I.D</span>
 			
-				<span class="property-value">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadgovId" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span>
 			
-				<span class="property-value">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadsecCert" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">Latest GIS;(certified true copy)</span>
-				<span class="property-value">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadgsis" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span>
-				<span class="property-value">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadarticle" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">By-Laws or Amended By-Laws approved by  SEC (certified true copy)</span>
-				<span class="property-value">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadbyLaw" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 		<li class="fieldcontain">
 			<span class="property-label">Latest Audited Financial Statement (certified true copy)</span>
-				<span class="property-value">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</span>
+				<span class="property-value"><g:link action="downloadfinState" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
 								

@@ -1,10 +1,8 @@
 <div>
-    <p>Your application has been put on-hold, please see remarks below.</p>
+    <p>The application of ${user} has been reviewed and is ready for your approval.</p>
     <br>
-    <p>Remarks:</p>
-    <p>${remarks}</p>
-    <br>
-    <p>You can go back to Application Form to update and resubmit your application.</p>
+  	 <p>Here’s a link to their application:</p>
+    <p>URL: <g:createLink absolute="true" controller="applicationForm" action="merchantAppDetails" id="${id}"></g:createLink></p>
 
     
 </div>
