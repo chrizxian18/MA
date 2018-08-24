@@ -44,42 +44,52 @@
 	<input type="file" required="" name="govIdFullPath" id="govIdFullPath" />
 </div>
 
-<div class="fieldcontain">
-	<label for="secCertFullPath">
-		Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)
+<div class="containtooltip">
+	<label class="tooltip" for="secCertFullPath">
+		Sec Cert of authority
+		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
+		<span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span>
 	</label>
 	<input type="file" required="" name="secCertFullPath" id="secCertFullPath" />
 </div>
 
-<div class="fieldcontain">
-	<label for="gsisFullPath">
-		Latest GIS;(certified true copy)
+<div class="containtooltip">
+	<label class="tooltip" for="gsisFullPath">
+		Latest GIS
+		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
+		<span class="tooltiptext">Latest GIS;(certified true copy)</span>
 	</label>
 	<input type="file" required="" name="gsisFullPath" id="gsisFullPath" />
 </div>
 
-<div class="fieldcontain">
-	<label for="articleFullPath">
-		Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)
+<div class="containtooltip">
+	<label class="tooltip" for="articleFullPath">
+		Articles of Incorporation
+		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
+		<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span>
 	</label>
 	<input type="file" required="" name="articleFullPath" id="articleFullPath" />
 </div>
 
-<div class="fieldcontain">
-	<label for="byLawFullPath">
-		By-Laws or Amended By-Laws approved by  SEC (certified true copy)
+<div class="containtooltip">
+	<label class="tooltip" for="byLawFullPath">
+		By-Laws
+		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
+		<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span>
 	</label>
 	<input type="file" required="" name="byLawFullPath" id="byLawFullPath" />
 </div>
 
-<div class="fieldcontain">
-	<label for="finStateFullPath">
-		Latest Audited Financial Statement (certified true copy)
+<div class="containtooltip">
+	<label class="tooltip" for="finStateFullPath">
+		Financial Statement
+		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
+		<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span>
 	</label>
 	<input type="file" required="" name="finStateFullPath" id="finStateFullPath" />
 </div>

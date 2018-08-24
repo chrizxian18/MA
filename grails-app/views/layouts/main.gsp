@@ -23,7 +23,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><a href="${createLink(uri: '/applicationForm/create')}"><g:message code="Application Form"/></a></li>
+				<li><a href="${createLink(uri: '/applicationForm/createPage1')}"><g:message code="Application Form"/></a></li>
 				<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
 				<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
 				<li><a href="#"><g:message code="My Account"/></a></li>

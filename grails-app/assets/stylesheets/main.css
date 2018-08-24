@@ -1,4 +1,7 @@
 /* FONT STACK */
+/*https://material.io/tools/icons/?style=round*/
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons); 
+
 body,
 input, select, textarea {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -597,11 +600,57 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
-/*
-.transbox {
-  margin: 30px;
-  background-color: #ffffff;
-  border: 1px solid black;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-}*/
+
+/*added for tooltip*/
+.property-list .containtooltip {
+	list-style: none;
+	/*overflow: hidden;*/
+	zoom: 1;
+}
+
+.containtooltip {
+	margin-top: 1em;
+}
+
+.containtooltip label,
+.containtooltip .property-label {
+	color: #666666;
+	text-align: right;
+	width: 25%;
+}
+
+.containtooltip .property-label {
+	float: left;
+}
+
+.containtooltip .property-value {
+	display: block;
+	margin-left: 27%;
+}
+
+ .tooltip {
+    position: relative;
+    display: inline-block;
+    /*border-bottom: 1px dotted black;*/
+}
+
+ .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    }
+
+ .tooltip:hover .tooltiptext {
+    visibility: visible;
+}

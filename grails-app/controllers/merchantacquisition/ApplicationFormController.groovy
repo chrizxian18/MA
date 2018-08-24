@@ -43,6 +43,8 @@ class ApplicationFormController {
         respond new ApplicationForm(params)
     }
 
+    def createPage1() {}
+
 
     @Transactional
     def updateDrafts(ApplicationForm applicationFormInstance) {
@@ -394,6 +396,40 @@ class ApplicationFormController {
         }
     }
 
+    def approved(ApplicationForm applicationFormInstance) {
+        if (applicationFormInstance == null) {
+            notFound()
+            return
+        }
+
+        if (applicationFormInstance.hasErrors()) {
+            respond applicationFormInstance.errors, view:'merchantAppDetails'
+            return
+        }
+
+        User merchant = applicationFormInstance.createdBy
+        User admin = authenticatedUser
+        applicationFormInstance.updatedBy = admin
+        applicationFormInstance.lastUpdated = new Date()
+        applicationFormInstance.status = "Approved"
+        applicationFormInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = "You have approved this application!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+            }
+        }
+
+        sendMail {
+             def recipient = merchant.email
+            to recipient
+            cc admin.email
+            subject "7-Connect Application - Status: Approved"
+            html g.render(template:"applicationApprovedEmail")
+        }
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -403,9 +439,6 @@ class ApplicationFormController {
             '*'{ render status: NOT_FOUND }
         }
     }
-
-    
-
 
 
     def downloadcor(ApplicationForm applicationFormInstance) {

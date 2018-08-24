@@ -337,29 +337,33 @@
 				<span class="property-value"><g:link action="downloadgovId" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
-		<li class="fieldcontain">
-			<span class="property-label">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span>
+		<li class="containtooltip">
+			<span class="property-label tooltip">Sec Cert of authority<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i><span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></span>
 			
 				<span class="property-value"><g:link action="downloadsecCert" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
-		<li class="fieldcontain">
-			<span class="property-label">Latest GIS;(certified true copy)</span>
+		<li class="containtooltip">
+			<span class="property-label tooltip">Latest GIS<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
+		<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadgsis" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
-		<li class="fieldcontain">
-			<span class="property-label">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span>
+		<li class="containtooltip">
+			<span class="property-label tooltip">Articles of Incorporation<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
+		<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadarticle" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
-		<li class="fieldcontain">
-			<span class="property-label">By-Laws or Amended By-Laws approved by  SEC (certified true copy)</span>
+		<li class="containtooltip">
+			<span class="property-label tooltip">By-Laws<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
+		<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadbyLaw" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
-		<li class="fieldcontain">
-			<span class="property-label">Latest Audited Financial Statement (certified true copy)</span>
+		<li class="containtooltip">
+			<span class="property-label tooltip">Financial Statement<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
+		<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadfinState" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 
@@ -376,6 +380,7 @@
 					<g:actionSubmit action="onHold" class="save" value="On-hold" />
 					<g:actionSubmit action="forApproval" class="save" value="For Approval" />
 					<g:actionSubmit action="declined" class="save" value="Decline" />
+					<g:actionSubmit action="approved" class="save" value="Approve" />
 				</fieldset>
 			</g:form>
 		</div>

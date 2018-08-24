@@ -14,6 +14,54 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list applicationForm">
+
+				%{-- Status --}%
+				<g:if test="${applicationFormInstance?.status}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="appForm.status.label" default="Status" /></span>
+					
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${applicationFormInstance}" field="status"/></span>
+					
+				</li>
+				</g:if>
+			%{-- 
+				<g:if test="${applicationFormInstance?.createdBy}">
+				<li class="fieldcontain">
+					<span id="createdBy-label" class="property-label"><g:message code="appForm.createdBy.label" default="Created By" /></span>
+					
+						<span class="property-value" aria-labelledby="createdBy-label"><g:fieldValue bean="${applicationFormInstance}" field="createdBy"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${applicationFormInstance?.updatedBy}">
+				<li class="fieldcontain">
+					<span id="updatedBy-label" class="property-label"><g:message code="appForm.updatedBy.label" default="Updated By" /></span>
+					
+						<span class="property-value" aria-labelledby="updatedBy-label"><g:fieldValue bean="${applicationFormInstance}" field="updatedBy"/></span>
+					
+				</li>
+				</g:if> --}%
+			
+				<g:if test="${applicationFormInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="appForm.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${applicationFormInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${applicationFormInstance?.lastUpdated}">
+				<li class="fieldcontain">
+					<span id="lastUpdated-label" class="property-label"><g:message code="appForm.lastUpdated.label" default="Last Updated" /></span>
+					
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${applicationFormInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+
+				<h1>&nbsp;</h1>
 			
 				<g:if test="${applicationFormInstance?.sConnectWebIntegration}">
 				<li class="fieldcontain">
@@ -268,104 +316,60 @@
 				</li>
 				</g:if>
 
-			%{-- Status --}%
-				<g:if test="${applicationFormInstance?.status}">
-				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="appForm.status.label" default="Status" /></span>
-					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${applicationFormInstance}" field="status"/></span>
-					
-				</li>
-				</g:if>
 			
-				<g:if test="${applicationFormInstance?.createdBy}">
-				<li class="fieldcontain">
-					<span id="createdBy-label" class="property-label"><g:message code="appForm.createdBy.label" default="Created By" /></span>
-					
-						<span class="property-value" aria-labelledby="createdBy-label"><g:fieldValue bean="${applicationFormInstance}" field="createdBy"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${applicationFormInstance?.updatedBy}">
-				<li class="fieldcontain">
-					<span id="updatedBy-label" class="property-label"><g:message code="appForm.updatedBy.label" default="Updated By" /></span>
-					
-						<span class="property-value" aria-labelledby="updatedBy-label"><g:fieldValue bean="${applicationFormInstance}" field="updatedBy"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${applicationFormInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="appForm.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${applicationFormInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${applicationFormInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="appForm.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${applicationFormInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
 
 				%{-- uploadedFiles --}%
-				<h1>Attachments</h1>
+				<h1>&nbsp;</h1>
+				<h3>Attachments</h3>
 				<g:if test="${applicationFormInstance?.appFormFiles}">
-				<li class="fieldcontain">
-					<span id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></span>
-					
+				<li class="containtooltip">
+					<span id="appFormFiles-label" class="property-label tooltip"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></span>
 						<span class="property-value" aria-labelledby="appFormFiles-label" id="birCorFullPath">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</span>
 					%{-- <span class="property-value"><g:link action="download" id="${applicationFormInstance.appFormFiles.id}">click to download and view attachment</g:link></span> --}%
 				</li>
 				</g:if>
-				<li class="fieldcontain">
-					<span class="property-label">DTI Certificate</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">DTI Certificate</span>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">Business/Mayor’s Permit</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Business/Mayor’s Permit</span>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
 
-				<li class="fieldcontain">
-					<span class="property-label">Copy of gov’t issued I.D</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Copy of gov’t issued I.D</span>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Sec Cert of authority<span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></span>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">Latest GIS;(certified true copy)</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Latest GIS<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
 						<span class="property-value">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Articles of Incorporation<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span></span>
 						<span class="property-value">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">By-Laws or Amended By-Laws approved by  SEC (certified true copy)</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">By-Laws<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span></span>
 						<span class="property-value">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
-				<li class="fieldcontain">
-					<span class="property-label">Latest Audited Financial Statement (certified true copy)</span>
+				<li class="containtooltip">
+					<span class="property-label tooltip">Financial Statement<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span></span>
 						<span class="property-value">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 
