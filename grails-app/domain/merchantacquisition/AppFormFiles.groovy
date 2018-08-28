@@ -19,12 +19,15 @@ class AppFormFiles {
 
 
     static constraints = {
-    bizPermFullPath(nullable:false)
-	govIdFullPath(nullable:false)
-	secCertFullPath(nullable:false)
-	gsisFullPath(nullable:false)
-	articleFullPath(nullable:false)
-	byLawFullPath(nullable:false)
-	finStateFullPath(nullable:false)
+
+	birCorFullPath(nullable:true)
+	dtiCertFullPath(nullable:true)
+	bizPermFullPath(nullable:true)
+	govIdFullPath(nullable:true)
+	secCertFullPath(nullable:true)
+	gsisFullPath(nullable:true)
+	articleFullPath(nullable:true)
+	byLawFullPath(nullable:true)
+	finStateFullPath(nullable:true)
     }
 }

@@ -311,61 +311,77 @@
 
 		<h1>&nbsp;</h1>
 		<p>Legal Requirements:</p>
-		<g:if test="${applicationFormInstance?.appFormFiles}">
+		<g:if test="${applicationFormInstance?.appFormFiles.birCorFullPath}">
 		<li class="fieldcontain">
 			<span id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></span>
 			
 				<span class="property-value" aria-labelledby="appFormFiles-label"><g:link action="downloadcor" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 		</g:if>
+
+		<g:if test="${applicationFormInstance?.appFormFiles.dtiCertFullPath}">
 		<li class="fieldcontain">
 			<span class="property-label">DTI Certificate</span>
 			
 				<span class="property-value"><g:link action="downloaddtiCert" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
-
+		</g:if>
+		
+		<g:if test="${applicationFormInstance?.appFormFiles.bizPermFullPath}">
 		<li class="fieldcontain">
 			<span class="property-label">Business/Mayor’s Permit</span>
 			
 				<span class="property-value"><g:link action="downloadbizPerm" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
-
+		<g:if test="${applicationFormInstance?.appFormFiles.govIdFullPath}">
 		<li class="fieldcontain">
 			<span class="property-label">Copy of gov’t issued I.D</span>
 			
 				<span class="property-value"><g:link action="downloadgovId" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
+		<g:if test="${applicationFormInstance?.appFormFiles.secCertFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">Sec Cert of authority<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i><span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></span>
 			
 				<span class="property-value"><g:link action="downloadsecCert" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
+		<g:if test="${applicationFormInstance?.appFormFiles.gsisFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">Latest GIS<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadgsis" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
+		<g:if test="${applicationFormInstance?.appFormFiles.articleFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">Articles of Incorporation<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadarticle" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
+		<g:if test="${applicationFormInstance?.appFormFiles.byLawFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">By-Laws<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadbyLaw" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
+		<g:if test="${applicationFormInstance?.appFormFiles.finStateFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">Financial Statement<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span></span>
 				<span class="property-value"><g:link action="downloadfinState" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
+		</g:if>
 
 								
 			 

@@ -39,13 +39,42 @@
 	// 	return checkFiles()
 	// 	}
 	// }
+	function corpo(){
+		document.getElementById('formFilesCorporation').style.display ='block';
+	  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
 
+	  	document.getElementById('secCertFullPath').required = true;
+	  	document.getElementById('gsisFullPath').required = true;
+	  	document.getElementById('articleFullPath').required = true;
+	  	document.getElementById('byLawFullPath').required = true;
+	  	document.getElementById('finStateFullPath').required = true;
+
+	  	document.getElementById('birCorFullPath').required = false;
+	  	document.getElementById('dtiCertFullPath').required = false;
+	  	document.getElementById('bizPermFullPath').required = false;
+	  	document.getElementById('govIdFullPath').required = false;
+
+		}
+	function singlePro(){
+	  	document.getElementById('formFilesCorporation').style.display = 'none';
+	  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
+	  	document.getElementById('secCertFullPath').required = false;
+	  	document.getElementById('gsisFullPath').required = false;
+	  	document.getElementById('articleFullPath').required = false;
+	  	document.getElementById('byLawFullPath').required = false;
+	  	document.getElementById('finStateFullPath').required = false;
+
+	  	document.getElementById('birCorFullPath').required = true;
+	  	document.getElementById('dtiCertFullPath').required = true;
+	  	document.getElementById('bizPermFullPath').required = true;
+	  	document.getElementById('govIdFullPath').required = true;
+	}
 	</script>
 	</head>
 	<body>
 		<a href="#create-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="create-applicationForm" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h1>Create Application Form</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -59,7 +88,14 @@
 			<g:form controller="applicationForm" enctype="multipart/form-data" method="post" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					<g:render template="formFiles"/>
+					
+					<span id="formFilesCorporation" class="hide">
+						<g:render template="formFilesCorporation"/>
+					</span>
+
+					<span id="formFilesSingleProprietorship" class="hide">
+						<g:render template="formFilesSingleProprietorship"/>
+					</span>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit action="save" class="save" value="Save as Draft" onclick="return validate()"/>

@@ -16,7 +16,7 @@
 				<div class="col-md-6 login_left" > %{-- outer column1 --}%
 					<div class="row"> %{-- row1-1 --}%
 						<div class="col-md-11 col-md-offset-1">
-							<h3 style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Please Login</h3>
+							<h4 style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Please Login</h4>
 							<g:if test='${flash.message}'>
 								%{-- <div class='login_message'>${flash.message}</div> --}%
 								<div style="background-color:#FFF3F3; color:red; border: solid thin; padding: 10px;" clas="material-icons" id="message"><i class="material-icons" style="color:red; font-size:15px;">warning</i> ${flash.message}</div>
@@ -63,7 +63,7 @@
 					%{-- <div class="row">row 2-1
 						<div class="col-md-12"> --}%
 							<br><br>
-							<h2 style="text-align:center; font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Merchant Acquisition</h2>
+							<h4 style="text-align:center; font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Merchant Acquisition</h4>
 							<br><br><br>
 							<p style="text-align:center;">Contact Us</p>
 						%{-- </div>

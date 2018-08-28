@@ -3,7 +3,7 @@
 	<head>
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
-		<asset:stylesheet src="application.css"/>
+		<asset:stylesheet src="main.css"/>
 		<asset:javascript src="application.js"/>
 	</head>
 	<body>
@@ -20,6 +20,9 @@
 			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<g:if test="${flash.error}">
+			<ul class="errors" role="alert"><li>${flash.error}</li></ul>
 			</g:if>
 			<g:hasErrors bean="${userInstance}">
 			<ul class="errors" role="alert">

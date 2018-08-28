@@ -86,11 +86,11 @@
 <label for="Single Proprietorship">
 	<g:message code="applicationForm.companyType.label" default="Single Proprietorship" />
 	</label>
-	<g:radio id="companyType" required="" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
+	<g:radio onclick="singlePro();" id="companyType" required="" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
 	<label for="Corporation">
 	<g:message code="applicationForm.companyType.label" default="Corporation"/>
 </label>
-	<g:radio name="companyType" required="" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
+	<g:radio onclick="corpo();" name="companyType" required="" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyAddress', 'error')} required">

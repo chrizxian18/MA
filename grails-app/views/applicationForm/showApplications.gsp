@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="list-applicationForm" class="content scaffold-list" role="main">
-			<h1>Drafts</h1>
+			<h1>Applications</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -18,6 +18,7 @@
 						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Date Applied')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'applicationForm.lastUpdated.label', default: 'Last Updated')}" />
+						<g:sortableColumn property="status" title="${message(code: 'applicationForm.status.label', default: 'Status')}" />
 					
 						
 					</tr>
@@ -28,6 +29,7 @@
 					
 						<td><g:link action="viewSelectedApplication" id="${applicationFormInstance.id}">${fieldValue(bean: applicationFormInstance, field: "dateApplied")}</g:link></td>
 						<td><p>${fieldValue(bean: applicationFormInstance, field: "lastUpdated")}</p></td>
+						<td><p>${fieldValue(bean: applicationFormInstance, field: "status")}</p></td>
 					
 					
 						

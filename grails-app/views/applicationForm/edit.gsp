@@ -4,6 +4,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
+		<asset:javascript src="application.js"/>
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 		<script>
 // function myFunction() {
@@ -15,8 +16,83 @@
 //     }
 // }
 
+// $("[type=file]").on("change", function(){
+//   // Name of file and placeholder
+//   var file = this.files[0].name;
+//   var dflt = $(this).attr("placeholder");
+//   if($(this).val()!=""){
+//     $(this).next().text(file);
+//   } else {
+//     $(this).next().text(dflt);
+//   }
+// });
 
+function corpo(){
+		document.getElementById('formFilesCorporation').style.display ='block';
+	  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+
+	  	document.getElementById('secCertFullPath').required = true;
+	  	document.getElementById('gsisFullPath').required = true;
+	  	document.getElementById('articleFullPath').required = true;
+	  	document.getElementById('byLawFullPath').required = true;
+	  	document.getElementById('finStateFullPath').required = true;
+
+	  	document.getElementById('birCorFullPath').required = false;
+	  	document.getElementById('dtiCertFullPath').required = false;
+	  	document.getElementById('bizPermFullPath').required = false;
+	  	document.getElementById('govIdFullPath').required = false;
+
+		}
+	function singlePro(){
+	  	document.getElementById('formFilesCorporation').style.display = 'none';
+	  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
+	  	document.getElementById('secCertFullPath').required = false;
+	  	document.getElementById('gsisFullPath').required = false;
+	  	document.getElementById('articleFullPath').required = false;
+	  	document.getElementById('byLawFullPath').required = false;
+	  	document.getElementById('finStateFullPath').required = false;
+
+	  	document.getElementById('birCorFullPath').required = true;
+	  	document.getElementById('dtiCertFullPath').required = true;
+	  	document.getElementById('bizPermFullPath').required = true;
+	  	document.getElementById('govIdFullPath').required = true;
+	}
 </script>
+<style type="text/css">
+	
+
+/* Hide the file input using
+opacity */
+/*[type=file] {
+    position: absolute;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+input,
+[type=file] + label {
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  text-align: left;
+  padding: 10px;
+  width: 150px;
+  margin: 0;
+  left: 0;
+  position: relative;
+}
+[type=file] + label {
+  text-align: center;
+  left: 7.35em;
+  top: 0.5em;*/
+  /* Decorative */
+ /* background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+[type=file] + label:hover {
+  background: #3399ff;
+}*/
+</style>
 	</head>
 	<body>
 		
@@ -46,7 +122,15 @@
 				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					<g:render template="formFilesEdit"/>
+					%{-- <g:render template="formFilesEdit"/> --}%
+					<span id="formFilesSingleProprietorship" >
+						<g:render template="formFilesEditSingleProprietorship"/>
+					</span>
+
+					<span id="formFilesCorporation" >
+						<g:render template="formFilesEditCorporation"/>
+					</span>
+
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />

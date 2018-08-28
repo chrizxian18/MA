@@ -38,6 +38,12 @@ class UserController {
             return
         }
 
+        if (params.password != params.confirmPassword) { 
+            flash.error = "Error: password and confirm password should have the same values!"
+           redirect(action: "create")
+           return
+        }
+
         userInstance.dateCreated = new Date()
         userInstance.enabled=false;
         userInstance.confirmCode= UUID.randomUUID().toString()
