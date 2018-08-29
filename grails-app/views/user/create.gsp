@@ -5,6 +5,13 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 		<asset:stylesheet src="main.css"/>
 		<asset:javascript src="application.js"/>
+		<script type="text/javascript">
++        function isNumber(e){
++          e = e || window.event;
++          var charCode = e.which ? e.which : e.keyCode;
++          return /\d/.test(String.fromCharCode(charCode));
++        }
++        </script>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner" style="padding:2%; color:black;"><h1 style="color:black;">&nbsp;</h1></div>

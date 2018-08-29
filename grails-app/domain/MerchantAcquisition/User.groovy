@@ -14,7 +14,7 @@ class User implements Serializable {
 	String username
 	String password
 	String email
-    String telephone
+    Long telephone
     String mobileNo
     String confirmCode
     Date dateCreated
@@ -52,9 +52,9 @@ class User implements Serializable {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		email(email:true, nullable:true)
+		email(email:true, nullable:true, unique: true)
 	    telephone(nullable:true)
-	    mobileNo(nullable:true)
+	    mobileNo(nullable:true, maxSize:11)
 	    confirmCode(nullable:true)
 	    dateCreated(nullable:true)
 	}

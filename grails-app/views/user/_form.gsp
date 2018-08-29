@@ -42,7 +42,7 @@
 		<g:message code="user.telephone.label" default="Telephone" />
 		
 	</label>
-	<g:textField name="telephone" value="${userInstance?.telephone}"/>
+	<input type="text" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="telephone" value="${userInstance?.telephone}"/>
 
 </div>
 
@@ -51,7 +51,7 @@
 		<g:message code="user.mobileNo.label" default="Mobile No" />
 		
 	</label>
-	<g:textField name="mobileNo" value="${userInstance?.mobileNo}"/>
+	<input type="text" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="mobileNo" value="${userInstance?.mobileNo}"/>
 
 </div>
 

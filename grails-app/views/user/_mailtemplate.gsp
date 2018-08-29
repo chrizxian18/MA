@@ -2,8 +2,6 @@
     <p>Thank you for signing up with us! Click on the link below to activate your account: </p>
 
     <g:link absolute="true" controller="user" action="confirm" id="${code}">Click this link to confirm your account</g:link>
-
-    <g:createLink absolute="true" controller="user" action="confirm" id="${code}"></g:createLink>
 	<br>
     <p>To apply to 7-Connect:</p>
     <p>1. Log in</p>
