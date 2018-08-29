@@ -62,15 +62,15 @@
 </div>
 </g:if>
 
-<g:if test="${applicationFormInstance?.appFormFiles.gsisFullPath}">
+<g:if test="${applicationFormInstance?.appFormFiles.gisFullPath}">
 <div class="containtooltip">
-	<label class="tooltip" for="gsisFullPath">
+	<label class="tooltip" for="gisFullPath">
 		Latest GIS
 		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span>
 	</label>
-	<input type="file" name="gsisFullPath" id="gsisFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<input type="file" name="gisFullPath" id="gisFullPath" />
+	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</span> --}%
 </div>
 </g:if>
 

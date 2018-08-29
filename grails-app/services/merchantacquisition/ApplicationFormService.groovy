@@ -10,7 +10,7 @@ class ApplicationFormService {
     }
 
 
-   def uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gsisFullPath, articleFullPath, byLawFullPath, finStateFullPath) {
+   def uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gisFullPath, articleFullPath, byLawFullPath, finStateFullPath) {
         
          AppFormFiles appFiles = applicationFormInstance.appFormFiles
          def corfilename
@@ -18,7 +18,7 @@ class ApplicationFormService {
          def bizPermfilename
          def govIdfilename
          def secCertfilename
-         def gsisfilename
+         def gisfilename
          def articlefilename
          def byLawfilename
          def finStatefilename
@@ -109,21 +109,21 @@ class ApplicationFormService {
             secCertFullPath.transferTo(new File(appFiles.secCertFullPath))
             }
 
-        if(gsisFullPath == null) {
+        if(gisFullPath == null) {
         appFiles.birCorFullPath = appFiles.birCorFullPath
         } 
-        else if(gsisFullPath.empty) {
-                appFiles.gsisFullPath = appFiles.gsisFullPath
+        else if(gisFullPath.empty) {
+                appFiles.gisFullPath = appFiles.gisFullPath
         } else {
                  if (appFiles.id == null) {
-                    gsisfilename = "gsis${appFiles.count()+1}_${gsisFullPath.originalFilename}"
+                    gisfilename = "gis${appFiles.count()+1}_${gisFullPath.originalFilename}"
                 }
                 else {
-                     gsisfilename = "gsis${appFiles.id}_${gsisFullPath.originalFilename}"
+                     gisfilename = "gis${appFiles.id}_${gisFullPath.originalFilename}"
                 }
             
-            appFiles.gsisFullPath = uploadFolder + gsisfilename
-            gsisFullPath.transferTo(new File(appFiles.gsisFullPath))
+            appFiles.gisFullPath = uploadFolder + gisfilename
+            gisFullPath.transferTo(new File(appFiles.gisFullPath))
             }
         
         if(articleFullPath == null) {

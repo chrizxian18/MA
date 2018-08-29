@@ -351,11 +351,11 @@
 		</li>
 		</g:if>
 
-		<g:if test="${applicationFormInstance?.appFormFiles.gsisFullPath}">
+		<g:if test="${applicationFormInstance?.appFormFiles.gisFullPath}">
 		<li class="containtooltip">
 			<span class="property-label tooltip">Latest GIS<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
-				<span class="property-value"><g:link action="downloadgsis" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</g:link></span>
+				<span class="property-value"><g:link action="downloadgis" id="${applicationFormInstance.appFormFiles.id}">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</g:link></span>
 		</li>
 		</g:if>
 

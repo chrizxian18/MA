@@ -363,10 +363,10 @@
 				</li>
 				</g:if>
 				
-				<g:if test="${applicationFormInstance?.appFormFiles.gsisFullPath}">
+				<g:if test="${applicationFormInstance?.appFormFiles.gisFullPath}">
 				<li class="containtooltip">
 					<span class="property-label tooltip">Latest GIS<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
-						<span class="property-value">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</span>
+						<span class="property-value">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 				</g:if>
 

@@ -11,6 +11,7 @@
 		<b class="required-indicator">*</b>
 	</label>
 	<input type="file" name="birCorFullPath" id="birCorFullPath"/>
+	<label for="birCorFullPath">Choose File</label>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'dtiCertFullPath', 'error')} ">
@@ -20,6 +21,7 @@
 		<b class="required-indicator">*</b>
 	</label>
 	<input type="file" name="dtiCertFullPath" id="dtiCertFullPath" />
+	<label for="dtiCertFullPath">Choose File</label>
 </div>
 
 
@@ -29,6 +31,7 @@
 		<b class="required-indicator">*</b>
 	</label>
 	<input type="file" name="bizPermFullPath" id="bizPermFullPath" />
+	<label for="bizPermFullPath">Choose File</label>
 </div>
 
 <div class="fieldcontain">
@@ -37,4 +40,5 @@
 		<b class="required-indicator">*</b>
 	</label>
 	<input type="file" name="govIdFullPath" id="govIdFullPath" />
+	<label for="govIdFullPath">Choose File</label>
 </div>

@@ -76,7 +76,7 @@
 		<g:message code="applicationForm.merchantName.label" default="Merchant Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="merchantName" required="" value="${applicationFormInstance?.merchantName}"/>
+	<g:textField style="color:black;" style="color:black;" name="merchantName" required="" value="${applicationFormInstance?.merchantName}"/>
 </div>
 <div class="fieldcontain">
 	<label>Company Type: <b class="required-indicator">*</b></label>
@@ -98,7 +98,7 @@
 		<g:message code="applicationForm.companyAddress.label" default="Company Address" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="companyAddress" required="" value="${applicationFormInstance?.companyAddress}"/>
+	<g:textField style="color:black;" name="companyAddress" required="" value="${applicationFormInstance?.companyAddress}"/>
 
 </div>
 
@@ -107,7 +107,7 @@
 		<g:message code="applicationForm.natureOfBusiness.label" default="Nature Of Business" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="natureOfBusiness" required="" value="${applicationFormInstance?.natureOfBusiness}"/>
+	<g:textField style="color:black;" name="natureOfBusiness" required="" value="${applicationFormInstance?.natureOfBusiness}"/>
 
 </div>
 
@@ -134,7 +134,7 @@
 		<g:message code="applicationForm.websiteLink.label" default="Website Link" />
 		
 	</label>
-	<g:textField name="websiteLink" value="${applicationFormInstance?.websiteLink}"/>
+	<g:textField style="color:black;" name="websiteLink" value="${applicationFormInstance?.websiteLink}"/>
 
 </div>
 
@@ -143,7 +143,7 @@
 		<g:message code="applicationForm.coveredAreas.label" default="Covered Areas" />
 		
 	</label>
-	<g:textField name="coveredAreas" value="${applicationFormInstance?.coveredAreas}"/>
+	<g:textField style="color:black;" name="coveredAreas" value="${applicationFormInstance?.coveredAreas}"/>
 
 </div>
 
@@ -170,7 +170,7 @@
 		<g:message code="applicationForm.modeOfPayment.label" default="Mode Of Payment" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="modeOfPayment" required="" value="${applicationFormInstance?.modeOfPayment}"/>
+	<g:textField style="color:black;" name="modeOfPayment" required="" value="${applicationFormInstance?.modeOfPayment}"/>
 
 </div>
 
@@ -182,7 +182,7 @@
 		<g:message code="applicationForm.bankName.label" default="Bank Name/Address" />
 		
 	</label>
-	<g:textField name="bankName" value="${applicationFormInstance?.bankName}"/>
+	<g:textField style="color:black;" name="bankName" value="${applicationFormInstance?.bankName}"/>
 
 </div>
 
@@ -193,7 +193,7 @@
 		<g:message code="applicationForm.accountName.label" default="Account Name" />
 		
 	</label>
-	<g:textField name="accountName" value="${applicationFormInstance?.accountName}"/>
+	<g:textField style="color:black;" name="accountName" value="${applicationFormInstance?.accountName}"/>
 
 </div>
 
@@ -235,7 +235,7 @@
 		<g:message code="applicationForm.moaWitness.label" default="Name of MOA Witness" />
 		
 	</label>
-	<g:textField name="moaWitness" value="${applicationFormInstance?.moaWitness}"/>
+	<g:textField style="color:black;" name="moaWitness" value="${applicationFormInstance?.moaWitness}"/>
 
 </div>
 

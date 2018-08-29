@@ -2,97 +2,103 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
+		<meta name="layout" content="main">
 		<asset:javascript src="application.js"/>
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 		<script>
-// function myFunction() {
-//     var x = document.getElementById("birCorFullPath");
-//     if (x.style.display === "none") {
-//         x.style.display = "block";
-//     } else {
-//         x.style.display = "none";
-//     }
-// }
+		$(document).ready(function(){
 
-// $("[type=file]").on("change", function(){
-//   // Name of file and placeholder
-//   var file = this.files[0].name;
-//   var dflt = $(this).attr("placeholder");
-//   if($(this).val()!=""){
-//     $(this).next().text(file);
-//   } else {
-//     $(this).next().text(dflt);
-//   }
-// });
+			    $("[type=file]").on("change", function(){
+			  // Name of file and placeholder
+			  var file = this.files[0].name;
+			  var dflt = $(this).attr("placeholder");
+			  if($(this).val()!=""){
+			    $(this).next().text(file);
+			    $(this).next().css('color', '#000000'); 
+			  } else {
+			    $(this).next().text(dflt);
+			  }
+			});
 
-function corpo(){
-		document.getElementById('formFilesCorporation').style.display ='block';
-	  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
 
-	  	document.getElementById('secCertFullPath').required = true;
-	  	document.getElementById('gsisFullPath').required = true;
-	  	document.getElementById('articleFullPath').required = true;
-	  	document.getElementById('byLawFullPath').required = true;
-	  	document.getElementById('finStateFullPath').required = true;
 
-	  	document.getElementById('birCorFullPath').required = false;
-	  	document.getElementById('dtiCertFullPath').required = false;
-	  	document.getElementById('bizPermFullPath').required = false;
-	  	document.getElementById('govIdFullPath').required = false;
+		});
+		</script>
+		<script>
 
+			function corpo(){
+			document.getElementById('formFilesCorporation').style.display ='block';
+		  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+
+		  	document.getElementById('secCertFullPath').required = true;
+		  	document.getElementById('gisFullPath').required = true;
+		  	document.getElementById('articleFullPath').required = true;
+		  	document.getElementById('byLawFullPath').required = true;
+		  	document.getElementById('finStateFullPath').required = true;
+
+		  	document.getElementById('birCorFullPath').required = false;
+		  	document.getElementById('dtiCertFullPath').required = false;
+		  	document.getElementById('bizPermFullPath').required = false;
+		  	document.getElementById('govIdFullPath').required = false;
+
+			}
+
+			function singlePro(){
+		  	document.getElementById('formFilesCorporation').style.display = 'none';
+		  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
+		  	document.getElementById('secCertFullPath').required = false;
+		  	document.getElementById('gisFullPath').required = false;
+		  	document.getElementById('articleFullPath').required = false;
+		  	document.getElementById('byLawFullPath').required = false;
+		  	document.getElementById('finStateFullPath').required = false;
+
+		  	document.getElementById('birCorFullPath').required = true;
+		  	document.getElementById('dtiCertFullPath').required = true;
+		  	document.getElementById('bizPermFullPath').required = true;
+		  	document.getElementById('govIdFullPath').required = true;
+				}
+		</script>
+		<style type="text/css">
+		
+
+		/* Hide the file input using
+		opacity */
+		[type=file] {
+		    position: absolute;
+		    /*filter: alpha(opacity=0);*/
+		    opacity: 0;
 		}
-	function singlePro(){
-	  	document.getElementById('formFilesCorporation').style.display = 'none';
-	  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
-	  	document.getElementById('secCertFullPath').required = false;
-	  	document.getElementById('gsisFullPath').required = false;
-	  	document.getElementById('articleFullPath').required = false;
-	  	document.getElementById('byLawFullPath').required = false;
-	  	document.getElementById('finStateFullPath').required = false;
-
-	  	document.getElementById('birCorFullPath').required = true;
-	  	document.getElementById('dtiCertFullPath').required = true;
-	  	document.getElementById('bizPermFullPath').required = true;
-	  	document.getElementById('govIdFullPath').required = true;
-	}
-</script>
-<style type="text/css">
-	
-
-/* Hide the file input using
-opacity */
-/*[type=file] {
-    position: absolute;
-    filter: alpha(opacity=0);
-    opacity: 0;
-}
-input,
-[type=file] + label {
-  border: 1px solid #CCC;
-  border-radius: 3px;
-  text-align: left;
-  padding: 10px;
-  width: 150px;
-  margin: 0;
-  left: 0;
-  position: relative;
-}
-[type=file] + label {
-  text-align: center;
-  left: 7.35em;
-  top: 0.5em;*/
-  /* Decorative */
- /* background: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-[type=file] + label:hover {
-  background: #3399ff;
-}*/
-</style>
+		input,
+		[type=file] + label {
+			  /*border: 1px solid #CCC;*/
+			  border-radius: 3px;
+			  /*text-align: left;*/
+			  padding: 5px;
+			  /*padding-right: 6%;*/
+			  /*width: 150px;*/
+			  /*margin: 0;*/
+			  /*left: 0;*/
+			  color:gray;
+			  position: relative;
+		}
+		[type=file] + label {
+			  text-align: center;
+			  /*left: 7.35em;*/
+			  /*top: 0.5em;*/
+			  /* Decorative */
+			  background: #FFFFFF;
+			  color: #333333;
+			  border: inset;
+			  cursor: pointer;
+			  overflow-wrap: break-word;
+			  width: 255px;
+		}
+			[type=file] + label:hover {
+			  background: #3399ff;
+			  color:black;
+			}
+		</style>
 	</head>
 	<body>
 		
@@ -139,5 +145,6 @@ input,
 			</g:form>
 			
 		</div>
+		
 	</body>
 </html>

@@ -4,23 +4,19 @@
 	<label for="status">
 		<g:message code="applicationForm.status.label" default="DTI Certificate" />
 	</label>
-	<g:textArea name="appFormFiles.status" value="uploaded" placeholder="First name"/>
+	<g:textArea name="appFormFiles.status" value="uploaded"/>
 </div>
 
-
- %{-- <input id="f02" type="file" placeholder="Add profile picture" />
-  <label for="f02">Add profile picture</label> --}%
   
 <g:if test="${applicationFormInstance?.appFormFiles.birCorFullPath}">
 <div class="containtooltip ${hasErrors(bean: applicationFormInstance, field: 'birCorFullPath', 'error')} ">
 	<label class="tooltip" for="birCorFullPath">
 		<g:message code="applicationForm.birCorFullPath.label" default="COR issued by BIR" />
 	</label>
-	<span class="tooltip">
+	<input type="file" name="birCorFullPath" id="birCorFullPath" placeholder=""/>
+	<label class="tooltip" for="birCorFullPath">
 		${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}
-	</span>
-	<input type="file" name="birCorFullPath" id="birCorFullPath" placeholder="Add profile picture"/>
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	</label>
 </div>
 </g:if>
 
@@ -29,11 +25,10 @@
 	<label class="tooltip" for="dtiCertFullPath">
 		<g:message code="applicationForm.dtiCertFullPath.label" default="DTI Certificate" />
 	</label>
-	<span>
+	<input type="file" name="dtiCertFullPath" id="dtiCertFullPath"/>
+	<label class="tooltip" for="dtiCertFullPath">
 		${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}
-	</span>
-	<input type="file" name="dtiCertFullPath" id="dtiCertFullPath" title="alsdfkjasdf"/>
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	</label>
 </div>
 </g:if>
 
@@ -44,7 +39,7 @@
 		Business/Mayor’s Permit
 	</label>
 	<input type="file" name="bizPermFullPath" id="bizPermFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="bizPermFullPath">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 
@@ -54,7 +49,7 @@
 		Copy of gov’t issued I.D
 	</label>
 	<input type="file" name="govIdFullPath" id="govIdFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="govIdFullPath">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 

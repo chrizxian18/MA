@@ -55,13 +55,13 @@
 </div>
 
 <div class="containtooltip">
-	<label class="tooltip" for="gsisFullPath">
+	<label class="tooltip" for="gisFullPath">
 		Latest GIS
 		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<b class="required-indicator">*</b>
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span>
 	</label>
-	<input type="file" required="" name="gsisFullPath" id="gsisFullPath" />
+	<input type="file" required="" name="gisFullPath" id="gisFullPath" />
 </div>
 
 <div class="containtooltip">

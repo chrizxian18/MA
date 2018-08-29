@@ -9,7 +9,7 @@ class AppFormFiles {
 	String bizPermFullPath //Business/Mayor’s Permit
 	String govIdFullPath // Copy of gov’t issued I.D
 	String secCertFullPath // Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)
-	String gsisFullPath // Latest GIS;(certified true copy)
+	String gisFullPath // Latest GIS;(certified true copy)
 	String articleFullPath // Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)
 	String byLawFullPath // By-Laws or Amended By-Laws approved by  SEC (certified true copy)
 	String finStateFullPath //Latest Audited Financial Statement (certified true copy)
@@ -25,7 +25,7 @@ class AppFormFiles {
 	bizPermFullPath(nullable:true)
 	govIdFullPath(nullable:true)
 	secCertFullPath(nullable:true)
-	gsisFullPath(nullable:true)
+	gisFullPath(nullable:true)
 	articleFullPath(nullable:true)
 	byLawFullPath(nullable:true)
 	finStateFullPath(nullable:true)

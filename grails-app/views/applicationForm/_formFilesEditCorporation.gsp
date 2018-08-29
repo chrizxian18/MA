@@ -9,20 +9,20 @@
 		<span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span>
 	</label>
 	<input type="file" name="secCertFullPath" id="secCertFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="secCertFullPath">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</label>
 
 </div>
 </g:if>
 
-<g:if test="${applicationFormInstance?.appFormFiles.gsisFullPath}">
+<g:if test="${applicationFormInstance?.appFormFiles.gisFullPath}">
 <div class="containtooltip">
-	<label class="tooltip" for="gsisFullPath">
+	<label class="tooltip" for="gisFullPath">
 		Latest GIS
 		<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i>
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span>
 	</label>
-	<input type="file" name="gsisFullPath" id="gsisFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.gsisFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<input type="file" name="gisFullPath" id="gisFullPath" />
+	<label class="tooltip" for="gisFullPath">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 
@@ -34,7 +34,7 @@
 		<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span>
 	</label>
 	<input type="file" name="articleFullPath" id="articleFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="articleFullPath">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 
@@ -46,7 +46,7 @@
 		<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span>
 	</label>
 	<input type="file" name="byLawFullPath" id="byLawFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="byLawFullPath">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 
@@ -59,7 +59,7 @@
 		<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span>
 	</label>
 	<input type="file" name="finStateFullPath" id="finStateFullPath" />
-	%{-- <span class="property-value">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</span> --}%
+	<label class="tooltip" for="finStateFullPath">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 

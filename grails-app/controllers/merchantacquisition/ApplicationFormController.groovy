@@ -65,12 +65,12 @@ class ApplicationFormController {
         def bizPermFullPath = request.getFile('bizPermFullPath')
         def govIdFullPath = request.getFile('govIdFullPath')
         def secCertFullPath = request.getFile('secCertFullPath')
-        def gsisFullPath = request.getFile('gsisFullPath')
+        def gisFullPath = request.getFile('gisFullPath')
         def articleFullPath = request.getFile('articleFullPath')
         def byLawFullPath = request.getFile('byLawFullPath')
         def finStateFullPath = request.getFile('finStateFullPath')
         
-        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gsisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
+        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
         // end upload
         User user = authenticatedUser
         applicationFormInstance.updatedBy = user
@@ -103,12 +103,12 @@ class ApplicationFormController {
         def bizPermFullPath = request.getFile('bizPermFullPath')
         def govIdFullPath = request.getFile('govIdFullPath')
         def secCertFullPath = request.getFile('secCertFullPath')
-        def gsisFullPath = request.getFile('gsisFullPath')
+        def gisFullPath = request.getFile('gisFullPath')
         def articleFullPath = request.getFile('articleFullPath')
         def byLawFullPath = request.getFile('byLawFullPath')
         def finStateFullPath = request.getFile('finStateFullPath')
         
-        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gsisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
+        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
         // end upload
 
         User user = authenticatedUser
@@ -154,12 +154,12 @@ class ApplicationFormController {
         def bizPermFullPath = request.getFile('bizPermFullPath')
         def govIdFullPath = request.getFile('govIdFullPath')
         def secCertFullPath = request.getFile('secCertFullPath')
-        def gsisFullPath = request.getFile('gsisFullPath')
+        def gisFullPath = request.getFile('gisFullPath')
         def articleFullPath = request.getFile('articleFullPath')
         def byLawFullPath = request.getFile('byLawFullPath')
         def finStateFullPath = request.getFile('finStateFullPath')
 
-        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gsisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
+        def toBeUploaded = applicationFormService.uploadFiles(uploadFolder, applicationFormInstance, birCorFullPath, dtiCertFullPath, bizPermFullPath, govIdFullPath, secCertFullPath, gisFullPath, articleFullPath, byLawFullPath, finStateFullPath)
 
         User user = authenticatedUser
         applicationFormInstance.createdBy = user
@@ -562,16 +562,16 @@ class ApplicationFormController {
         }
     }
 
-    def downloadgsis(ApplicationForm applicationFormInstance) {
+    def downloadgis(ApplicationForm applicationFormInstance) {
 
         if ( applicationFormInstance.appFormFiles == null) {
             notFound()
             return
         } else {
             response.setContentType("APPLICATION/OCTET-STREAM")
-            def filename = ("${applicationFormInstance.appFormFiles.gsisFullPath - grailsApplication.config.uploadFolder}")
+            def filename = ("${applicationFormInstance.appFormFiles.gisFullPath - grailsApplication.config.uploadFolder}")
             response.setHeader("Content-Disposition", "Attachment;Filename=\"${filename}\"")
-            def file = new File(applicationFormInstance.appFormFiles.gsisFullPath)
+            def file = new File(applicationFormInstance.appFormFiles.gisFullPath)
             def fileInputStream = new FileInputStream(file)
             def outputStream = response.getOutputStream()
             byte[] buffer = new byte[4096];
