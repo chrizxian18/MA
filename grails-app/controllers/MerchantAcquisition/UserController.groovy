@@ -1,3 +1,4 @@
+
 package MerchantAcquisition
 
 
@@ -30,17 +31,20 @@ class UserController {
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()
+            log.info "mylog:instance is null"
             return
         }
 
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view:'create'
             return
+             log.info "mylog:${userInstance.errors}"
         }
 
         if (params.password != params.confirmPassword) { 
             flash.error = "Error: password and confirm password should have the same values!"
            redirect(action: "create")
+           log.info "mylog:confirm password is different"
            return
         }
 
@@ -48,7 +52,7 @@ class UserController {
         userInstance.enabled=false;
         userInstance.confirmCode= UUID.randomUUID().toString()
         if (!userInstance.save(flush: true)) {
-
+            log.info "mylog:failed to save"
             return
         }
 
@@ -61,6 +65,8 @@ class UserController {
         render(view: "index", model: [userInstance: userInstance])
         flash.message = "Your account has been created. Please confirm your email address. Confirmation link has been sent to your account"
         redirect(action: "success")
+        log.info "mylog:success"
+        
 
         // userInstance.save flush:true
 

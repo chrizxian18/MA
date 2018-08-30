@@ -103,6 +103,18 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    appenders {
+        //rollingFile name:'logfile',file:'backend.log'
+        appender new org.apache.log4j.DailyRollingFileAppender(name:"logfile", fileName:"Merchant.log",
+                datePattern: '\'_\'yyyy-MM-dd', layout:pattern(conversionPattern: '%d{ISO8601}\t%p\t%c:%L\t%m%n'))
+        console name:'stdout', layout:pattern(conversionPattern: '%d{ISO8601}\t%p\t%c:%L\t%m%n')
+    }
+
+    root {
+        info 'stdout','logfile'
+        additivity = true
+    }
+
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -114,6 +126,16 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    warn   'org.mortbay.log'
+
+    debug   logfile:"grails.app.service",
+            "grails.app.controller",
+            "grails.app.task",
+            'org.hibernate.SQL'
+    info    'org.springframework'
+    trace   'org.hibernate.type'
+    
 }
 
 
