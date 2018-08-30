@@ -1,76 +1,89 @@
 <%@ page import="merchantacquisition.ApplicationForm" %>
 
 
-
-	<p>7-Connect Model:</p>
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
-	<label for="sConnectWebIntegration">
-		<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
 		
-	</label>
-	<g:checkBox name="sConnectWebIntegration" value="${applicationFormInstance?.sConnectWebIntegration}" />
+		<div class="cType">
+			<p>Cliqq Type:</p>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'billsPayment', 'error')} ">
+				<label for="billsPayment">
+					<g:message code="applicationForm.billsPayment.label" default="Bills Payment" />
+					
+				</label>
+				<g:checkBox name="billsPayment" value="${applicationFormInstance?.billsPayment}" />
 
-</div>
+			</div>
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'cliqq', 'error')} ">
-	<label for="cliqq">
-		<g:message code="applicationForm.cliqq.label" default="Cliqq" />
-		
-	</label>
-	<g:checkBox name="cliqq" value="${applicationFormInstance?.cliqq}" />
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'eload', 'error')} ">
+				<label for="eload">
+					<g:message code="applicationForm.eload.label" default="Load" />
+					
+				</label>
+				<g:checkBox name="eload" value="${applicationFormInstance?.eload}" />
 
-</div>
+			</div>
 
-<div><h1></h1></div>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'ePins', 'error')} ">
+				<label for="ePins">
+					<g:message code="applicationForm.ePins.label" default="E-Pins" />
+					
+				</label>
+				<g:checkBox name="ePins" value="${applicationFormInstance?.ePins}" />
 
-	<p>Cliqq Type:</p>
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'billsPayment', 'error')} ">
-	<label for="billsPayment">
-		<g:message code="applicationForm.billsPayment.label" default="Bills Payment" />
-		
-	</label>
-	<g:checkBox name="billsPayment" value="${applicationFormInstance?.billsPayment}" />
+			</div>
 
-</div>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'eMoney', 'error')} ">
+				<label for="eMoney">
+					<g:message code="applicationForm.eMoney.label" default="E-Money/E-Wallet" />
+					
+				</label>
+				<g:checkBox name="eMoney" value="${applicationFormInstance?.eMoney}" />
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'eload', 'error')} ">
-	<label for="eload">
-		<g:message code="applicationForm.eload.label" default="Load" />
-		
-	</label>
-	<g:checkBox name="eload" value="${applicationFormInstance?.eload}" />
+			</div>
 
-</div>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'remittance', 'error')} ">
+				<label for="remittance">
+					<g:message code="applicationForm.remittance.label" default="Remittance" />
+					
+				</label>
+				<g:checkBox name="remittance" value="${applicationFormInstance?.remittance}" />
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'ePins', 'error')} ">
-	<label for="ePins">
-		<g:message code="applicationForm.ePins.label" default="E-Pins" />
-		
-	</label>
-	<g:checkBox name="ePins" value="${applicationFormInstance?.ePins}" />
+			</div>
+		</div>
 
-</div>
+<div class="sConnect">
+	<div style="margin-left:8px;">
+			<p>7-Connect Model:</p>
+			<p>&nbsp;</p>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
+				<label for="sConnectWebIntegration">
+					<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
+					
+				</label>
+				<g:checkBox name="sConnectWebIntegration" value="${applicationFormInstance?.sConnectWebIntegration}" />
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'eMoney', 'error')} ">
-	<label for="eMoney">
-		<g:message code="applicationForm.eMoney.label" default="E-Money/E-Wallet" />
-		
-	</label>
-	<g:checkBox name="eMoney" value="${applicationFormInstance?.eMoney}" />
+			</div>
 
-</div>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'cliqq', 'error')} ">
+				<label for="cliqq">
+					<g:message code="applicationForm.cliqq.label" default="Cliqq" />
+					
+				</label>
+				<g:checkBox name="cliqq" value="${applicationFormInstance?.cliqq}" />
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'remittance', 'error')} ">
-	<label for="remittance">
-		<g:message code="applicationForm.remittance.label" default="Remittance" />
-		
-	</label>
-	<g:checkBox name="remittance" value="${applicationFormInstance?.remittance}" />
+			</div>
 
-</div>
+			%{-- <div><h1></h1></div> --}%
+			</div>
+		</div>
+	
 
-<div><h1></h1></div>
+	
 
+%{-- <div><h1></h1></div> --}%
+%{-- <div><h1></h1></div> --}%
+
+<div class="formCenter">
+	<h1></h1>
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'merchantName', 'error')} required">
 	<label for="merchantName">
 		<g:message code="applicationForm.merchantName.label" default="Merchant Name" />
@@ -175,7 +188,7 @@
 </div>
 
 <div><h1></h1></div>
-<p>Bank Details:</p>
+<p style="margin-left:10%;">Bank Details:</p>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'bankName', 'error')} ">
 	<label for="bankName">
@@ -275,3 +288,4 @@
 
 </div>
 
+</div>

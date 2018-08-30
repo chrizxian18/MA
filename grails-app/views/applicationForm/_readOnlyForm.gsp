@@ -1,37 +1,8 @@
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<title></title>
-	</head>
-	<body>
+
 		
-		<div id="show-appForm" class="content scaffold-show" role="main">
-			<h1>Merchant Application Details</h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list applicationForm">
-
-				<li class="fieldcontain">
-					<label class="property-label">Date Applied</label>
-					<span class="property-value"><g:formatDate format="yyyy-MM-dd HH:mm" date="${applicationFormInstance?.dateApplied}"/></span>
-
-				</li>
-
-				<li class="fieldcontain">
-					<label class="property-label">Status</label>
-					<span class="property-value">${applicationFormInstance?.status}</span>
-				</li>
-
-				<li class="fieldcontain">
-					<label class="property-label">Username</label>
-					<span class="property-value">${applicationFormInstance?.createdBy.username}</span>
-				</li>
-
+	<ol class="property-list applicationForm">
 		<div><h1></h1></div>
-
 			<p>7-Connect Model:</p>
 		<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
 			<label for="sConnectWebIntegration">
@@ -383,22 +354,4 @@
 		</li>
 		</g:if>
 
-								
-			 
-			</ol>
-
-				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="POST" >
-				<fieldset class="form">
-					<g:render template="remarks"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit action="inReview" class="save" value="In-Review" />
-					<g:actionSubmit action="onHold" class="save" value="On-hold" />
-					<g:actionSubmit action="forApproval" class="save" value="For Approval" />
-					<g:actionSubmit action="declined" class="save" value="Decline" />
-					<g:actionSubmit action="approved" class="save" value="Approve" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
-</html>
+	</ol>

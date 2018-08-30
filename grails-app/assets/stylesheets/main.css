@@ -229,11 +229,15 @@ fieldset,
 	margin-top: 1em;
 }
 
+.fieldcontain2 {
+	margin-top: 1em;
+}
+
 .fieldcontain label,
 .fieldcontain .property-label {
 	color: #666666;
 	text-align: right;
-	width: 25%;
+	width: 30%;
 }
 
 .fieldcontain .property-label {
@@ -241,6 +245,22 @@ fieldset,
 }
 
 .fieldcontain .property-value {
+	display: block;
+	margin-left: 27%;
+}
+
+.fieldcontain2 label,
+.fieldcontain2 .property-label {
+	color: #666666;
+	text-align: right;
+	width: 65%;
+}
+
+.fieldcontain2 .property-label {
+	float: left;
+}
+
+.fieldcontain2 .property-value {
 	display: block;
 	margin-left: 27%;
 }
@@ -482,7 +502,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	/*background: #E1F2B6;*/
 }
 
 /* PAGINATION */
@@ -616,7 +636,7 @@ a.skip {
 .containtooltip .property-label {
 	color: #666666;
 	text-align: right;
-	width: 25%;
+	width: 30%;
 }
 
 .containtooltip .property-label {
@@ -658,3 +678,42 @@ a.skip {
 .hide {
 	  display: none;
 }
+
+
+
+
+.cType {
+	/*position:absolute;*/
+	float:left;
+	/*background-color: blue;*/
+	margin-left:7%;
+	width: 32%;
+	border:solid;
+	border-width: thin;
+	padding:3%;
+}
+
+.sConnect {
+	/*position:absolute;*/
+	float:left;
+	/*background-color: pink;*/
+	margin-left:8%;
+	margin-top:5%;
+	width:35%;
+	border:solid;
+	border-width: thin;
+	padding:3%;
+}
+
+.formCenter {
+	/*position:absolute;*/
+	/*background-color: yellow;*/
+	margin-top:33%;
+	margin-left:5%;
+	/*clear:both;*/
+}
+
+/*.form {
+	position:relative;
+
+}*/

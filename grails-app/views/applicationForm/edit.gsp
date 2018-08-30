@@ -129,13 +129,15 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 					%{-- <g:render template="formFilesEdit"/> --}%
-					<span id="formFilesSingleProprietorship" >
-						<g:render template="formFilesEditSingleProprietorship"/>
-					</span>
+					<div style="margin-left:5%;">
+						<span id="formFilesSingleProprietorship" >
+							<g:render template="formFilesEditSingleProprietorship"/>
+						</span>
 
-					<span id="formFilesCorporation" >
-						<g:render template="formFilesEditCorporation"/>
-					</span>
+						<span id="formFilesCorporation">
+							<g:render template="formFilesEditCorporation"/>
+						</span>
+					</div>
 
 				</fieldset>
 				<fieldset class="buttons">

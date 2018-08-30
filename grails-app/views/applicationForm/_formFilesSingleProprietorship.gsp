@@ -1,11 +1,11 @@
 <%@ page import="merchantacquisition.ApplicationForm" %>
 
-%{-- <div style="display: none;" class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'status', 'error')} ">
+%{-- <div style="display: none;" class="containtooltip ${hasErrors(bean: applicationFormInstance, field: 'status', 'error')} ">
 	<g:textArea name="appFormFiles.status" value="uploaded"/>
 </div> --}%
 
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'birCorFullPath', 'error')} ">
+<div class="containtooltip ${hasErrors(bean: applicationFormInstance, field: 'birCorFullPath', 'error')} ">
 	<label for="birCorFullPath">
 		<g:message code="applicationForm.birCorFullPath.label" default="COR issued by BIR" />
 		<b class="required-indicator">*</b>
@@ -14,7 +14,7 @@
 	<label for="birCorFullPath">Choose File</label>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'dtiCertFullPath', 'error')} ">
+<div class="containtooltip ${hasErrors(bean: applicationFormInstance, field: 'dtiCertFullPath', 'error')} ">
 	<label for="dtiCertFullPath">
 		<g:message code="applicationForm.dtiCertFullPath.label" default="DTI Certificate" />
 		
@@ -25,7 +25,7 @@
 </div>
 
 
-<div class="fieldcontain">
+<div class="containtooltip">
 	<label for="bizPermFullPath">
 		Business/Mayor’s Permit
 		<b class="required-indicator">*</b>
@@ -34,7 +34,7 @@
 	<label for="bizPermFullPath">Choose File</label>
 </div>
 
-<div class="fieldcontain">
+<div class="containtooltip">
 	<label for="govIdFullPath">
 		Copy of gov’t issued I.D
 		<b class="required-indicator">*</b>

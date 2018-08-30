@@ -115,14 +115,14 @@
 			<g:form controller="applicationForm" enctype="multipart/form-data" method="post" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					
+					<div style="margin-left:5%;">
 					<span id="formFilesCorporation" class="hide">
 						<g:render template="formFilesCorporation"/>
 					</span>
-
 					<span id="formFilesSingleProprietorship" class="hide">
 						<g:render template="formFilesSingleProprietorship"/>
 					</span>
+					</div>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit action="save" class="save" value="Save as Draft" onclick="return validate()"/>

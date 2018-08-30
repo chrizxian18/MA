@@ -20,34 +20,16 @@
 			%{-- Status --}%
 				<g:if test="${applicationFormInstance?.status}">
 				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="appForm.status.label" default="Status" /></span>
+					<label id="status-label" class="property-label"><g:message code="appForm.status.label" default="Status" /></label>
 					
 						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${applicationFormInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>
-			%{-- 
-				<g:if test="${applicationFormInstance?.createdBy}">
-				<li class="fieldcontain">
-					<span id="createdBy-label" class="property-label"><g:message code="appForm.createdBy.label" default="Created By" /></span>
-					
-						<span class="property-value" aria-labelledby="createdBy-label"><g:fieldValue bean="${applicationFormInstance}" field="createdBy"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${applicationFormInstance?.updatedBy}">
-				<li class="fieldcontain">
-					<span id="updatedBy-label" class="property-label"><g:message code="appForm.updatedBy.label" default="Updated By" /></span>
-					
-						<span class="property-value" aria-labelledby="updatedBy-label"><g:fieldValue bean="${applicationFormInstance}" field="updatedBy"/></span>
-					
-				</li>
-				</g:if> --}%
 
 				<g:if test="${applicationFormInstance?.dateApplied}">
 				<li class="fieldcontain">
-					<span id="dateApplied-label" class="property-label"><g:message code="appForm.dateApplied.label" default="Date Applied" /></span>
+					<label id="dateApplied-label" class="property-label"><g:message code="appForm.dateApplied.label" default="Date Applied" /></label>
 					
 						<span class="property-value" aria-labelledby="dateApplied-label"><g:formatDate date="${applicationFormInstance?.dateApplied}" /></span>
 					
@@ -56,7 +38,7 @@
 			
 				<g:if test="${applicationFormInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="appForm.dateCreated.label" default="Date Created" /></span>
+					<label id="dateCreated-label" class="property-label"><g:message code="appForm.dateCreated.label" default="Date Created" /></label>
 					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${applicationFormInstance?.dateCreated}" /></span>
 					
@@ -65,18 +47,17 @@
 			
 				<g:if test="${applicationFormInstance?.lastUpdated}">
 				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="appForm.lastUpdated.label" default="Last Updated" /></span>
+					<label id="lastUpdated-label" class="property-label"><g:message code="appForm.lastUpdated.label" default="Last Updated" /></label>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${applicationFormInstance?.lastUpdated}" /></span>
 					
 				</li>
 				</g:if>
-
 				<h1>&nbsp;</h1>
 			
 				<g:if test="${applicationFormInstance?.sConnectWebIntegration}">
 				<li class="fieldcontain">
-					<span id="sConnectWebIntegration-label" class="property-label"><g:message code="appForm.sConnectWebIntegration.label" default="7-Connect Web Integration" /></span>
+					<label id="sConnectWebIntegration-label" class="property-label"><g:message code="appForm.sConnectWebIntegration.label" default="7-Connect Web Integration" /></label>
 					
 						<span class="property-value" aria-labelledby="sConnectWebIntegration-label"><g:formatBoolean boolean="${applicationFormInstance?.sConnectWebIntegration}" /></span>
 					
@@ -86,7 +67,7 @@
 			
 				<g:if test="${applicationFormInstance?.cliqq}">
 				<li class="fieldcontain">
-					<span id="cliqq-label" class="property-label"><g:message code="appForm.cliqq.label" default="Cliqq" /></span>
+					<label id="cliqq-label" class="property-label"><g:message code="appForm.cliqq.label" default="Cliqq" /></label>
 					
 						<span class="property-value" aria-labelledby="cliqq-label"><g:formatBoolean boolean="${applicationFormInstance?.cliqq}" /></span>
 					
@@ -95,7 +76,7 @@
 			
 				<g:if test="${applicationFormInstance?.billsPayment}">
 				<li class="fieldcontain">
-					<span id="billsPayment-label" class="property-label"><g:message code="appForm.billsPayment.label" default="Bills Payment" /></span>
+					<label id="billsPayment-label" class="property-label"><g:message code="appForm.billsPayment.label" default="Bills Payment" /></label>
 					
 						<span class="property-value" aria-labelledby="billsPayment-label"><g:formatBoolean boolean="${applicationFormInstance?.billsPayment}" /></span>
 					
@@ -104,7 +85,7 @@
 			
 				<g:if test="${applicationFormInstance?.eload}">
 				<li class="fieldcontain">
-					<span id="eload-label" class="property-label"><g:message code="appForm.eload.label" default="Load" /></span>
+					<label id="eload-label" class="property-label"><g:message code="appForm.eload.label" default="Load" /></label>
 					
 						<span class="property-value" aria-labelledby="eload-label"><g:formatBoolean boolean="${applicationFormInstance?.eload}" /></span>
 					
@@ -113,7 +94,7 @@
 			
 				<g:if test="${applicationFormInstance?.ePins}">
 				<li class="fieldcontain">
-					<span id="ePins-label" class="property-label"><g:message code="appForm.ePins.label" default="E-Pins" /></span>
+					<label id="ePins-label" class="property-label"><g:message code="appForm.ePins.label" default="E-Pins" /></label>
 					
 						<span class="property-value" aria-labelledby="ePins-label"><g:formatBoolean boolean="${applicationFormInstance?.ePins}" /></span>
 					
@@ -122,7 +103,7 @@
 			
 				<g:if test="${applicationFormInstance?.eMoney}">
 				<li class="fieldcontain">
-					<span id="eMoney-label" class="property-label"><g:message code="appForm.eMoney.label" default="E-Money/E-Wallet " /></span>
+					<label id="eMoney-label" class="property-label"><g:message code="appForm.eMoney.label" default="E-Money/E-Wallet " /></label>
 					
 						<span class="property-value" aria-labelledby="eMoney-label"><g:formatBoolean boolean="${applicationFormInstance?.eMoney}" /></span>
 					
@@ -131,7 +112,7 @@
 			
 				<g:if test="${applicationFormInstance?.remittance}">
 				<li class="fieldcontain">
-					<span id="remittance-label" class="property-label"><g:message code="appForm.remittance.label" default="Remittance" /></span>
+					<label id="remittance-label" class="property-label"><g:message code="appForm.remittance.label" default="Remittance" /></label>
 					
 						<span class="property-value" aria-labelledby="remittance-label"><g:formatBoolean boolean="${applicationFormInstance?.remittance}" /></span>
 					
@@ -140,7 +121,7 @@
 			
 				<g:if test="${applicationFormInstance?.merchantName}">
 				<li class="fieldcontain">
-					<span id="merchantName-label" class="property-label"><g:message code="appForm.merchantName.label" default="Merchant Name" /></span>
+					<label id="merchantName-label" class="property-label"><g:message code="appForm.merchantName.label" default="Merchant Name" /></label>
 					
 						<span class="property-value" aria-labelledby="merchantName-label"><g:fieldValue bean="${applicationFormInstance}" field="merchantName"/></span>
 					
@@ -149,7 +130,7 @@
 			
 				<g:if test="${applicationFormInstance?.companyType}">
 				<li class="fieldcontain">
-					<span id="companyType-label" class="property-label"><g:message code="appForm.companyType.label" default="Company Type" /></span>
+					<label id="companyType-label" class="property-label"><g:message code="appForm.companyType.label" default="Company Type" /></label>
 					
 						<span class="property-value" aria-labelledby="companyType-label"><g:fieldValue bean="${applicationFormInstance}" field="companyType"/></span>
 					
@@ -158,7 +139,7 @@
 			
 				<g:if test="${applicationFormInstance?.companyAddress}">
 				<li class="fieldcontain">
-					<span id="companyAddress-label" class="property-label"><g:message code="appForm.companyAddress.label" default="Company Address" /></span>
+					<label id="companyAddress-label" class="property-label"><g:message code="appForm.companyAddress.label" default="Company Address" /></label>
 					
 						<span class="property-value" aria-labelledby="companyAddress-label"><g:fieldValue bean="${applicationFormInstance}" field="companyAddress"/></span>
 					
@@ -167,7 +148,7 @@
 			
 				<g:if test="${applicationFormInstance?.natureOfBusiness}">
 				<li class="fieldcontain">
-					<span id="natureOfBusiness-label" class="property-label"><g:message code="appForm.natureOfBusiness.label" default="Nature Of Business" /></span>
+					<label id="natureOfBusiness-label" class="property-label"><g:message code="appForm.natureOfBusiness.label" default="Nature Of Business" /></label>
 					
 						<span class="property-value" aria-labelledby="natureOfBusiness-label"><g:fieldValue bean="${applicationFormInstance}" field="natureOfBusiness"/></span>
 					
@@ -176,7 +157,7 @@
 			
 				<g:if test="${applicationFormInstance?.businessDescription}">
 				<li class="fieldcontain">
-					<span id="businessDescription-label" class="property-label"><g:message code="appForm.businessDescription.label" default="Brief Description of Business" /></span>
+					<label id="businessDescription-label" class="property-label"><g:message code="appForm.businessDescription.label" default="Brief Description of Business" /></label>
 					
 						<span class="property-value" aria-labelledby="businessDescription-label"><g:fieldValue bean="${applicationFormInstance}" field="businessDescription"/></span>
 					
@@ -185,7 +166,7 @@
 			
 				<g:if test="${applicationFormInstance?.noOfSubscribers}">
 				<li class="fieldcontain">
-					<span id="noOfSubscribers-label" class="property-label"><g:message code="appForm.noOfSubscribers.label" default="No Of Subscribers" /></span>
+					<label id="noOfSubscribers-label" class="property-label"><g:message code="appForm.noOfSubscribers.label" default="No Of Subscribers" /></label>
 					
 						<span class="property-value" aria-labelledby="noOfSubscribers-label"><g:fieldValue bean="${applicationFormInstance}" field="noOfSubscribers"/></span>
 					
@@ -194,7 +175,7 @@
 			
 				<g:if test="${applicationFormInstance?.websiteLink}">
 				<li class="fieldcontain">
-					<span id="websiteLink-label" class="property-label"><g:message code="appForm.websiteLink.label" default="Website Link" /></span>
+					<label id="websiteLink-label" class="property-label"><g:message code="appForm.websiteLink.label" default="Website Link" /></label>
 					
 						<span class="property-value" aria-labelledby="websiteLink-label"><g:fieldValue bean="${applicationFormInstance}" field="websiteLink"/></span>
 					
@@ -203,7 +184,7 @@
 			
 				<g:if test="${applicationFormInstance?.coveredAreas}">
 				<li class="fieldcontain">
-					<span id="coveredAreas-label" class="property-label"><g:message code="appForm.coveredAreas.label" default="Covered Areas" /></span>
+					<label id="coveredAreas-label" class="property-label"><g:message code="appForm.coveredAreas.label" default="Covered Areas" /></label>
 					
 						<span class="property-value" aria-labelledby="coveredAreas-label"><g:fieldValue bean="${applicationFormInstance}" field="coveredAreas"/></span>
 					
@@ -212,7 +193,7 @@
 			
 				<g:if test="${applicationFormInstance?.launchDate}">
 				<li class="fieldcontain">
-					<span id="launchDate-label" class="property-label"><g:message code="appForm.launchDate.label" default="Launch Date" /></span>
+					<label id="launchDate-label" class="property-label"><g:message code="appForm.launchDate.label" default="Launch Date" /></label>
 					
 						<span class="property-value" aria-labelledby="launchDate-label"><g:formatDate date="${applicationFormInstance?.launchDate}" /></span>
 					
@@ -221,7 +202,7 @@
 			
 				<g:if test="${applicationFormInstance?.commissionFee}">
 				<li class="fieldcontain">
-					<span id="commissionFee-label" class="property-label"><g:message code="appForm.commissionFee.label" default="Commission Fee" /></span>
+					<label id="commissionFee-label" class="property-label"><g:message code="appForm.commissionFee.label" default="Commission Fee" /></label>
 					
 						<span class="property-value" aria-labelledby="commissionFee-label"><g:fieldValue bean="${applicationFormInstance}" field="commissionFee"/></span>
 					
@@ -230,7 +211,7 @@
 			
 				<g:if test="${applicationFormInstance?.modeOfPayment}">
 				<li class="fieldcontain">
-					<span id="modeOfPayment-label" class="property-label"><g:message code="appForm.modeOfPayment.label" default="Mode Of Payment" /></span>
+					<label id="modeOfPayment-label" class="property-label"><g:message code="appForm.modeOfPayment.label" default="Mode Of Payment" /></label>
 					
 						<span class="property-value" aria-labelledby="modeOfPayment-label"><g:fieldValue bean="${applicationFormInstance}" field="modeOfPayment"/></span>
 					
@@ -239,7 +220,7 @@
 			
 				<g:if test="${applicationFormInstance?.bankName}">
 				<li class="fieldcontain">
-					<span id="bankName-label" class="property-label"><g:message code="appForm.bankName.label" default="Bank Name/Address" /></span>
+					<label id="bankName-label" class="property-label"><g:message code="appForm.bankName.label" default="Bank Name/Address" /></label>
 					
 						<span class="property-value" aria-labelledby="bankName-label"><g:fieldValue bean="${applicationFormInstance}" field="bankName"/></span>
 					
@@ -248,7 +229,7 @@
 			
 				<g:if test="${applicationFormInstance?.accountType}">
 				<li class="fieldcontain">
-					<span id="accountType-label" class="property-label"><g:message code="appForm.accountType.label" default="Account Type" /></span>
+					<label id="accountType-label" class="property-label"><g:message code="appForm.accountType.label" default="Account Type" /></label>
 					
 						<span class="property-value" aria-labelledby="accountType-label"><g:fieldValue bean="${applicationFormInstance}" field="accountType"/></span>
 					
@@ -257,7 +238,7 @@
 			
 				<g:if test="${applicationFormInstance?.accountName}">
 				<li class="fieldcontain">
-					<span id="accountName-label" class="property-label"><g:message code="appForm.accountName.label" default="Account Name" /></span>
+					<label id="accountName-label" class="property-label"><g:message code="appForm.accountName.label" default="Account Name" /></label>
 					
 						<span class="property-value" aria-labelledby="accountName-label"><g:fieldValue bean="${applicationFormInstance}" field="accountName"/></span>
 					
@@ -266,7 +247,7 @@
 			
 				<g:if test="${applicationFormInstance?.accountNumber}">
 				<li class="fieldcontain">
-					<span id="accountNumber-label" class="property-label"><g:message code="appForm.accountNumber.label" default="Account Number" /></span>
+					<label id="accountNumber-label" class="property-label"><g:message code="appForm.accountNumber.label" default="Account Number" /></label>
 					
 						<span class="property-value" aria-labelledby="accountNumber-label"><g:fieldValue bean="${applicationFormInstance}" field="accountNumber"/></span>
 					
@@ -275,7 +256,7 @@
 			
 				<g:if test="${applicationFormInstance?.moaSignatory}">
 				<li class="fieldcontain">
-					<span id="moaSignatory-label" class="property-label"><g:message code="appForm.moaSignatory.label" default="Name of MOA Signatory/Position" /></span>
+					<label id="moaSignatory-label" class="property-label"><g:message code="appForm.moaSignatory.label" default="Name of MOA Signatory/Position" /></label>
 					
 						<span class="property-value" aria-labelledby="moaSignatory-label"><g:fieldValue bean="${applicationFormInstance}" field="moaSignatory"/></span>
 					
@@ -284,7 +265,7 @@
 			
 				<g:if test="${applicationFormInstance?.moaWitness}">
 				<li class="fieldcontain">
-					<span id="moaWitness-label" class="property-label"><g:message code="appForm.moaWitness.label" default="Name of MOA Witness" /></span>
+					<label id="moaWitness-label" class="property-label"><g:message code="appForm.moaWitness.label" default="Name of MOA Witness" /></label>
 					
 						<span class="property-value" aria-labelledby="moaWitness-label"><g:fieldValue bean="${applicationFormInstance}" field="moaWitness"/></span>
 					
@@ -293,7 +274,7 @@
 			
 				<g:if test="${applicationFormInstance?.mainContactPerson}">
 				<li class="fieldcontain">
-					<span id="mainContactPerson-label" class="property-label"><g:message code="appForm.mainContactPerson.label" default="Main Contact Person/Details" /></span>
+					<label id="mainContactPerson-label" class="property-label"><g:message code="appForm.mainContactPerson.label" default="Main Contact Person/Details" /></label>
 					
 						<span class="property-value" aria-labelledby="mainContactPerson-label"><g:fieldValue bean="${applicationFormInstance}" field="mainContactPerson"/></span>
 					
@@ -302,7 +283,7 @@
 			
 				<g:if test="${applicationFormInstance?.itContactPerson}">
 				<li class="fieldcontain">
-					<span id="itContactPerson-label" class="property-label"><g:message code="appForm.itContactPerson.label" default="IT Contact Person/Details" /></span>
+					<label id="itContactPerson-label" class="property-label"><g:message code="appForm.itContactPerson.label" default="IT Contact Person/Details" /></label>
 					
 						<span class="property-value" aria-labelledby="itContactPerson-label"><g:fieldValue bean="${applicationFormInstance}" field="itContactPerson"/></span>
 					
@@ -311,7 +292,7 @@
 			
 				<g:if test="${applicationFormInstance?.afterSalesContactPerson}">
 				<li class="fieldcontain">
-					<span id="afterSalesContactPerson-label" class="property-label"><g:message code="appForm.afterSalesContactPerson.label" default="After Sales Contact Person/Details" /></span>
+					<label id="afterSalesContactPerson-label" class="property-label"><g:message code="appForm.afterSalesContactPerson.label" default="After Sales Contact Person/Details" /></label>
 					
 						<span class="property-value" aria-labelledby="afterSalesContactPerson-label"><g:fieldValue bean="${applicationFormInstance}" field="afterSalesContactPerson"/></span>
 					
@@ -320,19 +301,21 @@
 			
 				<g:if test="${applicationFormInstance?.financeContactPerson}">
 				<li class="fieldcontain">
-					<span id="financeContactPerson-label" class="property-label"><g:message code="appForm.financeContactPerson.label" default="Finance Contact Person/Details" /></span>
+					<label id="financeContactPerson-label" class="property-label"><g:message code="appForm.financeContactPerson.label" default="Finance Contact Person/Details" /></label>
 					
 						<span class="property-value" aria-labelledby="financeContactPerson-label"><g:fieldValue bean="${applicationFormInstance}" field="financeContactPerson"/></span>
 					
 				</li>
 				</g:if>
 
+			
+
 				%{-- uploadedFiles --}%
 				<h1>&nbsp;</h1>
 				<h3>Attachments</h3>
 				<g:if test="${applicationFormInstance?.appFormFiles.birCorFullPath}">
 				<li class="containtooltip">
-					<span id="appFormFiles-label" class="property-label tooltip"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></span>
+					<label id="appFormFiles-label" class="property-label tooltip"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></label>
 						<span class="property-value" aria-labelledby="appFormFiles-label" id="birCorFullPath">${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}</span>
 					%{-- <span class="property-value"><g:link action="download" id="${applicationFormInstance.appFormFiles.id}">click to download and view attachment</g:link></span> --}%
 				</li>
@@ -340,7 +323,7 @@
 
 				<g:if test="${applicationFormInstance?.appFormFiles.dtiCertFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">DTI Certificate</span>
+					<label class="property-label tooltip">DTI Certificate</label>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.dtiCertFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
@@ -348,7 +331,7 @@
 				
 				<g:if test="${applicationFormInstance?.appFormFiles.bizPermFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Business/Mayor’s Permit</span>
+					<label class="property-label tooltip">Business/Mayor’s Permit</label>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.bizPermFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
@@ -357,7 +340,7 @@
 
 				<g:if test="${applicationFormInstance?.appFormFiles.govIdFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Copy of gov’t issued I.D</span>
+					<label class="property-label tooltip">Copy of gov’t issued I.D</label>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.govIdFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
@@ -366,7 +349,7 @@
 
 				<g:if test="${applicationFormInstance?.appFormFiles.secCertFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Sec Cert of authority<span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></span>
+					<label class="property-label tooltip">Sec Cert of authority<span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></label>
 					
 						<span class="property-value">${applicationFormInstance.appFormFiles.secCertFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
@@ -374,28 +357,28 @@
 				
 				<g:if test="${applicationFormInstance?.appFormFiles.gisFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Latest GIS<span class="tooltiptext">Latest GIS;(certified true copy)</span></span>
+					<label class="property-label tooltip">Latest GIS<span class="tooltiptext">Latest GIS;(certified true copy)</span></label>
 						<span class="property-value">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 				</g:if>
 
 				<g:if test="${applicationFormInstance?.appFormFiles.articleFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Articles of Incorporation<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span></span>
+					<label class="property-label tooltip">Articles of Incorporation<span class="tooltiptext">Articles of Incorporation or Amended Articles of Incorporation;(certified true copy)</span></label>
 						<span class="property-value">${applicationFormInstance.appFormFiles.articleFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 				</g:if>
 
 				<g:if test="${applicationFormInstance?.appFormFiles.byLawFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">By-Laws<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span></span>
+					<label class="property-label tooltip">By-Laws<span class="tooltiptext">By-Laws or Amended By-Laws approved by SEC (certified true copy)</span></label>
 						<span class="property-value">${applicationFormInstance.appFormFiles.byLawFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 				</g:if>
 
 				<g:if test="${applicationFormInstance?.appFormFiles.finStateFullPath}">
 				<li class="containtooltip">
-					<span class="property-label tooltip">Financial Statement<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span></span>
+					<label class="property-label tooltip">Financial Statement<span class="tooltiptext">Latest Audited Financial Statement (certified true copy)</span></label>
 						<span class="property-value">${applicationFormInstance.appFormFiles.finStateFullPath-grailsApplication.config.uploadFolder}</span>
 				</li>
 				</g:if>
