@@ -31,9 +31,9 @@ class ApplicationFormService {
         } 
          else {
                 if (appFiles.id == null) {
-                    corfilename = "cor${appFiles.count()+1}_${birCorFullPath.originalFilename}"
+                    corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.count()+1}_${birCorFullPath.originalFilename}"
                 }
-                else {corfilename = "cor${appFiles.id}_${birCorFullPath.originalFilename}"
+                else {corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.id}_${birCorFullPath.originalFilename}"
                 }
                 
                 appFiles.birCorFullPath = uploadFolder + corfilename
@@ -47,10 +47,10 @@ class ApplicationFormService {
                 appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } else {
                  if (appFiles.id == null) {
-                    dtiCertfilename = "dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
+                    dtiCertfilename = "${applicationFormInstance.merchantName}-dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
                 }
                 else {
-                     dtiCertfilename = "dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
+                     dtiCertfilename = "${applicationFormInstance.merchantName}-dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
                 }
             
             appFiles.dtiCertFullPath = uploadFolder + dtiCertfilename
@@ -64,10 +64,10 @@ class ApplicationFormService {
                 appFiles.bizPermFullPath = appFiles.bizPermFullPath
         } else {
                  if (appFiles.id == null) {
-                    bizPermfilename = "bizPerm${appFiles.count()+1}_${bizPermFullPath.originalFilename}"
+                    bizPermfilename = "${applicationFormInstance.merchantName}-bizPerm${appFiles.count()+1}_${bizPermFullPath.originalFilename}"
                 }
                 else {
-                     bizPermfilename = "bizPerm${appFiles.id}_${bizPermFullPath.originalFilename}"
+                     bizPermfilename = "${applicationFormInstance.merchantName}-bizPerm${appFiles.id}_${bizPermFullPath.originalFilename}"
                 }
             
             appFiles.bizPermFullPath = uploadFolder + bizPermfilename
@@ -81,10 +81,10 @@ class ApplicationFormService {
                 appFiles.govIdFullPath = appFiles.govIdFullPath
         } else {
                  if (appFiles.id == null) {
-                    govIdfilename = "govId${appFiles.count()+1}_${govIdFullPath.originalFilename}"
+                    govIdfilename = "${applicationFormInstance.merchantName}-govId${appFiles.count()+1}_${govIdFullPath.originalFilename}"
                 }
                 else {
-                     govIdfilename = "govId${appFiles.id}_${govIdFullPath.originalFilename}"
+                     govIdfilename = "${applicationFormInstance.merchantName}-govId${appFiles.id}_${govIdFullPath.originalFilename}"
                 }
             
             appFiles.govIdFullPath = uploadFolder + govIdfilename
@@ -99,10 +99,10 @@ class ApplicationFormService {
                 appFiles.secCertFullPath = appFiles.secCertFullPath
         } else {
                  if (appFiles.id == null) {
-                    secCertfilename = "secCert${appFiles.count()+1}_${secCertFullPath.originalFilename}"
+                    secCertfilename = "${applicationFormInstance.merchantName}-secCert${appFiles.count()+1}_${secCertFullPath.originalFilename}"
                 }
                 else {
-                     secCertfilename = "secCert${appFiles.id}_${secCertFullPath.originalFilename}"
+                     secCertfilename = "${applicationFormInstance.merchantName}-secCert${appFiles.id}_${secCertFullPath.originalFilename}"
                 }
             
             appFiles.secCertFullPath = uploadFolder + secCertfilename
@@ -116,10 +116,10 @@ class ApplicationFormService {
                 appFiles.gisFullPath = appFiles.gisFullPath
         } else {
                  if (appFiles.id == null) {
-                    gisfilename = "gis${appFiles.count()+1}_${gisFullPath.originalFilename}"
+                    gisfilename = "${applicationFormInstance.merchantName}-gis${appFiles.count()+1}_${gisFullPath.originalFilename}"
                 }
                 else {
-                     gisfilename = "gis${appFiles.id}_${gisFullPath.originalFilename}"
+                     gisfilename = "${applicationFormInstance.merchantName}-gis${appFiles.id}_${gisFullPath.originalFilename}"
                 }
             
             appFiles.gisFullPath = uploadFolder + gisfilename
@@ -133,10 +133,10 @@ class ApplicationFormService {
                 appFiles.articleFullPath = appFiles.articleFullPath
         } else {
                  if (appFiles.id == null) {
-                    articlefilename = "article${appFiles.count()+1}_${articleFullPath.originalFilename}"
+                    articlefilename = "${applicationFormInstance.merchantName}-article${appFiles.count()+1}_${articleFullPath.originalFilename}"
                 }
                 else {
-                     articlefilename = "article${appFiles.id}_${articleFullPath.originalFilename}"
+                     articlefilename = "${applicationFormInstance.merchantName}-article${appFiles.id}_${articleFullPath.originalFilename}"
                 }
             
             appFiles.articleFullPath = uploadFolder + articlefilename
@@ -150,10 +150,10 @@ class ApplicationFormService {
                 appFiles.byLawFullPath = appFiles.byLawFullPath
         } else {
                  if (appFiles.id == null) {
-                    byLawfilename = "byLaw${appFiles.count()+1}_${byLawFullPath.originalFilename}"
+                    byLawfilename = "${applicationFormInstance.merchantName}-byLaw${appFiles.count()+1}_${byLawFullPath.originalFilename}"
                 }
                 else {
-                     byLawfilename = "byLaw${appFiles.id}_${byLawFullPath.originalFilename}"
+                     byLawfilename = "${applicationFormInstance.merchantName}-byLaw${appFiles.id}_${byLawFullPath.originalFilename}"
                 }
             
             appFiles.byLawFullPath = uploadFolder + byLawfilename
@@ -167,10 +167,10 @@ class ApplicationFormService {
                 appFiles.finStateFullPath = appFiles.finStateFullPath
         } else {
                  if (appFiles.id == null) {
-                    finStatefilename = "finState${appFiles.count()+1}_${finStateFullPath.originalFilename}"
+                    finStatefilename = "${applicationFormInstance.merchantName}-finState${appFiles.count()+1}_${finStateFullPath.originalFilename}"
                 }
                 else {
-                     finStatefilename = "finState${appFiles.id}_${finStateFullPath.originalFilename}"
+                     finStatefilename = "${applicationFormInstance.merchantName}-finState${appFiles.id}_${finStateFullPath.originalFilename}"
                 }
             
             appFiles.finStateFullPath = uploadFolder + finStatefilename

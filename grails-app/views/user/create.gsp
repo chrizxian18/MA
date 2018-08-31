@@ -5,13 +5,33 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 		<asset:stylesheet src="main.css"/>
 		<asset:javascript src="application.js"/>
-		<script type="text/javascript">
-+        function isNumber(e){
-+          e = e || window.event;
-+          var charCode = e.which ? e.which : e.keyCode;
-+          return /\d/.test(String.fromCharCode(charCode));
-+        }
-+        </script>
+		<script>
+		$(document).ready(function(){
+	        
+			$(".toggle-password").click(function() {
+
+			  $(this).toggleClass("fa-eye fa-eye-slash");
+			  var input = $($(this).attr("toggle"));
+			  if (input.attr("type") == "password") {
+			    input.attr("type", "text");
+			  } else {
+			    input.attr("type", "password");
+			  }
+			});
+
+		});	
+        </script>
+
+        <style type="text/css">
+        	.field-icon {
+        	  color:#277D5F;
+			  float: right;
+			  margin-left: -25px;
+			  margin-top: 4px;
+			  position: absolute;
+			  z-index: 2;
+			}
+        </style>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner" style="padding:2%; color:black;"><h1 style="color:black;">&nbsp;</h1></div>

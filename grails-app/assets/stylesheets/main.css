@@ -1,6 +1,7 @@
 /* FONT STACK */
 /*https://material.io/tools/icons/?style=round*/
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons); 
+@import url(https://use.fontawesome.com/releases/v5.3.1/css/all.css);
 
 body,
 input, select, textarea {
@@ -289,7 +290,7 @@ select[multiple] {
 textarea {
 	width: 250px;
 	height: 150px;
-	overflow: auto; /* IE always renders vertical scrollbar without this */
+	overflow: auto; 
 	vertical-align: top;
 }
 
@@ -306,7 +307,7 @@ input:focus, select:focus, textarea:focus {
 	   -moz-box-shadow: 0 0 0.5em #ffffff;
 	-webkit-box-shadow: 0 0 0.5em #ffffff;
 	        box-shadow: 0 0 0.5em #ffffff;
-}
+}*/
 
 .required-indicator {
 	color: #48802C;
@@ -686,34 +687,145 @@ a.skip {
 	/*position:absolute;*/
 	float:left;
 	/*background-color: blue;*/
-	margin-left:7%;
-	width: 32%;
+	margin-left:3%;
+	/*width: 32%;*/
 	border:solid;
 	border-width: thin;
 	padding:3%;
+	width:330px;
+	height:175px;
+
 }
 
 .sConnect {
 	/*position:absolute;*/
 	float:left;
 	/*background-color: pink;*/
-	margin-left:8%;
-	margin-top:5%;
-	width:35%;
+	margin-left:5%;
+	/*margin-top:5%;*/
 	border:solid;
 	border-width: thin;
 	padding:3%;
+	width:330px;
+	height:175px;
 }
 
 .formCenter {
 	/*position:absolute;*/
 	/*background-color: yellow;*/
-	margin-top:33%;
-	margin-left:5%;
+	margin-top:30%;
+	/*margin-left:5%;*/
 	/*clear:both;*/
 }
 
-/*.form {
-	position:relative;
+select {
+	padding: 0.2em 0.2em 0.2em 0;
+}
 
-}*/
+select[multiple] {
+	vertical-align: top;
+}
+
+textarea {
+	/*width: 250px;*/
+	height: 50px;
+	overflow: auto; 
+	vertical-align: top;
+}
+
+
+
+.property-list .fieldcontain {
+	list-style: none;
+	/*overflow: hidden;*/
+	/*zoom: 1;*/
+}
+/*
+
+.fieldcontain {
+	margin-top: 1em;
+}
+
+.fieldcontain2 {
+	margin-top: 1em;
+}
+
+.fieldcontain label,
+.fieldcontain .property-label {
+	color: #666666;
+	text-align: right;
+	width: 30%;
+}
+
+.fieldcontain .property-label {
+	float: left;
+}
+
+.fieldcontain .property-value {
+	display: block;
+	margin-left: 27%;
+}
+
+.fieldcontain2 label,
+.fieldcontain2 .property-label {
+	color: #666666;
+	text-align: right;
+	width: 65%;
+}
+
+.fieldcontain2 .property-label {
+	float: left;
+}
+
+.fieldcontain2 .property-value {
+	display: block;
+	margin-left: 27%;
+}
+
+label {
+	cursor: pointer;
+	display: inline-block;
+	margin: 0 0.25em 0 0;
+}
+
+input, select, textarea {
+	background-color: #fcfcfc;
+	border: 1px solid #cccccc;
+	font-size: 1em;
+	padding: 0.2em 0.4em;
+}
+
+
+
+input[type=checkbox], input[type=radio] {
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+}
+
+input:focus, select:focus, textarea:focus {
+	background-color: #ffffff;
+	border: 1px solid #eeeeee;
+	outline: 0;
+	   -moz-box-shadow: 0 0 0.5em #ffffff;
+	-webkit-box-shadow: 0 0 0.5em #ffffff;
+	        box-shadow: 0 0 0.5em #ffffff;
+}
+
+*/
+
+/* TABLES */
+
+.no-style {
+	all: unset;
+    
+     }
+
+.tblForm {
+	/*border-top: 1px solid #DFDFDF;
+	border-collapse: collapse;*/
+	width: 100%;
+	margin-bottom: 1em;
+	color:red;
+	border:solid;
+}

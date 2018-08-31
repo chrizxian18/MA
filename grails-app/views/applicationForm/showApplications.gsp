@@ -15,10 +15,11 @@
 			<thead>
 					<tr>
 						
+						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Merchant Name')}" />
+						<g:sortableColumn property="status" title="${message(code: 'applicationForm.status.label', default: 'Status')}" />
 						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Date Applied')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'applicationForm.lastUpdated.label', default: 'Last Updated')}" />
-						<g:sortableColumn property="status" title="${message(code: 'applicationForm.status.label', default: 'Status')}" />
 					
 						
 					</tr>
@@ -27,9 +28,10 @@
 				<g:each in="${applicationFormInstanceList}" status="i" var="applicationFormInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="viewSelectedApplication" id="${applicationFormInstance.id}">${fieldValue(bean: applicationFormInstance, field: "dateApplied")}</g:link></td>
-						<td><p>${fieldValue(bean: applicationFormInstance, field: "lastUpdated")}</p></td>
+						<td><g:link action="viewSelectedApplication" id="${applicationFormInstance.id}">${fieldValue(bean: applicationFormInstance, field: "merchantName")}</g:link></td>
 						<td><p>${fieldValue(bean: applicationFormInstance, field: "status")}</p></td>
+						<td>${fieldValue(bean: applicationFormInstance, field: "dateApplied")}</td>
+						<td><p>${fieldValue(bean: applicationFormInstance, field: "lastUpdated")}</p></td>
 					
 					
 						

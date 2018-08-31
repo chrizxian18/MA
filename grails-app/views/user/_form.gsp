@@ -16,7 +16,8 @@
 		<g:message code="user.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField name="password" required="" value="${userInstance?.password}"/>
+	<g:passwordField id="password" name="password" required="" value="${userInstance?.password}"/>
+	 <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
 
 <div class="fieldcontain">
@@ -24,8 +25,8 @@
 		Confirm Pasword
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField name="confirmPassword" required=""/>
-
+	<g:passwordField id="confirmPassword" name="confirmPassword" required=""/>
+	<span toggle="#confirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">

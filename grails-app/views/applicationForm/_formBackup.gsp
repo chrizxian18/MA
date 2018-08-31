@@ -1,33 +1,6 @@
 <%@ page import="merchantacquisition.ApplicationForm" %>
 
 
-
-
-<div class="sConnect">
-	<div>
-		<p>7-Connect Model:</p>
-		<p>&nbsp;</p>
-		<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
-			<label for="sConnectWebIntegration">
-				<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
-				
-			</label>
-			<g:checkBox name="sConnectWebIntegration" value="${applicationFormInstance?.sConnectWebIntegration}" />
-
-		</div>
-
-		<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'cliqq', 'error')} ">
-			<label for="cliqq">
-				<g:message code="applicationForm.cliqq.label" default="Cliqq" />
-				
-			</label>
-			<g:checkBox name="cliqq" value="${applicationFormInstance?.cliqq}" />
-
-		</div>
-
-	</div>
-</div>
-	
 		
 		<div class="cType">
 			<p>Cliqq Type:</p>
@@ -77,9 +50,37 @@
 			</div>
 		</div>
 
+<div class="sConnect">
+	<div style="margin-left:8px;">
+			<p>7-Connect Model:</p>
+			<p>&nbsp;</p>
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
+				<label for="sConnectWebIntegration">
+					<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
+					
+				</label>
+				<g:checkBox name="sConnectWebIntegration" value="${applicationFormInstance?.sConnectWebIntegration}" />
 
+			</div>
+
+			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'cliqq', 'error')} ">
+				<label for="cliqq">
+					<g:message code="applicationForm.cliqq.label" default="Cliqq" />
+					
+				</label>
+				<g:checkBox name="cliqq" value="${applicationFormInstance?.cliqq}" />
+
+			</div>
+
+			%{-- <div><h1></h1></div> --}%
+			</div>
+		</div>
+	
 
 	
+
+%{-- <div><h1></h1></div> --}%
+%{-- <div><h1></h1></div> --}%
 
 <div class="formCenter">
 	<h1></h1>
@@ -182,6 +183,7 @@
 		<g:message code="applicationForm.modeOfPayment.label" default="Mode of Payment" />
 		<span class="required-indicator">*</span>
 	</label>
+	%{-- <g:textField style="color:black;" name="modeOfPayment" required="" value="${applicationFormInstance?.modeOfPayment}"/> --}%
 	<g:select from="['Cash', 'Check', 'Card']" name="modeOfPayment"  value="${applicationFormInstance?.modeOfPayment}" noSelection="['':'-Choose mode of Payment-']" required="required"/>
 
 </div>
@@ -238,7 +240,7 @@
 		<g:message code="applicationForm.moaSignatory.label" default="Name of MOA Signatory/Position" />
 		
 	</label>
-	<g:textField style="color:black;" name="moaSignatory" value="${applicationFormInstance?.moaSignatory}"/>
+	<g:textArea name="moaSignatory" value="${applicationFormInstance?.moaSignatory}"/>
 
 </div>
 
