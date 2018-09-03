@@ -32,7 +32,7 @@
 
 		<div><h1></h1></div>
 
-			<p>7-Connect Model:</p>
+			<p style="margin-left:3%;">7-Connect Model:</p>
 		<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
 			<label for="sConnectWebIntegration">
 				<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
@@ -53,7 +53,7 @@
 
 		<div><h1></h1></div>
 
-			<p>Cliqq Type:</p>
+			<p style="margin-left:3%;">Cliqq Type:</p>
 		<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'billsPayment', 'error')} ">
 			<label for="billsPayment">
 				<g:message code="applicationForm.billsPayment.label" default="Bills Payment" />
@@ -208,7 +208,7 @@
 		</div>
 
 		<div><h1></h1></div>
-		<p>Bank Details:</p>
+		<p style="margin-left:3%;">Bank Details:</p>
 
 		<div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'bankName', 'error')} ">
 			<label for="bankName">
@@ -310,7 +310,7 @@
 
 
 		<h1>&nbsp;</h1>
-		<p>Legal Requirements:</p>
+		<p style="margin-left:3%;">Legal Requirements:</p>
 		<g:if test="${applicationFormInstance?.appFormFiles.birCorFullPath}">
 		<li class="fieldcontain">
 			<label id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></label>

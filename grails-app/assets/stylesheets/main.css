@@ -687,13 +687,14 @@ a.skip {
 	/*position:absolute;*/
 	float:left;
 	/*background-color: blue;*/
-	margin-left:3%;
+	margin-left:4%;
 	/*width: 32%;*/
 	border:solid;
 	border-width: thin;
+	border-color: #B0A8A8;
 	padding:3%;
 	width:330px;
-	height:175px;
+	height:180px;
 
 }
 
@@ -701,13 +702,14 @@ a.skip {
 	/*position:absolute;*/
 	float:left;
 	/*background-color: pink;*/
-	margin-left:5%;
+	margin-left:4%;
 	/*margin-top:5%;*/
 	border:solid;
 	border-width: thin;
+	border-color: #B0A8A8;
 	padding:3%;
 	width:330px;
-	height:175px;
+	height:180px;
 }
 
 .formCenter {

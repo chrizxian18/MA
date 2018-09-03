@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Merchant Acquisition</title>
+    <link rel="shortcut icon" href="${assetPath(src: 'favicon2.ico')}" type="image/x-icon">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'myStyle.css')}" type="text/css">
 
   </head>

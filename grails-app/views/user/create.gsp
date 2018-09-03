@@ -3,6 +3,7 @@
 	<head>
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<link rel="shortcut icon" href="${assetPath(src: 'favicon2.ico')}" type="image/x-icon">
 		<asset:stylesheet src="main.css"/>
 		<asset:javascript src="application.js"/>
 		<script>

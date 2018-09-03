@@ -115,7 +115,7 @@
 			<g:form controller="applicationForm" enctype="multipart/form-data" method="post" >
 				<fieldset class="form">
 					<g:render template="form"/>
-					<div style="margin-left:5%;">
+					<div>
 					<span id="formFilesCorporation" class="hide">
 						<g:render template="formFilesCorporation"/>
 					</span>

@@ -128,7 +128,7 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 					%{-- <g:render template="formFilesEdit"/> --}%
-					<div style="margin-left:5%;">
+					<div>
 						<span id="formFilesSingleProprietorship" >
 							<g:render template="formFilesEditSingleProprietorship"/>
 						</span>

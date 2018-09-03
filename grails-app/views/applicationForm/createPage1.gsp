@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title></title>
+		<title>Application Form</title>
 		<style type="text/css">
 			li {
 				margin-bottom: 2%;

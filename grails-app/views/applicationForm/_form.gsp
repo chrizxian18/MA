@@ -6,7 +6,6 @@
 <div class="sConnect">
 	<div>
 		<p>7-Connect Model:</p>
-		<p>&nbsp;</p>
 		<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'sConnectWebIntegration', 'error')} ">
 			<label for="sConnectWebIntegration">
 				<g:message code="applicationForm.sConnectWebIntegration.label" default="7-Connect Web Integration" />
@@ -137,7 +136,7 @@
 		<g:message code="applicationForm.noOfSubscribers.label" default="No Of Subscribers" />
 		
 	</label>
-	<g:field name="noOfSubscribers" type="number" value="${applicationFormInstance.noOfSubscribers}"/>
+	<g:field style="color:black" name="noOfSubscribers" type="number" value="${applicationFormInstance.noOfSubscribers}"/>
 
 </div>
 
@@ -173,7 +172,7 @@
 		<g:message code="applicationForm.commissionFee.label" default="Commission Fee" />
 		
 	</label>
-	<g:field name="commissionFee" value="${fieldValue(bean: applicationFormInstance, field: 'commissionFee')}"/>
+	<g:field style="color:black" name="commissionFee" value="${fieldValue(bean: applicationFormInstance, field: 'commissionFee')}"/>
 
 </div>
 
@@ -216,7 +215,7 @@
 		<g:message code="applicationForm.accountNumber.label" default="Account Number" />
 		
 	</label>
-	<g:field name="accountNumber" type="number" value="${applicationFormInstance.accountNumber}"/>
+	<g:field style="color:black" name="accountNumber" type="number" value="${applicationFormInstance.accountNumber}"/>
 
 </div>
 
