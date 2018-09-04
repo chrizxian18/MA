@@ -30,9 +30,9 @@
 			</g:hasErrors>
 			<g:form controller="applicationForm" enctype="multipart/form-data" method="post" >
 				<fieldset class="form">
-					<h2>Please read carefully</h2>
+					<h3>Please read carefully</h3>
 					<br>
-					<h3><em>Connect Commercial Terms</em></h3>
+					<h4><em>Connect Commercial Terms</em></h4>
 					<br>
 					<p>Please see below details and attached draft MOA for your inquiry on 7-Connect. </p>
 					<br>
@@ -43,7 +43,7 @@
 					</ul>
 				</div>
 
-					<h3><em>Important Reminders</em></h3>
+					<h4><em>Important Reminders</em></h4>
 				<br>
 				<div style="margin-left: 5%;">
 					<ul>

@@ -39,7 +39,7 @@
 				</g:each>
 				</tbody>
 			</table>
-			<div class="pagination">
+			<div class="pagination2">
 				<g:paginate total="${appFormInstanceCount ?: 0}" />
 			</div>
 		</div>

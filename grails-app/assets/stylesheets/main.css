@@ -2,6 +2,8 @@
 /*https://material.io/tools/icons/?style=round*/
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons); 
 @import url(https://use.fontawesome.com/releases/v5.3.1/css/all.css);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
+
 
 body,
 input, select, textarea {
@@ -121,7 +123,7 @@ img {
 	font-size: 0.8em;
 	margin-top: 1.5em;
 	padding: 1em;
-	min-height: 4em;
+	min-height: 6em;
 }
 
 .footer a {
@@ -307,10 +309,10 @@ input:focus, select:focus, textarea:focus {
 	   -moz-box-shadow: 0 0 0.5em #ffffff;
 	-webkit-box-shadow: 0 0 0.5em #ffffff;
 	        box-shadow: 0 0 0.5em #ffffff;
-}*/
+}
 
 .required-indicator {
-	color: #48802C;
+	color: #FF0000;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -506,9 +508,9 @@ th:hover, tr:hover {
 	/*background: #E1F2B6;*/
 }
 
-/* PAGINATION */
+/* PAGINATION2 */
 
-.pagination {
+.pagination2 {
 	border-top: 0;
 	margin: 0;
 	padding: 0.3em 0.2em;
@@ -519,8 +521,8 @@ th:hover, tr:hover {
 	background-color: #EFEFEF;
 }
 
-.pagination a,
-.pagination .currentStep {
+.pagination2 a,
+.pagination2 .currentStep {
 	color: #666666;
 	display: inline-block;
 	margin: 0 0.1em;
@@ -531,16 +533,16 @@ th:hover, tr:hover {
 	        border-radius: 0.3em;
 }
 
-.pagination a:hover, .pagination a:focus,
-.pagination .currentStep {
+.pagination2 a:hover, .pagination2 a:focus,
+.pagination2 .currentStep {
 	background-color: #999999;
 	color: #ffffff;
 	outline: none;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-.no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
-.no-borderradius .pagination .currentStep {
+.no-borderradius .pagination2 a:hover, .no-borderradius .pagination2 a:focus,
+.no-borderradius .pagination2 .currentStep {
 	background-color: transparent;
 	color: #444444;
 	text-decoration: underline;
@@ -622,7 +624,7 @@ a.skip {
 	left: -9999px;
 }
 
-/*added for tooltip*/
+/*added for mytooltip*/
 .property-list .containtooltip {
 	list-style: none;
 	/*overflow: hidden;*/
@@ -649,13 +651,13 @@ a.skip {
 	margin-left: 27%;
 }
 
- .tooltip {
+ .mytooltip {
     position: relative;
     display: inline-block;
     /*border-bottom: 1px dotted black;*/
 }
 
- .tooltip .tooltiptext {
+ .mytooltip .tooltiptext {
     visibility: hidden;
     width: 100%;
     background-color: black;
@@ -664,7 +666,7 @@ a.skip {
     border-radius: 6px;
     padding: 5px 0;
     
-    /* Position the tooltip */
+    /* Position the mytooltip */
     position: absolute;
     z-index: 1;
     bottom: 100%;
@@ -672,31 +674,31 @@ a.skip {
     margin-left: -60px;
     }
 
- .tooltip:hover .tooltiptext {
+ .mytooltip:hover .tooltiptext {
     visibility: visible;
 }
 
-.hide {
+.hideMe {
 	  display: none;
 }
 
 
 
 
-.cType {
+/*.cType {*/
 	/*position:absolute;*/
-	float:left;
+	/*float:left;*/
 	/*background-color: blue;*/
-	margin-left:4%;
+	/*margin-left:4%;*/
 	/*width: 32%;*/
-	border:solid;
-	border-width: thin;
-	border-color: #B0A8A8;
-	padding:3%;
-	width:330px;
-	height:180px;
+	/*border:solid;*/
+	/*border-width: thin;*/
+	/*border-color: #B0A8A8;*/
+	/*padding:3%;*/
+	/*width:330px;*/
+	/*height:180px;*/
 
-}
+/*}*/
 
 .sConnect {
 	/*position:absolute;*/
@@ -704,20 +706,20 @@ a.skip {
 	/*background-color: pink;*/
 	margin-left:4%;
 	/*margin-top:5%;*/
-	border:solid;
+	/*border:solid;
 	border-width: thin;
-	border-color: #B0A8A8;
+	border-color: #B0A8A8;*/
 	padding:3%;
 	width:330px;
-	height:180px;
+	/*height:100%;*/
 }
 
 .formCenter {
 	/*position:absolute;*/
 	/*background-color: yellow;*/
-	margin-top:30%;
+	/*margin-top:30%;*/
 	/*margin-left:5%;*/
-	/*clear:both;*/
+	clear:both;
 }
 
 select {
@@ -818,14 +820,12 @@ input:focus, select:focus, textarea:focus {
 
 /* TABLES */
 
-.no-style {
+/*.no-style {
 	all: unset;
     
      }
 
 .tblForm {
-	/*border-top: 1px solid #DFDFDF;
-	border-collapse: collapse;*/
 	width: 100%;
 	margin-bottom: 1em;
 	color:red;

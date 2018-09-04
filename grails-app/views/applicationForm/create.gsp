@@ -26,36 +26,51 @@
 		<script>
 
 			function corpo(){
-			document.getElementById('formFilesCorporation').style.display ='block';
-		  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+				document.getElementById('formFilesCorporation').style.display ='block';
+			  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
 
-		  	document.getElementById('secCertFullPath').required = true;
-		  	document.getElementById('gisFullPath').required = true;
-		  	document.getElementById('articleFullPath').required = true;
-		  	document.getElementById('byLawFullPath').required = true;
-		  	document.getElementById('finStateFullPath').required = true;
+			  	document.getElementById('secCertFullPath').required = true;
+			  	document.getElementById('gisFullPath').required = true;
+			  	document.getElementById('articleFullPath').required = true;
+			  	document.getElementById('byLawFullPath').required = true;
+			  	document.getElementById('finStateFullPath').required = true;
 
-		  	document.getElementById('birCorFullPath').required = false;
-		  	document.getElementById('dtiCertFullPath').required = false;
-		  	document.getElementById('bizPermFullPath').required = false;
-		  	document.getElementById('govIdFullPath').required = false;
+			  	document.getElementById('birCorFullPath').required = false;
+			  	document.getElementById('dtiCertFullPath').required = false;
+			  	document.getElementById('bizPermFullPath').required = false;
+			  	document.getElementById('govIdFullPath').required = false;
 
 			}
 
 			function singlePro(){
-		  	document.getElementById('formFilesCorporation').style.display = 'none';
-		  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
-		  	document.getElementById('secCertFullPath').required = false;
-		  	document.getElementById('gisFullPath').required = false;
-		  	document.getElementById('articleFullPath').required = false;
-		  	document.getElementById('byLawFullPath').required = false;
-		  	document.getElementById('finStateFullPath').required = false;
+			  	document.getElementById('formFilesCorporation').style.display = 'none';
+			  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
+			  	document.getElementById('secCertFullPath').required = false;
+			  	document.getElementById('gisFullPath').required = false;
+			  	document.getElementById('articleFullPath').required = false;
+			  	document.getElementById('byLawFullPath').required = false;
+			  	document.getElementById('finStateFullPath').required = false;
 
-		  	document.getElementById('birCorFullPath').required = true;
-		  	document.getElementById('dtiCertFullPath').required = true;
-		  	document.getElementById('bizPermFullPath').required = true;
-		  	document.getElementById('govIdFullPath').required = true;
+			  	document.getElementById('birCorFullPath').required = true;
+			  	document.getElementById('dtiCertFullPath').required = true;
+			  	document.getElementById('bizPermFullPath').required = true;
+			  	document.getElementById('govIdFullPath').required = true;
 				}
+
+			function cliqqType() {
+				var x = document.getElementById('cliqqType')
+				if (x.style.display=="none") {
+					x.style.display="block"
+					
+				}
+				else {x.style.display="none"
+					document.getElementById('billsPayment').checked = false;
+					document.getElementById('eload').checked = false;
+					document.getElementById('ePins').checked = false;
+					document.getElementById('eMoney').checked = false;
+					document.getElementById('remittance').checked = false;
+				}	
+			}
 		</script>
 		<style type="text/css">
 		
@@ -64,6 +79,10 @@
 		opacity */
 		[type=file] {
 		    position: absolute;
+		    margin-top: -4%;
+		    margin-left:28%;
+		    float: left;
+		    z-index: 1;
 		    /*filter: alpha(opacity=0);*/
 		    opacity: 0;
 		}
@@ -78,7 +97,7 @@
 			  /*margin: 0;*/
 			  /*left: 0;*/
 			  color:gray;
-			  position: relative;
+			  /*position: relative;*/
 		}
 		[type=file] + label {
 			  text-align: center;
@@ -116,10 +135,10 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 					<div>
-					<span id="formFilesCorporation" class="hide">
+					<span id="formFilesCorporation" class="hideMe">
 						<g:render template="formFilesCorporation"/>
 					</span>
-					<span id="formFilesSingleProprietorship" class="hide">
+					<span id="formFilesSingleProprietorship" class="hideMe">
 						<g:render template="formFilesSingleProprietorship"/>
 					</span>
 					</div>

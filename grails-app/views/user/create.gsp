@@ -20,7 +20,24 @@
 			  }
 			});
 
-		});	
+		
+
+		 $('input.number').keyup(function(){
+        if (
+            ($(this).val().length > 0) && ($(this).val().substr(0,3) != '+63')
+            || ($(this).val() == '')
+            ){
+            $(this).val('+63');    
+        }
+    });
+
+        function isNumber(e){
+          e = e || window.event;
+          var charCode = e.which ? e.which : e.keyCode;
+          return /\d/.test(String.fromCharCode(charCode));
+        }
+
+        });	
         </script>
 
         <style type="text/css">

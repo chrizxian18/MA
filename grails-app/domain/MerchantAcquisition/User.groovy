@@ -54,7 +54,7 @@ class User implements Serializable {
 		password blank: false
 		email(email:true, nullable:true, unique: true)
 	    telephone(nullable:true)
-	    mobileNo(nullable:true, maxSize:11)
+	    mobileNo(nullable:true, maxSize:13)
 	    confirmCode(nullable:true)
 	    dateCreated(nullable:true)
 	}

@@ -20,22 +20,18 @@
 				<g:message code="applicationForm.cliqq.label" default="Cliqq" />
 				
 			</label>
-			<g:checkBox name="cliqq" value="${applicationFormInstance?.cliqq}" />
+			<g:checkBox onclick="cliqqType()" name="cliqq" value="${applicationFormInstance?.cliqq}" />
 
 		</div>
 
-	</div>
-</div>
-	
-		
-		<div class="cType">
-			<p>Cliqq Type:</p>
+		<div style="display:none;" id="cliqqType">
+			<p style="margin-left: 12%;">Cliqq Type:</p>
 			<div class="fieldcontain2 ${hasErrors(bean: applicationFormInstance, field: 'billsPayment', 'error')} ">
 				<label for="billsPayment">
 					<g:message code="applicationForm.billsPayment.label" default="Bills Payment" />
 					
 				</label>
-				<g:checkBox name="billsPayment" value="${applicationFormInstance?.billsPayment}" />
+				<g:checkBox name="billsPayment" id="billsPayment" value="${applicationFormInstance?.billsPayment}" />
 
 			</div>
 
@@ -44,7 +40,7 @@
 					<g:message code="applicationForm.eload.label" default="Load" />
 					
 				</label>
-				<g:checkBox name="eload" value="${applicationFormInstance?.eload}" />
+				<g:checkBox name="eload" id="eload" value="${applicationFormInstance?.eload}" />
 
 			</div>
 
@@ -53,7 +49,7 @@
 					<g:message code="applicationForm.ePins.label" default="E-Pins" />
 					
 				</label>
-				<g:checkBox name="ePins" value="${applicationFormInstance?.ePins}" />
+				<g:checkBox name="ePins" id="ePins" value="${applicationFormInstance?.ePins}" />
 
 			</div>
 
@@ -62,7 +58,7 @@
 					<g:message code="applicationForm.eMoney.label" default="E-Money/E-Wallet" />
 					
 				</label>
-				<g:checkBox name="eMoney" value="${applicationFormInstance?.eMoney}" />
+				<g:checkBox name="eMoney" id="eMoney" value="${applicationFormInstance?.eMoney}" />
 
 			</div>
 
@@ -71,10 +67,16 @@
 					<g:message code="applicationForm.remittance.label" default="Remittance" />
 					
 				</label>
-				<g:checkBox name="remittance" value="${applicationFormInstance?.remittance}" />
+				<g:checkBox name="remittance" id="remittance" value="${applicationFormInstance?.remittance}" />
 
 			</div>
 		</div>
+
+	</div>
+</div>
+	
+		
+		
 
 
 
@@ -101,7 +103,7 @@
 	<label for="Corporation">
 	<g:message code="applicationForm.companyType.label" default="Corporation"/>
 </label>
-	<g:radio onclick="corpo();" name="companyType" required="" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
+	<g:radio onclick="corpo();" name="companyType" id="Corporation" required="" value="Corporation" checked="${applicationFormInstance?.companyType == 'Corporation'}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: applicationFormInstance, field: 'companyAddress', 'error')} required">

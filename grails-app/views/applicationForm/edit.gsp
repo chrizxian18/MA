@@ -21,12 +21,21 @@
 			  }
 			});
 
+			var click = document.getElementById('cliqq')
+			if (click.checked == true) {
+				document.getElementById('cliqqType').style.display = 'block';
+			}
 
+			var compType = document.getElementById('Corporation')
+			if (compType.checked == true) {
+				document.getElementById('cliqqType').style.display = 'block';
+			}
 
 		});
 		</script>
 		<script>
 
+		
 			function corpo(){
 			document.getElementById('formFilesCorporation').style.display ='block';
 		  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
@@ -58,7 +67,28 @@
 		  	document.getElementById('bizPermFullPath').required = true;
 		  	document.getElementById('govIdFullPath').required = true;
 				}
-		</script>
+
+			function goBack(){
+				history.back();
+			}
+
+			function cliqqType() {
+				var x = document.getElementById('cliqqType')
+				if (x.style.display=="none") {
+					x.style.display="block"
+					
+				}
+				else {x.style.display="none"
+					document.getElementById('billsPayment').checked = false;
+					document.getElementById('eload').checked = false;
+					document.getElementById('ePins').checked = false;
+					document.getElementById('eMoney').checked = false;
+					document.getElementById('remittance').checked = false;
+				}	
+			}
+
+			</script>
+		
 		<style type="text/css">
 		
 
@@ -66,6 +96,10 @@
 		opacity */
 		[type=file] {
 		    position: absolute;
+		    margin-top: -4%;
+		    margin-left:28%;
+		    float: left;
+		    z-index: 1;
 		    /*filter: alpha(opacity=0);*/
 		    opacity: 0;
 		}
@@ -80,7 +114,7 @@
 			  /*margin: 0;*/
 			  /*left: 0;*/
 			  color:gray;
-			  position: relative;
+			  /*position: relative;*/
 		}
 		[type=file] + label {
 			  text-align: center;
@@ -100,7 +134,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="testcliqqType()">
 		
 		<a href="#edit-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
@@ -126,6 +160,7 @@
 				</fieldset> --}%
 
 				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
+
 				<fieldset class="form">
 					<g:render template="form"/>
 					%{-- <g:render template="formFilesEdit"/> --}%
@@ -134,15 +169,38 @@
 							<g:render template="formFilesEditSingleProprietorship"/>
 						</span>
 
-						<span id="formFilesCorporation">
+						<span id="formFilesCorporation" >
 							<g:render template="formFilesEditCorporation"/>
 						</span>
 					</div>
+
 
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />
 					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
+					<input type="button" data-toggle="modal" data-target="#cancelEdit" value="Cancel">
+
+				  <!-- Modal -->
+				  <div class="modal fade" id="cancelEdit" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <i class="material-icons"  style="color:#FF5C14; margin-left: 43%; font-size:50px;">warning</i><h2 class="modal-title" style="margin-left: 33%; height: 50px; color:#D9534F">Cancel Edit! </h2>
+				        </div>
+				        <div class="modal-body">
+				          <p style="text-align: center;">Are you sure that you want to cancel? All of your changes will not be saved!</p>
+				        </div>
+				        <div class="modal-footer" style="text-align: center;">
+				          <button type="button" class="btn btn-danger"  onclick="goBack()" data-dismiss="modal">Yes</button>
+				          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+				        </div>
+				      </div>
+
+					
 				</fieldset>
 			</g:form>
 			

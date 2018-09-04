@@ -658,5 +658,13 @@ class ApplicationFormController {
         }
     }
 
+    // def myAccount(Integer max) {
+    //     User user = authenticatedUser
+    //      params.max = Math.min(max ?: 10, 100)
+
+    //     respond ApplicationForm.findAllByDraftsAndCreatedByAndStatusNotEqual(false, authenticatedUser, "Withdrawn"), model:[applicationFormInstanceCount: ApplicationForm.count(), username:user.username]
+
+    // }
+
 
 }

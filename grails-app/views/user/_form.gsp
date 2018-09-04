@@ -43,7 +43,7 @@
 		<g:message code="user.telephone.label" default="Telephone" />
 		
 	</label>
-	<input type="text" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="telephone" value="${userInstance?.telephone}"/>
+	<input type="tel" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="telephone" value="${userInstance?.telephone}"/>
 
 </div>
 
@@ -52,9 +52,11 @@
 		<g:message code="user.mobileNo.label" default="Mobile No" />
 		
 	</label>
-	<input type="text" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="mobileNo" value="${userInstance?.mobileNo}"/>
+	<input class="number" type="tel" minlength="13" maxlength="13" pattern="[+]{1}[6]{1}[3]{1}[0-9]{10}" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));" name="mobileNo" value="+639"/>
+
 
 </div>
+
 
 %{-- <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
 	<label for="accountExpired">
