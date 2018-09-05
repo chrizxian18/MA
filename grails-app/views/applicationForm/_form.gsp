@@ -99,7 +99,7 @@
 <label for="Single Proprietorship">
 	<g:message code="applicationForm.companyType.label" default="Single Proprietorship" />
 	</label>
-	<g:radio onclick="singlePro();" id="companyType" required="" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
+	<g:radio onclick="singlePro();" id="singleProprietorship" required="" name="companyType" value="Single Proprietorship" checked="${applicationFormInstance?.companyType == 'Single Proprietorship'}"/>
 	<label for="Corporation">
 	<g:message code="applicationForm.companyType.label" default="Corporation"/>
 </label>

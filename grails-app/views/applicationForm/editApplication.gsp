@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
+		<meta name="layout" content="main">
+		<asset:javascript src="application.js"/>
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 		<script>
 		$(document).ready(function(){
@@ -20,46 +21,109 @@
 			  }
 			});
 
-		var click = document.getElementById('cliqq')
+			var click = document.getElementById('cliqq')
 			if (click.checked == true) {
 				document.getElementById('cliqqType').style.display = 'block';
+			}
+
+			var ctCorporation = document.getElementById('Corporation')
+			if (ctCorporation.checked == true) {
+				// document.getElementById('cliqqType').style.display = 'block';
+				document.getElementById('formFilesEditCorporation').style.display ='block';
+		  	document.getElementById('formFilesCorporation').style.display ='none';
+		  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+		  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
+			}
+
+			var ctsingleProprietorship = document.getElementById('singleProprietorship')
+			if (ctsingleProprietorship.checked == true) {
+				// document.getElementById('cliqqType').style.display = 'block';
+				document.getElementById('formFilesEditCorporation').style.display ='none';
+		  	document.getElementById('formFilesCorporation').style.display ='none';
+		  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+		  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'block';
 			}
 
 		});
 		</script>
 		<script>
 
+		
 			function corpo(){
-				document.getElementById('formFilesCorporation').style.display ='block';
-			  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+				if (document.getElementById('lbl_gisFullPath')) {
+					document.getElementById('formFilesEditCorporation').style.display ='block';
+				  	document.getElementById('formFilesCorporation').style.display ='none';
+				  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+				  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
 
-			  	document.getElementById('secCertFullPath').required = true;
-			  	document.getElementById('gisFullPath').required = true;
-			  	document.getElementById('articleFullPath').required = true;
-			  	document.getElementById('byLawFullPath').required = true;
-			  	document.getElementById('finStateFullPath').required = true;
+				  	document.getElementById('secCertFullPath').required = false;
+				  	document.getElementById('gisFullPath').required = false;
+				  	document.getElementById('articleFullPath').required = false;	
+				  	document.getElementById('byLawFullPath').required = false;
+				  	document.getElementById('finStateFullPath').required = false;
+				  	document.getElementById('birCorFullPath').required = false;
+				  	document.getElementById('dtiCertFullPath').required = false;
+				  	document.getElementById('bizPermFullPath').required = false;
+				  	document.getElementById('govIdFullPath').required = false;
+				}else{
+					document.getElementById('formFilesCorporation').style.display ='block';
+				  	document.getElementById('formFilesEditCorporation').style.display ='none';
+				  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+				  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
 
-			  	document.getElementById('birCorFullPath').required = false;
-			  	document.getElementById('dtiCertFullPath').required = false;
-			  	document.getElementById('bizPermFullPath').required = false;
-			  	document.getElementById('govIdFullPath').required = false;
+				  	document.getElementById('secCertFullPath').required = true;
+				  	document.getElementById('gisFullPath').required = true;
+				  	document.getElementById('articleFullPath').required = true;	
+				  	document.getElementById('byLawFullPath').required = true;
+				  	document.getElementById('finStateFullPath').required = true;
+				  	document.getElementById('birCorFullPath').required = false;
+				  	document.getElementById('dtiCertFullPath').required = false;
+				  	document.getElementById('bizPermFullPath').required = false;
+				  	document.getElementById('govIdFullPath').required = false;
+		  		}
+
 
 			}
 
 			function singlePro(){
-			  	document.getElementById('formFilesCorporation').style.display = 'none';
-			  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
-			  	document.getElementById('secCertFullPath').required = false;
-			  	document.getElementById('gisFullPath').required = false;
-			  	document.getElementById('articleFullPath').required = false;
-			  	document.getElementById('byLawFullPath').required = false;
-			  	document.getElementById('finStateFullPath').required = false;
+				
+				if (document.getElementById('lbl_birCorFullPath')) {
+				  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'block';
+				  	document.getElementById('formFilesSingleProprietorship').style.display = 'none';
+				  	document.getElementById('formFilesCorporation').style.display ='none';
+					document.getElementById('formFilesEditCorporation').style.display ='none';
+					
+					document.getElementById('secCertFullPath').required = false;
+				  	document.getElementById('gisFullPath').required = false;
+				  	document.getElementById('articleFullPath').required = false;	
+				  	document.getElementById('byLawFullPath').required = false;
+				  	document.getElementById('finStateFullPath').required = false;
+				  	document.getElementById('birCorFullPath').required = false;
+				  	document.getElementById('dtiCertFullPath').required = false;
+				  	document.getElementById('bizPermFullPath').required = false;
+				  	document.getElementById('govIdFullPath').required = false;		
+				}else{
+				  	document.getElementById('formFilesSingleProprietorship').style.display = 'block';
+					document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
+				  	document.getElementById('formFilesCorporation').style.display ='none';
+					document.getElementById('formFilesEditCorporation').style.display ='none';
 
-			  	document.getElementById('birCorFullPath').required = true;
-			  	document.getElementById('dtiCertFullPath').required = true;
-			  	document.getElementById('bizPermFullPath').required = true;
-			  	document.getElementById('govIdFullPath').required = true;
-				}
+				  	document.getElementById('secCertFullPath').required = false;
+				  	document.getElementById('gisFullPath').required = false;
+				  	document.getElementById('articleFullPath').required = false;
+				  	document.getElementById('byLawFullPath').required = false;
+				  	document.getElementById('finStateFullPath').required = false;
+
+				  	document.getElementById('birCorFullPath').required = true;
+				  	document.getElementById('dtiCertFullPath').required = true;
+				  	document.getElementById('bizPermFullPath').required = true;
+				  	document.getElementById('govIdFullPath').required = true;
+			  	}
+			}
+
+			function goBack(){
+				history.back();
+			}
 
 			function cliqqType() {
 				var x = document.getElementById('cliqqType')
@@ -75,7 +139,9 @@
 					document.getElementById('remittance').checked = false;
 				}	
 			}
+
 		</script>
+		
 		<style type="text/css">
 		
 
@@ -83,6 +149,10 @@
 		opacity */
 		[type=file] {
 		    position: absolute;
+		    margin-top: -4%;
+		    margin-left:28%;
+		    float: left;
+		    /*z-index: 1;*/
 		    /*filter: alpha(opacity=0);*/
 		    opacity: 0;
 		}
@@ -97,7 +167,7 @@
 			  /*margin: 0;*/
 			  /*left: 0;*/
 			  color:gray;
-			  position: relative;
+			  /*position: relative;*/
 		}
 		[type=file] + label {
 			  text-align: center;
@@ -122,7 +192,7 @@
 		<a href="#edit-applicationForm" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
 		<div id="edit-applicationForm" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+			<h1>Edit Application Form</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -143,19 +213,31 @@
 				</fieldset> --}%
 
 				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
+
 				<fieldset class="form">
 					<g:render template="form"/>
 					%{-- <g:render template="formFilesEdit"/> --}%
 					<div>
-						<span id="formFilesSingleProprietorship" >
+						<span id="formFilesEditSingleProprietorship" >
 							<g:render template="formFilesEditSingleProprietorship"/>
 						</span>
 
-						<span id="formFilesCorporation" >
+						<span id="formFilesEditCorporation" >
 							<g:render template="formFilesEditCorporation"/>
 						</span>
 					</div>
+					%{-- if company type is changed --}%
+					<div>
+					<span id="formFilesCorporation" class="hideMe">
+						<g:render template="formFilesCorporation"/>
+					</span>
+					<span id="formFilesSingleProprietorship" class="hideMe">
+						<g:render template="formFilesSingleProprietorship"/>
+					</span>
+					</div>
+
 				</fieldset>
+
 				<fieldset class="buttons">
 					<g:actionSubmit action="saveAndSend" class="save" value="Resubmit" />
 				</fieldset>

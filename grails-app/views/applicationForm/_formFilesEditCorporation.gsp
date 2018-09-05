@@ -22,7 +22,7 @@
 		<span class="tooltiptext">Latest GIS;(certified true copy)</span>
 	</label>
 	<input type="file" name="gisFullPath" id="gisFullPath" />
-	<label class="mytooltip" for="gisFullPath">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</label>
+	<label class="mytooltip" id="lbl_gisFullPath" for="gisFullPath">${applicationFormInstance.appFormFiles.gisFullPath-grailsApplication.config.uploadFolder}</label>
 </div>
 </g:if>
 

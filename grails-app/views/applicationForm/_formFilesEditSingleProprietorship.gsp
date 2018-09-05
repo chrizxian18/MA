@@ -14,7 +14,7 @@
 		<g:message code="applicationForm.birCorFullPath.label" default="COR issued by BIR" />
 	</label>
 	<input type="file" name="birCorFullPath" id="birCorFullPath" placeholder=""/>
-	<label class="mytooltip" for="birCorFullPath">
+	<label class="mytooltip" id="lbl_birCorFullPath" for="birCorFullPath" >
 		${applicationFormInstance.appFormFiles.birCorFullPath-grailsApplication.config.uploadFolder}
 	</label>
 </div>
