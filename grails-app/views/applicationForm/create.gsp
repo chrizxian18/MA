@@ -82,7 +82,7 @@
 		    margin-top: -4%;
 		    margin-left:28%;
 		    float: left;
-		    /*z-index: 1;*/
+		    z-index: -1;
 		    /*filter: alpha(opacity=0);*/
 		    opacity: 0;
 		}
