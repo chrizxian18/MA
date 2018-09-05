@@ -8,7 +8,6 @@
 		<asset:javascript src="application.js"/>
 </head>
 <body>
-	<div class="container">
 		<div id="grailsLogo" role="banner" style="padding:2%; color:black;"><h1 style="color:black;">&nbsp;</h1></div>
 		
 		<div class="nav" role="navigation">
@@ -17,7 +16,7 @@
 			</ul>
 		</div>
     <h1>Registration</h1>
-     <div class="alert alert-success">
+     <div>
         ${message}
         <g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -25,6 +24,5 @@
      </div>
      <div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-    </div>
 </body>
 </html>

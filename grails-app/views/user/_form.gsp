@@ -7,7 +7,7 @@
 		<g:message code="user.username.label" default="Merchant Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="username" required="" value="${userInstance?.username}"/>
+	<g:textField minlength="2" title="Merchant Name should be at least 2 characters in length" name="username" required="" value="${userInstance?.username}"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="user.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField id="password" name="password" required="" value="${userInstance?.password}"/>
+	<input type="password" minlength="6" maxlength="20" title="Password should be at least 6 characters in length, must contain alphanumeric and special characters with at least one uppercase and one lowercase letter." pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{6,}$" id="password" name="password" required="" value="${userInstance?.password}"/>
 	 <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
 
@@ -25,7 +25,7 @@
 		Confirm Pasword
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField id="confirmPassword" name="confirmPassword" required=""/>
+	<input type="password" title="Confirm Password should be exactly the same as the Password" maxlength="20" id="confirmPassword" name="confirmPassword" required=""/>
 	<span toggle="#confirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
 

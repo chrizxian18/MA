@@ -48,7 +48,7 @@ class UserController {
            return
         }
 
-        if (params.username == params.password) {
+        if (params.username.equalsIgnoreCase(params.password)) {
             flash.error = "Error: Merchant Name should not be the same as the Password!"
            redirect(action: "create")
            log.info "mylog.error:username is same as password"
