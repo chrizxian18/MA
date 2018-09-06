@@ -12,7 +12,7 @@ import org.springframework.security.access.annotation.Secured
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class UserController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -20,6 +20,16 @@ class UserController {
     }
 
     def show(User userInstance) {
+        respond userInstance
+    }
+
+    def showUsers(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond User.list(params), model:[userInstanceCount: User.count()]
+
+    }
+
+    def viewSelected(User userInstance) {
         respond userInstance
     }
 
@@ -117,28 +127,28 @@ class UserController {
 
 
 
-    // @Transactional
-    // def update(User userInstance) {
-    //     if (userInstance == null) {
-    //         notFound()
-    //         return
-    //     }
+    @Transactional
+    def update(User userInstance) {
+        if (userInstance == null) {
+            notFound()
+            return
+        }
 
-    //     if (userInstance.hasErrors()) {
-    //         respond userInstance.errors, view:'edit'
-    //         return
-    //     }
+        if (userInstance.hasErrors()) {
+            respond userInstance.errors, view:'edit'
+            return
+        }
 
-    //     userInstance.save flush:true
+        userInstance.save flush:true
 
-    //     request.withFormat {
-    //         form multipartForm {
-    //             flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-    //             redirect userInstance
-    //         }
-    //         '*'{ respond userInstance, [status: OK] }
-    //     }
-    // }
+        request.withFormat {
+            form multipartForm {
+                flash.message = "Successfully updated User"
+                redirect (action:'showUsers')
+            }
+            '*'{ respond userInstance, [status: OK] }
+        }
+    }
 
     // @Transactional
     // def delete(User userInstance) {

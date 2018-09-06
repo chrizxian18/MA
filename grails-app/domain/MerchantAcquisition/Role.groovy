@@ -10,6 +10,11 @@ class Role implements Serializable {
 	private static final long serialVersionUID = 1
 
 	String authority
+	String description
+    Date dateCreated
+	User createdBy
+	Date lastUpdated
+	User updatedBy
 
 	Role(String authority) {
 		this()
@@ -17,7 +22,12 @@ class Role implements Serializable {
 	}
 
 	static constraints = {
-		authority blank: false, unique: true
+		authority (blank: false, unique: true)
+		description(nullable: true, blank: true, unique: true)
+        dateCreated(nullable: true)
+        createdBy(nullable: true)
+        lastUpdated(nullable: true)
+        updatedBy(nullable: true)
 	}
 
 	static mapping = {

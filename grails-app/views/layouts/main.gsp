@@ -28,6 +28,8 @@
 				<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
 				<li><a href="#"><g:message code="My Account"/></a></li>
 				<li><a href="#"><g:message code="Contact Us"/></a></li>
+				<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
+				<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
 				<li><g:link controller="logout"> Log Out</g:link></li>
 			</ul>
 		</div>
