@@ -404,11 +404,36 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${applicationFormInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					%{-- <g:link class="edit" action="edit" resource="${applicationFormInstance.appFormFiles}"><g:message code="default.button.edit.label" default="Edit" /></g:link> --}%
-					<g:actionSubmit action="delete" class="delete" value="Delete" />
 					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
+					%{-- <g:actionSubmit action="delete" class="delete" value="Delete" /> --}%
+					<button type="button" class="btn delete" data-toggle="modal" data-target="#mdlDelete"> Delete </button>
+
 				</fieldset>
 			</g:form>
+
+			<!-- Modal -->
+			<div class="modal fade" id="mdlDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			      	<i class="material-icons"  style="color:#FF5C14; margin-left: 45%; font-size:50px;">warning</i>
+			        <h2 class="modal-title" id="deleteModalLabel" style="margin-left: 28%; height: 50px; color:#D9534F">Delete Application!</h2>
+			      </div>
+			      <div class="modal-body">
+					<p style="text-align: center;">Are you sure that you want to delete this application?</p>        
+			      </div>
+			      <div class="modal-footer"  style="text-align: center;">
+			      	 <g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="POST" >
+			        %{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button> --}%
+			        %{-- <g:actionSubmit resource="${applicationFormInstance}" controller="applicationForm" action="delete" class="btn btn-danger" data-dismiss="modal" value="Delete" /> --}%
+			        <g:actionSubmit action="delete" class="btn btn-danger" value="Yes" />
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+			       </g:form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 		</div>
 	</body>
 </html>

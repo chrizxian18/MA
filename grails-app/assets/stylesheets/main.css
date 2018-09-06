@@ -611,6 +611,17 @@ th:hover, tr:hover {
 	background-image: url(../images/skin/database_delete.png);
 }
 
+.delete {
+	background-color:#EFEFEF;
+	color:#655D5D;
+}
+
+.delete:hover {
+	background-color:#999999;
+	color:white;
+	 /*text-shadow: .5px .5px #000000;*/
+}
+
 .buttons .edit {
 	background-image: url(../images/skin/database_edit.png);
 }

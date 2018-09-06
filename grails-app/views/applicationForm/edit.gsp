@@ -241,7 +241,7 @@
 				<fieldset class="buttons">
 					<g:actionSubmit action="updateDrafts" class="save" value="Save as Draft" />
 					<g:actionSubmit action="saveAndSend" class="save" value="Submit" />
-					<input type="button" data-toggle="modal" data-target="#cancelEdit" value="Cancel">
+					<input type="button" data-toggle="modal" data-target="#cancelEdit" value="Cancel" />
 
 				  <!-- Modal -->
 				  <div class="modal fade" id="cancelEdit" role="dialog">
@@ -250,8 +250,7 @@
 				      <!-- Modal content-->
 				      <div class="modal-content">
 				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <i class="material-icons"  style="color:#FF5C14; margin-left: 43%; font-size:50px;">warning</i><h2 class="modal-title" style="margin-left: 33%; height: 50px; color:#D9534F">Cancel Edit! </h2>
+				          <i class="material-icons" style="color:#FF5C14; margin-left: 43%; font-size:50px;">warning</i><h2 class="modal-title" style="margin-left: 33%; height: 50px; color:#D9534F">Cancel Edit! </h2>
 				        </div>
 				        <div class="modal-body">
 				          <p style="text-align: center;">Are you sure that you want to cancel? All of your changes will not be saved!</p>
@@ -261,6 +260,8 @@
 				          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 				        </div>
 				      </div>
+				  </div>
+				</div>
 
 					
 				</fieldset>
