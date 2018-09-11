@@ -63,6 +63,23 @@
 						</label>
 						<g:checkBox name="enabled" value="${userInstance?.enabled}"/>
 					</div>
+
+					%{-- <div class="fieldcontain" >
+
+							<g:select name="groups"
+							          from="${myGroups}"
+							          optionKey="id"
+							           />
+							</g:select>
+					</div> --}%
+
+					 <div class="fieldcontain">
+	                        <label for="groups">Groups:<span class="required-indicator">*</span></label>
+	                          <g:checkBoxList name="groups"
+	                            from="${myGroups}"
+	                            value="${userInstance?.authorities?.collect{it.id}}"
+	                            optionKey="id"/>
+	                 </div>
 					
 				</fieldset>
 

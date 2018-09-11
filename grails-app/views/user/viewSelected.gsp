@@ -13,6 +13,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
 			<ol class="property-list">
 
 				<g:if test="${userInstance?.username}">
@@ -36,10 +37,35 @@
 				</li>
 				</g:if>
 			
-				
+				<h1>List of Groups</h1>
+				<ul class="property-list">
+                    <g:each in="${ userInstance.authorities }">
+                        <li>${it.name}</li>
+                    </g:each>
+                </ul>
+
+				%{-- <h1>List of Authorities</h1>
+				<ul class="property-list">
+	                <g:each in="${ userInstance.authorities }">
+	                        <li>${it.authorities}</li>
+	                </g:each>
+	           </ul> --}%
+
+      		 </ol>
 
 
-			</ol>
+			
+
+
+
+
+%{-- 
+					<h1>List of Authorities</h1>
+			<ul class="property-list">
+                                <g:each in="${ myGroupInstance.authorities }">
+                                        <li>${it.authority}</li>
+                                </g:each>
+                        </ul> --}%
 
 				<g:form resource="${userInstance}" controller="applicationForm" enctype="multipart/form-data" method="POST" >
 				<fieldset class="form">

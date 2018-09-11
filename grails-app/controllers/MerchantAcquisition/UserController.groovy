@@ -121,7 +121,9 @@ class UserController {
 
 
     def edit(User userInstance) {
-        respond userInstance
+         def myGroups = MyGroup.list()
+        respond userInstance, model:[myGroups:myGroups]
+
     }
 
 
@@ -139,6 +141,11 @@ class UserController {
             return
         }
 
+        UserMyGroup.removeAll userInstance
+        params.list("groups").each{ groupID ->
+            log.info "Add to UserMyGroup: $groupID | User: $userInstance.id"
+            UserMyGroup.create userInstance, MyGroup.get(groupID), true
+        }
         userInstance.save flush:true
 
         request.withFormat {
