@@ -23,14 +23,18 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><a href="${createLink(uri: '/applicationForm/createPage1')}"><g:message code="Application Form"/></a></li>
-				<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
-				<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
+				<sec:ifNotGranted roles="ROLE_ADMIN,ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
+					<li><a href="${createLink(uri: '/applicationForm/createPage1')}"><g:message code="Application Form"/></a></li>
+					<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
+					<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
+				</sec:ifNotGranted>
 				<li><a href="#"><g:message code="My Account"/></a></li>
 				<li><a href="#"><g:message code="Contact Us"/></a></li>
-				<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
-				<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
-				<li><a href="${createLink(uri: '/myGroup/index')}"><g:message code="Group Role"/></a></li>
+				<sec:ifAnyGranted roles="ROLE_ADMIN">
+					<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
+					<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
+					<li><a href="${createLink(uri: '/myGroup/index')}"><g:message code="Group Role"/></a></li>
+				</sec:ifAnyGranted>
 				<li><g:link controller="logout"> Log Out</g:link></li>
 			</ul>
 		</div>

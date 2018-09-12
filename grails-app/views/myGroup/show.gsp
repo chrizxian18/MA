@@ -24,9 +24,9 @@
 			
 				<g:if test="${myGroupInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="myGroup.name.label" default="Name" /></span>
+					<label id="name-label" class="property-label"> <g:message code="myGroup.name.label" default="Name" /></label>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${myGroupInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="name-label"> <g:fieldValue bean="${myGroupInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>

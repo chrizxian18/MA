@@ -151,7 +151,7 @@ class UserController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Successfully updated User"
-                redirect (action:'showUsers')
+                 redirect uri:"/user/viewSelected/${userInstance.id}"
             }
             '*'{ respond userInstance, [status: OK] }
         }

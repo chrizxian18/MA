@@ -222,7 +222,7 @@ class CustomTagLib {
                 }
                 function ${name}_removeSelected(){
                                 var list_id = '${current_list_id}'
-                                var selected = jQuer('#${name}_current_list').val();
+                                var selected = jQuery('#${name}_current_list').val();
                                 var page = document.getElementById(list_id + '_page').innerHTML;
                                 if(selected){
                                                 var filter = jQuery('#${name}_current_list_filter').val();
@@ -232,7 +232,6 @@ class CustomTagLib {
                 function ${name}_addSelected(){
                                 var list_id = '${available_list_id}'
                     var selected = jQuery('#${name}_available_list').val();
-
                     var page = document.getElementById(list_id + '_page').innerHTML;
                     if(selected){
                         var filter = jQuery('#${name}_available_list_filter').val();
@@ -266,7 +265,7 @@ class CustomTagLib {
         out << "<tr>"
         out << "<td>"
         out << customRemoteField(map_for_available_list_filter)
-        out << """&nbsp;<a href="clear" onclick="clearField('${available_list_id}_filter');${name}_updateAvailable(1);return false;">Clear</a>"""
+        // out << """&nbsp;<a href="clear" onclick="clearField('${available_list_id}_filter');${name}_updateAvailable(1);return false;">Clear</a>"""
         out << "<div id=\"${name}_available_list_div\">"
         out << "<script>${name}_updateAvailable(1)</script>"
         out << "</div>"
@@ -278,7 +277,7 @@ class CustomTagLib {
         out << "</td>"
         out << "<td>"
         out << customRemoteField(map_for_current_list_filter)
-        out << """&nbsp;<a href="clear" onclick="clearField('${current_list_id}_filter');${name}_updateCurrent(1);return false;">Clear</a>"""
+        // out << """&nbsp;<a href="clear" onclick="clearField('${current_list_id}_filter');${name}_updateCurrent(1);return false;">Clear</a>"""
         out << "<div id=\"${name}_current_list_div\">"
         out << "<script>${name}_updateCurrent(1)</script>"
         out << "</div>"

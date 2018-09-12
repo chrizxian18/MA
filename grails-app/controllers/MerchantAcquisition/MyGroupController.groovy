@@ -6,8 +6,8 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 
-@Transactional(readOnly = true)
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Transactional(readOnly = false)
+@Secured(['ROLE_ADMIN'])
 class MyGroupController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -37,6 +37,8 @@ class MyGroupController {
             return
         }
 
+        myGroupInstance.createdBy = authenticatedUser
+        myGroupInstance.dateCreated = new Date()
         myGroupInstance.save flush:true
 
         request.withFormat {
@@ -48,23 +50,30 @@ class MyGroupController {
         }
     }
 
-    // def edit(MyGroup myGroupInstance) {
-    //     def myRoles = Role.list()
-    //     respond myGroupInstance, model:[roles:myRoles]
-    // }
-
-    def edit() {
-        log.info "MyGROUP : EDIT : " + params
-        setupPaging(params)
-        def myGroupInstance = MyGroup.get(params.id)
-        if (!myGroupInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'userGroup.label', default: 'MyGroup'), params.id])}"
+    def edit(MyGroup myGroupInstance) {
+        // def myRoles = Role.list()
+        // respond myGroupInstance, model:[roles:myRoles]
+         setupPaging(params)
+         if (!myGroupInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'myGroup.label', default: 'MyGroup'), params.id])}"
             redirect(action: "index")
         }
         else {
             return [myGroupInstance: myGroupInstance]
         }
     }
+
+    // def edit() {
+    //     setupPaging(params)
+    //     def myGroupInstance = MyGroup.get(params.id)
+    //     if (!myGroupInstance) {
+    //         flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'userGroup.label', default: 'MyGroup'), params.id])}"
+    //         redirect(action: "index")
+    //     }
+    //     else {
+    //         return [myGroupInstance: myGroupInstance]
+    //     }
+    // }
 
     @Transactional
     def update(MyGroup myGroupInstance) {
@@ -78,7 +87,10 @@ class MyGroupController {
             return
         }
 
-        MyGroupRole.create myGroupInstance, Role.get(params.userRoles), true
+        myGroupInstance.updatedBy = authenticatedUser
+        myGroupInstance.lastUpdated = new Date()
+
+        // MyGroupRole.create myGroupInstance, Role.get(params.userRoles), true
         myGroupInstance.save flush:true
 
         request.withFormat {

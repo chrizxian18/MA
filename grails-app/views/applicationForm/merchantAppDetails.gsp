@@ -5,38 +5,22 @@
 		<meta name="layout" content="main">
 		<title></title>
 		<script>
-			$(document).ready(function(){
+			window.onload = runThisOnLoad;
 
+			function runThisOnLoad() {
 
-				// var ctCorporation = document.getElementById('companyType')
-				// if (ctCorporation.innerHTML == "Corporation") {
-				// 	// document.getElementById('cliqqType').style.display = 'block';
-				// 	document.getElementById('formFilesEditCorporation').style.display ='block';
-			 //  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
-				// }
+					var ctCorporation = document.getElementById('Corporation')
+				if (ctCorporation.checked == true) {
+					document.getElementById('formFilesEditCorporation').style.display ='block';
+			  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
+				} else {
+					document.getElementById('formFilesEditCorporation').style.display ='none';
+			  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'block';
 
-				// var ctsingleProprietorship = document.getElementById('companyType')
-				// if (ctsingleProprietorship.innerHTML == "Single Proprietorship") {
-				// 	// document.getElementById('cliqqType').style.display = 'block';
-				// 	document.getElementById('formFilesEditCorporation').style.display ='none';
-			 //  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'block';
-				// }
+				}
 
-				var ctCorporation = document.getElementById('Corporation')
-			if (ctCorporation.checked == true) {
-				// document.getElementById('cliqqType').style.display = 'block';
-				document.getElementById('formFilesEditCorporation').style.display ='block';
-		  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'none';
 			}
-
-			var ctsingleProprietorship = document.getElementById('singleProprietorship')
-			if (ctsingleProprietorship.checked == true) {
-				// document.getElementById('cliqqType').style.display = 'block';
-				document.getElementById('formFilesEditCorporation').style.display ='none';
-		  	document.getElementById('formFilesEditSingleProprietorship').style.display = 'block';
-			}
-
-			});
+			
 		</script>
 	</head>
 	<body>
@@ -346,7 +330,7 @@
 		<h1>&nbsp;</h1>
 		<p style="margin-left:3%;">Legal Requirements:</p>
 
-		<div id="formFilesEditSingleProprietorship" class="hideMe">
+		<div id="formFilesEditSingleProprietorship">
 			<g:if test="${applicationFormInstance?.appFormFiles.birCorFullPath}">
 			<li class="fieldcontain">
 				<label id="appFormFiles-label" class="property-label"><g:message code="appForm.appFormFiles.label" default="COR issued by BIR" /></label>
@@ -380,7 +364,7 @@
 			</g:if>
 		</div>
 
-		<div id="formFilesEditCorporation" class="hideMe">
+		<div id="formFilesEditCorporation">
 			<g:if test="${applicationFormInstance?.appFormFiles.secCertFullPath}">
 			<li class="containtooltip">
 				<label class="property-label mytooltip">Sec Cert of authority<i class="material-icons" style="color:#FF5C14; font-size:18px;">error_outline</i> <span class="tooltiptext">Sec Cert of authority of signatories showing authority of its representative to sign and enter this agreement (original)</span></label>
@@ -431,12 +415,17 @@
 					<g:render template="remarks"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit action="inReview" class="save" value="In-Review" />
-					<g:actionSubmit action="onHold" class="save" value="On-hold" />
-					<g:actionSubmit action="forApproval" class="save" value="For Approval" />
-					<g:actionSubmit action="declined" class="save" value="Decline" />
-					<g:actionSubmit action="approved" class="save" value="Approve" />
-				</fieldset>
+					<sec:ifAnyGranted roles="ROLE_REVIEW_FORM">
+						<g:actionSubmit action="inReview" class="save" value="In-Review" />
+						<g:actionSubmit action="onHold" class="save" value="On-hold" />
+						<g:actionSubmit action="forApproval" class="save" value="For Approval" />
+					</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
+						<g:actionSubmit action="declined" class="save" value="Decline" />
+					</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_APPROVE_FORM">
+						<g:actionSubmit action="approved" class="save" value="Approve" />
+					</sec:ifAnyGranted>
 			</g:form>
 		</div>
 	</body>

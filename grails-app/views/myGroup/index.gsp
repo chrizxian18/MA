@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 		<div id="list-myGroup" class="content scaffold-list" role="main">
-			<h1>Group List</h1>
+			<h1>Groups</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -24,6 +24,7 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'myGroup.name.label', default: 'Name')}" />
+						<th>Action</th>
 					
 					</tr>
 				</thead>
@@ -31,7 +32,8 @@
 				<g:each in="${myGroupInstanceList}" status="i" var="myGroupInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${myGroupInstance.id}">${fieldValue(bean: myGroupInstance, field: "name")}</g:link></td>
+						<td>${fieldValue(bean: myGroupInstance, field: "name")}</td>
+						<td><g:link action="show" id="${myGroupInstance.id}">View</g:link> | <g:link action="edit" id="${myGroupInstance.id}">Edit</g:link></td>
 					
 					</tr>
 				</g:each>

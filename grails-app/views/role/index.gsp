@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 		<div id="list-role" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1>Roles</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -36,8 +36,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td>${fieldValue(bean: roleInstance, field: "authority")}</td>
+						<td>${fieldValue(bean: roleInstance, field: "description")}</td>
 					
-						<td><g:formatDate date="${roleInstance.dateCreated}" /></td>
 					
 						<td><g:link action="show" id="${roleInstance.id}">VIEW</g:link> | <g:link action="edit" id="${roleInstance.id}">EDIT</g:link></td>
 					

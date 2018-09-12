@@ -18,7 +18,7 @@
 			
 				<g:if test="${roleInstance?.authority}">
 				<li class="fieldcontain">
-					<span id="authority-label" class="property-label"><g:message code="role.authority.label" default="Authority" /></span>
+					<label id="authority-label" class="property-label"><g:message code="role.authority.label" default="Authority" /></label>
 					
 						<span class="property-value" aria-labelledby="authority-label"><g:fieldValue bean="${roleInstance}" field="authority"/></span>
 					
@@ -27,7 +27,7 @@
 			
 				<g:if test="${roleInstance?.description}">
 				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="role.description.label" default="Description" /></span>
+					<label id="description-label" class="property-label"><g:message code="role.description.label" default="Description" /></label>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${roleInstance}" field="description"/></span>
 					
@@ -36,7 +36,7 @@
 			
 				<g:if test="${roleInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="role.dateCreated.label" default="Date Created" /></span>
+					<label id="dateCreated-label" class="property-label"><g:message code="role.dateCreated.label" default="Date Created" /></label>
 					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${roleInstance?.dateCreated}" /></span>
 					
@@ -45,7 +45,7 @@
 			
 				<g:if test="${roleInstance?.createdBy}">
 				<li class="fieldcontain">
-					<span id="createdBy-label" class="property-label"><g:message code="role.createdBy.label" default="Created By" /></span>
+					<label id="createdBy-label" class="property-label"><g:message code="role.createdBy.label" default="Created By" /></label>
 					
 						<span class="property-value" aria-labelledby="createdBy-label"><g:link controller="user" action="show" id="${roleInstance?.createdBy?.id}">${roleInstance?.createdBy?.encodeAsHTML()}</g:link></span>
 					
@@ -54,7 +54,7 @@
 			
 				<g:if test="${roleInstance?.lastUpdated}">
 				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="role.lastUpdated.label" default="Last Updated" /></span>
+					<label id="lastUpdated-label" class="property-label"><g:message code="role.lastUpdated.label" default="Last Updated" /></label>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${roleInstance?.lastUpdated}" /></span>
 					
@@ -63,7 +63,7 @@
 			
 				<g:if test="${roleInstance?.updatedBy}">
 				<li class="fieldcontain">
-					<span id="updatedBy-label" class="property-label"><g:message code="role.updatedBy.label" default="Updated By" /></span>
+					<label id="updatedBy-label" class="property-label"><g:message code="role.updatedBy.label" default="Updated By" /></label>
 					
 						<span class="property-value" aria-labelledby="updatedBy-label"><g:link controller="user" action="show" id="${roleInstance?.updatedBy?.id}">${roleInstance?.updatedBy?.encodeAsHTML()}</g:link></span>
 					

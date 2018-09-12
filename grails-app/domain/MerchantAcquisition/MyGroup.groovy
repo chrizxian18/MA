@@ -10,6 +10,11 @@ class MyGroup implements Serializable {
 	private static final long serialVersionUID = 1
 
 	String name
+	Date dateCreated
+    Date lastUpdated
+    User createdBy
+    User updatedBy
+
 
 	MyGroup(String name) {
 		this()
@@ -22,6 +27,10 @@ class MyGroup implements Serializable {
 
 	static constraints = {
 		name blank: false, unique: true
+		createdBy(nullable: true)
+		updatedBy(nullable: true)
+		dateCreated(nullable: true)
+		lastUpdated(nullable: true)
 	}
 
 	static mapping = {
