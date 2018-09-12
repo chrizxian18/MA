@@ -252,9 +252,9 @@ class CustomTagLib {
                                             };
                                         }
                 }
+
                 function clearField(field_id){
-                                var field = jQuery('field_id');
-                                field.value = '';
+                    document.getElementById(field_id).value = '';
                 }
 
 
@@ -265,7 +265,7 @@ class CustomTagLib {
         out << "<tr>"
         out << "<td>"
         out << customRemoteField(map_for_available_list_filter)
-        // out << """&nbsp;<a href="clear" onclick="clearField('${available_list_id}_filter');${name}_updateAvailable(1);return false;">Clear</a>"""
+        out << """&nbsp;<a href="clear" onclick="clearField('${available_list_id}_filter');${name}_updateAvailable(1);return false;">Clear</a>"""
         out << "<div id=\"${name}_available_list_div\">"
         out << "<script>${name}_updateAvailable(1)</script>"
         out << "</div>"
@@ -277,7 +277,7 @@ class CustomTagLib {
         out << "</td>"
         out << "<td>"
         out << customRemoteField(map_for_current_list_filter)
-        // out << """&nbsp;<a href="clear" onclick="clearField('${current_list_id}_filter');${name}_updateCurrent(1);return false;">Clear</a>"""
+        out << """&nbsp;<a href="clear" onclick="clearField('${current_list_id}_filter');${name}_updateCurrent(1);return false;">Clear</a>"""
         out << "<div id=\"${name}_current_list_div\">"
         out << "<script>${name}_updateCurrent(1)</script>"
         out << "</div>"
