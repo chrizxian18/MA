@@ -1,9 +1,8 @@
-%{-- <%@ page import="merchantacquisition.ApplicationForm" %> --}%
+<%@ page import="MerchantAcquisition.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<asset:javascript src="application.js"/>
 		<title>Edit User</title>
 		
 	</head>

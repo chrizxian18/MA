@@ -15,6 +15,43 @@
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 		%{-- <g:javascript library='jquery' /> --}%
+		 <script type="text/javascript">
+		 $(document).ready(function(){
+
+		   
+		    $(".toggle-password").click(function() {
+
+			  $(this).toggleClass("fa-eye fa-eye-slash");
+			  var input = $($(this).attr("toggle"));
+			  if (input.attr("type") == "password") {
+			    input.attr("type", "text");
+			  } else {
+			    input.attr("type", "password");
+			  }
+			});
+
+    	});	
+
+		  function clearContent() {
+		      var currentPass = document.getElementById("currentPassword");
+		      currentPass.value = "";
+		      var NewPass = document.getElementById("newPassword");
+		      NewPass.value = "";
+		      var NewPass2 = document.getElementById("confirmPassword");
+		      NewPass2.value = "";
+		    }
+
+		</script>
+		<style type="text/css">
+        	.field-icon {
+        	  color:#337AB7;
+			  float: right;
+			  margin-left: -25px;
+			  margin-top: 4px;
+			  position: absolute;
+			  z-index: 2;
+			}
+        </style>
 		<g:layoutHead/>
 	</head>
 	<body>
@@ -34,8 +71,67 @@
 					<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
 					<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
 					<li><a href="${createLink(uri: '/myGroup/index')}"><g:message code="Group Role"/></a></li>
-				</sec:ifAnyGranted>
-				<li><g:link controller="logout"> Log Out</g:link></li>
+				</sec:ifAnyGranted>	
+					 %{-- Dropdown for logout and change pass  --}%
+                <div class="dropdown" style="float:right;">
+                <li class="dropdown" style="float:right; margin-top:-4px; ">
+                  <button type="button" class="btn" id="menu1" data-toggle="dropdown" style="background-color:transparent;">User: <sec:username />
+                    <span class="glyphicon glyphicon-menu-down"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+                      <li role="presentation"><a style="width:172px;"role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#mdlChangep">Change Password</a></li>
+                      %{-- <li role="presentation" class="divider"></li> --}%
+                      <li role="presentation"><g:link controller="logout" style="width:172px;"> Log Out</g:link></li>
+                    </ul>
+                  </li>%{-- end of dropdown --}%
+                  <!-- Modal for change pass-->
+                  <div class="modal fade" id="mdlChangep" role="dialog">
+                    <div class="modal-dialog">
+                      
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="modal-title" style="text-align:center;"><strong>Change Password</strong></h3>
+                        </div>
+                        <div>
+                          <g:form action="changePassword" controller="user" name="changePassForm" onsubmit="return validate()">
+                            <table border="0">
+                              <tr>
+                                <td style="text-align:right"><label for="currentPassword">Current Password</label></td>
+                                <td><g:passwordField id="currentPassword" id="currentPassword" name="currentPassword" required="required"/>
+                                	<span toggle="#currentPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
+
+                              </tr>
+                              <tr>
+                                <td style="text-align:right"><label for="newPassword">New Password</label></td>
+                                <td><input type="password" minlength="6" maxlength="20" title="Password should be at least 6 characters in length, must contain alphanumeric and special characters with at least one uppercase and one lowercase letter." pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{6,}$" id="newPassword" name="newPassword" required="" value="${userInstance?.password}"/>
+								 <span toggle="#newPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:right"><label for="confirmPassword">Confirm Password</label></td>
+                                <td><input type="password" title="Confirm Password should be exactly the same as the Password" maxlength="20" id="confirmPassword" name="confirmPassword" required=""/>
+								<span toggle="#confirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
+                              </tr>
+                              <tr>
+                                <td style="text-align:right">  
+                                  <g:actionSubmit class="btn btn-primary" value="Save" action="changePassword" controller="user"/>
+                                 </td>
+                                 
+                                 
+                                 	<td>
+                                  <button type="button" id="cancel" class="btn btn-secondary" onclick="clearContent()" data-dismiss="modal">
+                                    <span style="color:black">Cancel</span>
+
+                                  </button>
+                                </td>
+                              </tr>
+                            </table>
+                          </g:form>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- end of modal for change pass-->
+				
+				%{-- <li><g:link controller="logout"> Log Out</g:link></li> --}%
 			</ul>
 		</div>
 		<g:layoutBody/>

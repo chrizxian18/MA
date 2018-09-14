@@ -6,6 +6,14 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Hello <sec:username /></h1>
+	<div id="show-user" class="content scaffold-show" role="main">
+		<h1>Hello <sec:username /></h1>
+			<g:if test="${flash.error}">
+			<ul class="errors" role="alert"><li>${flash.error}</li></ul>
+		</g:if>
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+		</g:if>
+	</div>
 </body>
 </html>

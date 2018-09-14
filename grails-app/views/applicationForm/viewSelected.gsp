@@ -3,7 +3,6 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<asset:javascript src="application.js"/>
 		<title></title>
 		<script>
 			$(document).ready(function(){

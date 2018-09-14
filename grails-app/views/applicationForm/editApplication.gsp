@@ -4,7 +4,6 @@
 	<head>
 		<g:set var="entityName" value="${message(code: 'applicationForm.label', default: 'ApplicationForm')}" />
 		<meta name="layout" content="main">
-		<asset:javascript src="application.js"/>
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 		<script>
 		$(document).ready(function(){

@@ -1,3 +1,4 @@
+<%@ page import="MerchantAcquisition.User" %>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -6,11 +6,14 @@ package MerchantAcquisition
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Transactional(readOnly = false)
 
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class UserController {
+
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -184,5 +187,37 @@ class UserController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def changePassword() {
+         def userInstance = authenticatedUser
+        User activeUser = springSecurityService.currentUser
+        def currentPassword = params.currentPassword
+
+        //check if the actual current password equals the input password
+        if (springSecurityService.passwordEncoder.isPasswordValid(activeUser.getPassword(), currentPassword, null)) {
+                def newPassword = params.newPassword
+                //check if the input new password is not equal to the actual current password. 
+                  if (!springSecurityService.passwordEncoder.isPasswordValid(activeUser.getPassword(), newPassword, null)) {
+                        //check if the new password matches confirm password
+                        if(newPassword.equals(params.confirmPassword)) {
+                                userInstance.password = newPassword
+                                if(userInstance.save(flush:true)) {
+                                        flash.message = 'Password changed successfully'
+                                } else {
+                                        flash.message = 'Failed to change password'
+                                }
+                        } else {
+                                flash.error = "New Password and Confirm Password does not match."
+                        }
+                } else {
+                        flash.error = "New Password must be different from your Current Password."
+                }
+        } else {
+                flash.error = "Current Password input is incorrect."
+        }
+        redirect uri: SpringSecurityUtils.securityConfig.successHandler.defaultTargetUrl
+        return
+
     }
 }
