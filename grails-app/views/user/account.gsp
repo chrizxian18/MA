@@ -3,15 +3,14 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title>Edit User</title>
+		<title>My Account</title>
 		
 	</head>
 	<body>
 		
-		<a href="#edit-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
-		<div class="content scaffold-edit" role="main">
-			<h1>Edit User</h1>
+		<div class="content" role="main">
+			<h1>My Account</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -31,7 +30,7 @@
 							<g:message code="user.username.label" default="User Name" />
 							<span class="required-indicator">*</span>
 						</label>
-						<g:textField minlength="2" title="Merchant Name should be at least 2 characters in length" name="username" required="" value="${userInstance?.username}"/>
+						<g:textField readonly="readonly"minlength="2" title="Merchant Name should be at least 2 characters in length" name="username" required="" value="${userInstance?.username}"/>
 					</div>
 
 					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
@@ -56,34 +55,11 @@
 						<input class="number" type="tel" minlength="13" maxlength="13" placeholder="+63xxxxxxxxxx" pattern="[+]{1}[6]{1}[3]{1}[0-9]{10}" name="mobileNo" value="${userInstance.mobileNo}"/>
 					</div>
 
-					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
-						<label for="enabled">
-							<g:message code="user.enabled.label" default="Enabled" />
-						</label>
-						<g:checkBox name="enabled" value="${userInstance?.enabled}"/>
-					</div>
 
-					%{-- <div class="fieldcontain" >
-
-							<g:select name="groups"
-							          from="${myGroups}"
-							          optionKey="id"
-							           />
-							</g:select>
-					</div> --}%
-
-					 <div class="fieldcontain">
-	                        <label for="groups">Groups:<span class="required-indicator">*</span></label>
-	                          <g:checkBoxList name="groups"
-	                            from="${myGroups}"
-	                            value="${userInstance?.authorities?.collect{it.id}}"
-	                            optionKey="id"/>
-	                 </div>
-					
 				</fieldset>
 
 				<fieldset class="buttons">
-					<g:actionSubmit action="update" class="save" value="Update" />
+					<g:actionSubmit action="updateAccount" class="save" value="Update" />
 					
 				</fieldset>
 			</g:form>

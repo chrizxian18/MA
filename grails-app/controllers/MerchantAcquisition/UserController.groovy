@@ -4,11 +4,9 @@ package MerchantAcquisition
 
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 import grails.plugin.springsecurity.SpringSecurityUtils
 
-@Transactional(readOnly = false)
 
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class UserController {
@@ -40,7 +38,6 @@ class UserController {
         respond new User(params)
     }
 
-    @Transactional
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -86,17 +83,6 @@ class UserController {
         flash.message = "Your account has been created. Please confirm your email address. Confirmation link has been sent to your account"
         redirect(action: "success")
         log.info "mylog.error:success"
-
-
-        // userInstance.save flush:true
-
-        // request.withFormat {
-        //     form multipartForm {
-        //         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), "has been successfully"])
-        //         redirect userInstance
-        //     }
-        //     '*' { respond userInstance, [status: CREATED] }
-        // }
     }
 
     def success(){
@@ -122,17 +108,42 @@ class UserController {
         redirect(action: "success")
     }
 
-
+    @Secured(['ROLE_ADMIN'])
     def edit(User userInstance) {
          def myGroups = MyGroup.list()
         respond userInstance, model:[myGroups:myGroups]
 
     }
 
+    def account(User userInstance) {
+        userInstance = authenticatedUser
+        respond userInstance
 
+    }
 
+     def updateAccount(User userInstance) {
+        if (userInstance == null) {
+            notFound()
+            return
+        }
 
-    @Transactional
+        if (userInstance.hasErrors()) {
+            respond userInstance.errors, view:'edit'
+            return
+        }
+
+        userInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = "Successfully updated Account"
+                 redirect uri:"/user/account/"
+            }
+            '*'{ respond userInstance, [status: OK] }
+        }
+    }
+
+    @Secured(['ROLE_ADMIN'])
     def update(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -160,7 +171,6 @@ class UserController {
         }
     }
 
-    // @Transactional
     // def delete(User userInstance) {
 
     //     if (userInstance == null) {

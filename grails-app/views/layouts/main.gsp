@@ -65,21 +65,24 @@
 					<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
 					<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
 				</sec:ifNotGranted>
-				<li><a href="#"><g:message code="My Account"/></a></li>
-				<li><a href="#"><g:message code="Contact Us"/></a></li>
+				
+				<sec:ifAnyGranted roles="ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
+					<li><a href="${createLink(uri: '/applicationForm/applicationList')}"><g:message code="Application List"/></a></li>
+				</sec:ifAnyGranted>	
 				<sec:ifAnyGranted roles="ROLE_ADMIN">
 					<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
 					<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
 					<li><a href="${createLink(uri: '/myGroup/index')}"><g:message code="Group Role"/></a></li>
 				</sec:ifAnyGranted>	
+				<li><a href="#"><g:message code="Contact Us"/></a></li>
 					 %{-- Dropdown for logout and change pass  --}%
                 <div class="dropdown" style="float:right;">
                 <li class="dropdown" style="float:right; margin-top:-4px; ">
                   <button type="button" class="btn" id="menu1" data-toggle="dropdown" style="background-color:transparent;">User: <sec:username />
                     <span class="glyphicon glyphicon-menu-down"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+                      <li><a href="${createLink(uri: '/user/account')}" style="width:172px;">My Account</a></li>
                       <li role="presentation"><a style="width:172px;"role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#mdlChangep">Change Password</a></li>
-                      %{-- <li role="presentation" class="divider"></li> --}%
                       <li role="presentation"><g:link controller="logout" style="width:172px;"> Log Out</g:link></li>
                     </ul>
                   </li>%{-- end of dropdown --}%
@@ -103,7 +106,7 @@
                               </tr>
                               <tr>
                                 <td style="text-align:right"><label for="newPassword">New Password</label></td>
-                                <td><input type="password" minlength="6" maxlength="20" title="Password should be at least 6 characters in length, must contain alphanumeric and special characters with at least one uppercase and one lowercase letter." pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{6,}$" id="newPassword" name="newPassword" required="" value="${userInstance?.password}"/>
+                                <td><input type="password" minlength="6" maxlength="20" title="Password should be at least 6 characters in length, must contain alphanumeric and special characters with at least one uppercase and one lowercase letter." pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{6,}$" id="newPassword" name="newPassword" required=""/>
 								 <span toggle="#newPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
                               </tr>
                               <tr>

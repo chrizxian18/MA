@@ -23,6 +23,14 @@ class ApplicationFormController {
 
     }
 
+    
+    @Secured(['ROLE_REVIEW_FORM', 'ROLE_APPROVE_FORM'])
+    def applicationList(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn",[sort: "status", order: "desc"]), model:[applicationFormInstanceCount: ApplicationForm.count()]
+
+    }
+
     def show(ApplicationForm applicationFormInstance) {
         respond applicationFormInstance
     }

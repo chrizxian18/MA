@@ -22,6 +22,27 @@
 				</li>
 				</g:if>
 
+				<g:if test="${userInstance?.email}">
+				<li class="fieldcontain">
+					<label id="status-label" class="property-label">Email</label>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
+				</li>
+				</g:if>
+
+				<g:if test="${userInstance?.telephone}">
+				<li class="fieldcontain">
+					<label id="status-label" class="property-label">Telephone</label>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${userInstance}" field="telephone"/></span>
+				</li>
+				</g:if>
+
+				<g:if test="${userInstance?.mobileNo}">
+				<li class="fieldcontain">
+					<label id="status-label" class="property-label">Mobile No</label>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${userInstance}" field="mobileNo"/></span>
+				</li>
+				</g:if>
+
 				<g:if test="${userInstance?.enabled}">
 				<li class="fieldcontain">
 					<label id="status-label" class="property-label">Enabled</label>
