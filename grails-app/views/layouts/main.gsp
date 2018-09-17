@@ -70,13 +70,17 @@
 					<li><a href="${createLink(uri: '/applicationForm/applicationList')}"><g:message code="Application List"/></a></li>
 				</sec:ifAnyGranted>	
 				<sec:ifAnyGranted roles="ROLE_ADMIN">
-					<li><a href="${createLink(uri: '/user/showUsers')}"><g:message code="User List"/></a></li>
-					<li><a href="${createLink(uri: '/role/index')}"><g:message code="User Role"/></a></li>
-					<li><a href="${createLink(uri: '/myGroup/index')}"><g:message code="Group Role"/></a></li>
+	                <li class="dropdown">
+	                  <a href="#" id="menu1" data-toggle="dropdown">User Management</a>
+	                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+	                     	<li><a href="${createLink(uri: '/user/showUsers')}" style="width:172px;"><g:message code="User List"/></a></li>
+							<li><a href="${createLink(uri: '/role/index')}" style="width:172px;"><g:message code="User Role"/></a></li>
+							<li><a href="${createLink(uri: '/myGroup/index')}" style="width:172px;"><g:message code="Group Role"/></a></li>
+	                    </ul>
+	                 </li>%{-- end of dropdown --}%
 				</sec:ifAnyGranted>	
 				<li><a href="#"><g:message code="Contact Us"/></a></li>
 					 %{-- Dropdown for logout and change pass  --}%
-                <div class="dropdown" style="float:right;">
                 <li class="dropdown" style="float:right; margin-top:-4px; ">
                   <button type="button" class="btn" id="menu1" data-toggle="dropdown" style="background-color:transparent;">User: <sec:username />
                     <span class="glyphicon glyphicon-menu-down"></span></button>
