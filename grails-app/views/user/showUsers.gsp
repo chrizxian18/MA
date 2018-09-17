@@ -8,6 +8,11 @@
 	</head>
 	<body>
 		<div class="content scaffold-list" role="main">
+			<div class="nav" role="navigation">
+				<ul>
+					<li><g:link class="create" action="create">New User</g:link></li>
+				</ul>
+			</div>
 			<h1>Users</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>

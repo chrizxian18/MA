@@ -14,7 +14,6 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-		%{-- <g:javascript library='jquery' /> --}%
 		 <script type="text/javascript">
 		 $(document).ready(function(){
 
@@ -60,6 +59,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<sec:ifLoggedIn>
 				<sec:ifNotGranted roles="ROLE_ADMIN,ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
 					<li><a href="${createLink(uri: '/applicationForm/createPage1')}"><g:message code="Application Form"/></a></li>
 					<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
@@ -133,8 +133,8 @@
                       </div>
                     </div>
                   </div> <!-- end of modal for change pass-->
+                   </sec:ifLoggedIn>
 				
-				%{-- <li><g:link controller="logout"> Log Out</g:link></li> --}%
 			</ul>
 		</div>
 		<g:layoutBody/>
