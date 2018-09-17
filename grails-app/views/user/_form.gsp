@@ -25,8 +25,8 @@
 		Confirm Pasword
 		<span class="required-indicator">*</span>
 	</label>
-	<input type="password" title="Confirm Password should be exactly the same as the Password" maxlength="20" id="confirmPassword" name="confirmPassword" required=""/>
-	<span toggle="#confirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	<input type="password" title="Confirm Password should be exactly the same as the Password" maxlength="20" id="confirmPassword2" name="confirmPassword" required=""/>
+	<span toggle="#confirmPassword2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
