@@ -60,11 +60,11 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<sec:ifLoggedIn>
-				<sec:ifNotGranted roles="ROLE_ADMIN,ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
+				<sec:ifAnyGranted roles="ROLE_USER">
 					<li><a href="${createLink(uri: '/applicationForm/createPage1')}"><g:message code="Application Form"/></a></li>
 					<li><a href="${createLink(uri: '/applicationForm/showDrafts')}"><g:message code="Drafts"/></a></li>
 					<li><a href="${createLink(uri: '/applicationForm/showApplications')}"><g:message code="Applications"/></a></li>
-				</sec:ifNotGranted>
+				</sec:ifAnyGranted>
 				
 				<sec:ifAnyGranted roles="ROLE_APPROVE_FORM,ROLE_REVIEW_FORM">
 					<li><a href="${createLink(uri: '/applicationForm/applicationList')}"><g:message code="Application List"/></a></li>

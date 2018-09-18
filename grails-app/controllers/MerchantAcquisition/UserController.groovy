@@ -99,6 +99,8 @@ class UserController {
             return
         }
 
+        def group = MyGroup.findByName("Merchant")
+        UserMyGroup.create userInstance, MyGroup.get(group.id), true
         userInstance.enabled=true;
         if (!userInstance.save(flush: true)) {
             render(view: "success", model: [message: 'Problem activating account.'])
