@@ -7,7 +7,7 @@
 		<g:message code="user.username.label" default="User Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField minlength="2" title="User Name should be at least 2 characters in length" name="username" required="" value="${userInstance?.username}"/>
+	<g:textField minlength="2" title="User Name should be at least 2 characters in length and should not be more than 255 characters" name="username" required="" value="${userInstance?.username}"/>
 
 </div>
 
