@@ -1,6 +1,8 @@
 package merchantacquisition
 
 import MerchantAcquisition.User
+import MerchantAcquisition.UserMyGroup
+import MerchantAcquisition.MyGroup
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -361,9 +363,25 @@ class ApplicationFormController {
             }
         }
 
+
+        def group = MyGroup.findByName("MANAGER")
+        log.info "mylog.group:" + group
+
+        def userGroups = UserMyGroup.createCriteria().list {
+            and {
+                eq("myGroup", group)
+            }
+        }
+        log.info "mylog.userGroups:" + userGroups
+
+        def emails = []
+        for(UserMyGroup ug : userGroups) {
+        emails.add(ug.user.email)
+        }
+        log.info "mylog.emails:" + emails
+
         sendMail {
-             def recipient = "janchristian.apollo.com.ph@gmail.com" //manager's email
-            to recipient
+            to emails 
             subject "7-Connect Application For Approval - ${merchant.username}"
             html g.render(template:"applicationForApprovalEmail", model:[user:merchant.username, id:applicationFormInstance.id] )
         }
