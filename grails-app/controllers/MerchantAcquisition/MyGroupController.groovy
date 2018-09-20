@@ -243,15 +243,25 @@ class MyGroupController {
             return
         }
 
-        myGroupInstance.delete flush:true
+        try {
+              myGroupInstance.delete flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'MyGroup.label', default: 'MyGroup'), myGroupInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+                request.withFormat {
+                    form multipartForm {
+                        flash.message = message(code: 'default.deleted.message', args: [message(code: 'MyGroup.label', default: 'MyGroup'), myGroupInstance.id])
+                        redirect action:"index", method:"GET"
+                    }
+                    '*'{ render status: NO_CONTENT }
+                }   
         }
+        catch(Exception e) {
+                flash.error = "Please remove the authorities before deleting! If it's empty, this group might be currently used by a user please remove it from the user before deleting."
+            flash.message = e
+            redirect uri:"/myGroup/show/${myGroupInstance.id}"
+             log.info "mylog.error:failed to delete"
+        }
+        
+      
     }
 
     protected void notFound() {

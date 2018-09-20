@@ -20,6 +20,11 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			<g:if test="${flash.error}">
+				<ul class="errors" role="alert">
+					<li  role="status">${flash.error}</li>
+				</ul>
+			</g:if>
 			<ol class="property-list myGroup">
 			
 				<g:if test="${myGroupInstance?.name}">
