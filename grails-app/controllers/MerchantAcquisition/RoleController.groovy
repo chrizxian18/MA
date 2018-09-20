@@ -82,15 +82,21 @@ class RoleController {
             notFound()
             return
         }
-
-        roleInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Role.label', default: 'Role'), roleInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+        try {
+            roleInstance.delete (flush:true)
+             request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'default.deleted.message', args: [message(code: 'Role.label', default: 'Role'), roleInstance.id])
+                    redirect action:"index", method:"GET"
+                }
+                '*'{ render status: NO_CONTENT }
+              }
+        }
+        catch(Exception e) {
+            flash.error = "This role is currently used in a group role please remove it from the group before deleting."
+            // flash.message = e
+            redirect uri:"/role/show/${roleInstance.id}"
+             log.info "mylog.error:failed to delete"
         }
     }
 
