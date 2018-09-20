@@ -48,6 +48,21 @@
 					<span class="property-value">${applicationFormInstance?.createdBy.username}</span>
 				</li>
 
+				<li class="fieldcontain">
+					<label class="property-label">Category Manager's Decision</label>
+					<span class="property-value">${applicationFormInstance?.catManagerDecision}</span>
+				</li>
+
+				<li class="fieldcontain">
+					<label class="property-label">Section Manager's Decision</label>
+					<span class="property-value">${applicationFormInstance?.secManagerDecision}</span>
+				</li>
+
+				<li class="fieldcontain">
+					<label class="property-label">Division Head's Decision</label>
+					<span class="property-value">${applicationFormInstance?.divHeadDecision}</span>
+				</li>
+
 		<div><h1></h1></div>
 
 			<p style="margin-left:3%;">7-Connect Model:</p>

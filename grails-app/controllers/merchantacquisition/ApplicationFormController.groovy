@@ -382,17 +382,10 @@ class ApplicationFormController {
             }
         }
 
-
-        def group = MyGroup.findByName("MANAGER")
-        log.info "mylog.group:" + group
-
-        def userGroups = UserMyGroup.createCriteria().list {
-            and {
-                eq("myGroup", group)
-            }
-        }
-        log.info "mylog.userGroups:" + userGroups
-
+        def group1 = MyGroup.findByName("Category_Manager")
+        def group2 = MyGroup.findByName("Section_Manager")
+        def group3 = MyGroup.findByName("Division_Head")
+        def userGroups = UserMyGroup.findAllByMyGroupInList([group1, group2, group3])
         def emails = []
         for(UserMyGroup ug : userGroups) {
         emails.add(ug.user.email)
@@ -405,7 +398,6 @@ class ApplicationFormController {
             html g.render(template:"applicationForApprovalEmail", model:[user:merchant.username, id:applicationFormInstance.id] )
         }
     }
-
 
     def declined(ApplicationForm applicationFormInstance) {
         if (applicationFormInstance == null) {
@@ -453,11 +445,47 @@ class ApplicationFormController {
         }
 
         User merchant = applicationFormInstance.createdBy
-        User admin = authenticatedUser
-        applicationFormInstance.updatedBy = admin
+        User approver = authenticatedUser
+        applicationFormInstance.updatedBy = approver
         applicationFormInstance.lastUpdated = new Date()
-        applicationFormInstance.status = "Approved"
         applicationFormInstance.save flush:true
+
+        def categoryManager = MyGroup.findByName("Category_Manager")
+        def categoryManagers = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", categoryManager)
+            }
+        }
+        if (categoryManagers) {
+            applicationFormInstance.catManagerDecision = "Approved"
+            log.info "categoryManagers:Approved"
+        } else {log.info "categoryManagers:null"}
+
+        def sectionManager = MyGroup.findByName("Section_Manager")
+        def sectionManagers = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", sectionManager)
+            }
+        }
+        if (sectionManagers) {
+            applicationFormInstance.secManagerDecision = "Approved"
+            log.info "sectionManagers:Approved"
+        } else {log.info "sectionManagers:null"}
+
+        def divisionHead = MyGroup.findByName("Division_Head")
+        def divisionHeads = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", divisionHead)
+            }
+        }
+        if (divisionHeads) {
+            applicationFormInstance.divHeadDecision = "Approved"
+            log.info "divisionHeads:Approved"
+        } else {log.info "divisionHeads:null"}
+
 
         request.withFormat {
             form multipartForm {
@@ -466,12 +494,16 @@ class ApplicationFormController {
             }
         }
 
-        sendMail {
-             def recipient = merchant.email
-            to recipient
-            cc admin.email
-            subject "7-Connect Application - Status: Approved"
-            html g.render(template:"applicationApprovedEmail")
+        if (applicationFormInstance.catManagerDecision == 'Approved' && applicationFormInstance.secManagerDecision == 'Approved' && applicationFormInstance.divHeadDecision == 'Approved') {
+            applicationFormInstance.status = "Approved"
+            sendMail {
+                 def recipient = merchant.email
+                to recipient
+                // cc approver.email
+                subject "7-Connect Application - Status: Approved"
+                html g.render(template:"applicationApprovedEmail")
+            }
+            flash.message = 'All the managers have approved this application! Status has been changed to "Approved"'
         }
     }
 

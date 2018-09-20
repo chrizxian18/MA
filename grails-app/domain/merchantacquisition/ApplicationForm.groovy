@@ -44,6 +44,9 @@ class ApplicationForm {
 	Boolean	drafts
 	AppFormFiles appFormFiles
 	String remarks
+	String catManagerDecision
+	String secManagerDecision
+	String divHeadDecision
 	
 
 
@@ -87,5 +90,8 @@ class ApplicationForm {
 			drafts(nullable:true)
 			dateApplied(nullable:true)
 			remarks(nullable:true)
+			catManagerDecision(nullable:true)
+			secManagerDecision(nullable:true)
+			divHeadDecision(nullable:true)
     }
 }
