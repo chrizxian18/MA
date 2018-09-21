@@ -3,12 +3,12 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<title></title>
+		<title>User</title>
 		
 	</head>
 	<body>
 		<div class="content scaffold-show" role="main">
-			<h1>Application Details</h1>
+			<h1>User Details</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

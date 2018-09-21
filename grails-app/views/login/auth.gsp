@@ -66,7 +66,7 @@
 							<br><br>
 							<h4 style="text-align:center; font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Merchant Acquisition</h4>
 							<br><br><br>
-							<p style="text-align:center;">Contact Us</p>
+							<p style="text-align:center;"><g:link action="contactUs" controller="user" style="color:black">Contact Us</g:link></p>
 						%{-- </div>
 
 					</div> end row 2-1 --}%

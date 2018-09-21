@@ -38,6 +38,56 @@ class UserController {
         respond new User(params)
     }
 
+    def contactEmail() {
+        User userInstance = User.findByUsername("contactUs")
+        respond userInstance
+    }
+
+    def contactUs() {
+        User userInstance = authenticatedUser
+        if (userInstance == null) {
+            return
+        }
+        respond userInstance
+    }
+
+    def submitContactUs() {
+        def name = params.name
+        def username = params.username
+        if (username == null) {
+            username = "(Not Registered)"
+        }
+        log.info "xtian.username:" + username
+        def email = params.email
+        def csubject = params.csubject
+        def details = params.details
+
+        def group = MyGroup.findByName("Reviewer")
+        def userGroups = UserMyGroup.createCriteria().list {
+            and {
+                eq("myGroup", group)
+            }
+        }
+        def emails = []
+        for(UserMyGroup ug : userGroups) {
+        emails.add(ug.user.email)
+        }
+         log.info "emails without contacts" + emails
+        def contacts = User.findByUsername("contactUs")
+        log.info "contacts.email" + contacts.email
+        log.info "contacts" + contacts
+        emails.add(contacts.email)
+        log.info "emails with contacts" + emails
+        sendMail {
+            async true
+            to emails
+            subject "Merchant Acquisition Contact Us - ${csubject}"
+            html g.render(template:"contactUsEmail", model:[name:name, username:username, email:email, details:details])
+        }
+        flash.message = "Your inquiry has been sent!"
+        redirect(action: "success")
+    }
+
     def forgotPassword() {
 
     }
@@ -198,14 +248,13 @@ class UserController {
             UserMyGroup.create userInstance, MyGroup.get(groupID), true
         }
         userInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
+            if (userInstance.username =="contactUs") {
+                flash.message = "Contact Email has been updated!"
+                 redirect uri:"/user/contactEmail/"
+            } else{
                 flash.message = "Successfully updated User"
                  redirect uri:"/user/viewSelected/${userInstance.id}"
             }
-            '*'{ respond userInstance, [status: OK] }
-        }
     }
 
     // def delete(User userInstance) {

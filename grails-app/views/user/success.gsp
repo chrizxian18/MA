@@ -7,7 +7,7 @@
 </head>
 <body>
 		<div id="create-user" class="content scaffold-create" role="main">
-    <h1>Registration</h1>
+    <h1></h1>
      <div>
         ${message}
         <g:if test="${flash.message}">

@@ -76,10 +76,11 @@
 	                     	<li><a href="${createLink(uri: '/user/showUsers')}" style="width:172px;"><g:message code="User List"/></a></li>
 							<li><a href="${createLink(uri: '/role/index')}" style="width:172px;"><g:message code="User Role"/></a></li>
 							<li><a href="${createLink(uri: '/myGroup/index')}" style="width:172px;"><g:message code="Group Role"/></a></li>
+							<li><a href="${createLink(uri: '/user/contactEmail')}" style="width:172px;"><g:message code="Set Contact Email"/></a></li>
 	                    </ul>
 	                 </li>%{-- end of dropdown --}%
 				</sec:ifAnyGranted>	
-				<li><a href="#"><g:message code="Contact Us"/></a></li>
+				<li><a href="${createLink(uri: '/user/contactUs')}"><g:message code="Contact Us"/></a></li>
 					 %{-- Dropdown for logout and change pass  --}%
                 <li class="dropdown" style="float:right; margin-top:-4px; ">
                   <button type="button" class="btn" id="menu1" data-toggle="dropdown" style="background-color:transparent;">User: <sec:username />
