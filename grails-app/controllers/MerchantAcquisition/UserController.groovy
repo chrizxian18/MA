@@ -38,6 +38,41 @@ class UserController {
         respond new User(params)
     }
 
+    def forgotPassword() {
+
+    }
+
+    def resetPassword() {
+        User userInstance = User.findByUsername(params.username) 
+        log.info "userInstance:" + userInstance
+         if (userInstance == null) {
+             flash.error = "User Name does not exist!"
+             redirect(action: "forgotPassword")
+            return
+        }
+
+        if (userInstance.hasErrors()) {
+            respond userInstance.errors, view:'forgotPassword'
+            return
+        }
+        def pool = ['a'..'k','m'..'z','A'..'N','P'..'Z',2..9].flatten()
+        Random rand = new Random(System.currentTimeMillis())
+        def randChars = (0..5).collect { pool[rand.nextInt(pool.size())] }
+        def randPass = randChars.join()
+        userInstance.password = randPass
+        userInstance.save flush:true
+        flash.message = "An email will be sent to the registered email"
+        redirect(action: "success")
+
+          sendMail {
+            async true
+            to userInstance.email
+            subject "Forgot Password"
+            html g.render(template:"forgotPasswordEmail",model:[randomPassword:randPass])
+        }
+
+    }
+
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()

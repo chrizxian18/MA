@@ -49,7 +49,7 @@
 
 					<div class="row"> %{-- row 1-2 --}%
 						<div class="col-md-5 col-md-offset-1">
-							<p>Forgot Password</p>
+							<p><g:link action="forgotPassword" controller="user" style="color:black">Forgot Password</g:link></p>
 						</div>
 						<div class="col-md-5 col-md-offset-1">
 							<p><g:link action="create" controller="user" style="color:black">Sign Up</g:link></p>

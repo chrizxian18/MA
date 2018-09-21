@@ -22,7 +22,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-				<g:form resource="${userInstance}" controller="uesr" enctype="multipart/form-data" method="put" >
+				<g:form resource="${userInstance}" controller="user" enctype="multipart/form-data" method="put" >
 
 				<fieldset class="form">
 
