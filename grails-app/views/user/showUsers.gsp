@@ -20,9 +20,9 @@
 			<table>
 			<thead>
 					<tr>
-						<th>User Name</th>
-						<th>Email</th>
-						<th>Enabled</th>
+						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'User Name')}" />
+						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
+						<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.label', default: 'Enabled')}" />
 						<th>Action</th>
 					</tr>
 				</thead>

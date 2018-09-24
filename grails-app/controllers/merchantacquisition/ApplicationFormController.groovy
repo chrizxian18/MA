@@ -15,21 +15,27 @@ class ApplicationFormController {
 
     def showDrafts(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ApplicationForm.findAllByDraftsAndCreatedBy(true, authenticatedUser), model:[applicationFormInstanceCount: ApplicationForm.count()]
+        def applicationFormInstanceList = ApplicationForm.findAllByDraftsAndCreatedBy(true, authenticatedUser, params)
+        def appFormInstanceCount = ApplicationForm.findAllByDraftsAndCreatedBy(true, authenticatedUser)
+        [applicationFormInstanceList:applicationFormInstanceList, appFormInstanceCount:appFormInstanceCount.size()]
 
     }
 
     def showApplications(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ApplicationForm.findAllByDraftsAndCreatedByAndStatusNotEqual(false, authenticatedUser, "Withdrawn"), model:[applicationFormInstanceCount: ApplicationForm.count()]
-
+        def applicationFormInstanceList = ApplicationForm.findAllByDraftsAndCreatedByAndStatusNotEqual(false, authenticatedUser, "Withdrawn", params)
+        def applicationFormInstanceCount = ApplicationForm.findAllByDraftsAndCreatedByAndStatusNotEqual(false, authenticatedUser, "Withdrawn")
+        [applicationFormInstanceList:applicationFormInstanceList, applicationFormInstanceCount: applicationFormInstanceCount.size()]
     }
 
     
     @Secured(['ROLE_REVIEW_FORM', 'ROLE_APPROVE_FORM'])
     def applicationList(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn",[sort: "status", order: "desc"]), model:[applicationFormInstanceCount: ApplicationForm.count()]
+        // def statusList = ApplicationForm.executeQuery("select distinct a.status from ApplicationForm a where a.status != ? and status != ?", ['Withdrawn', 'None'])
+        def applicationFormInstanceList = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn", params)
+        def appFormInstanceCount = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn")
+        [applicationFormInstanceList:applicationFormInstanceList, appFormInstanceCount:appFormInstanceCount.size()]
 
     }
 

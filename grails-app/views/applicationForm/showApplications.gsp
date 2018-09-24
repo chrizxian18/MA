@@ -15,9 +15,9 @@
 			<thead>
 					<tr>
 						
-						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Merchant Name')}" />
+						<g:sortableColumn property="merchantName" title="${message(code: 'applicationForm.merchantName.label', default: 'Merchant Name')}" />
 						<g:sortableColumn property="status" title="${message(code: 'applicationForm.status.label', default: 'Status')}" />
-						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Date Applied')}" />
+						<g:sortableColumn property="dateApplied" title="${message(code: 'applicationForm.dateApplied.label', default: 'Date Applied')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'applicationForm.lastUpdated.label', default: 'Last Updated')}" />
 					
@@ -41,7 +41,7 @@
 				</tbody>
 			</table>
 			<div class="pagination2">
-				<g:paginate total="${appFormInstanceCount ?: 0}" />
+				<g:paginate total="${applicationFormInstanceCount ?: 0}" />
 			</div>
 		</div>
 	</body>

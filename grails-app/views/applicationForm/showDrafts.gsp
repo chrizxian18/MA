@@ -15,7 +15,7 @@
 			<thead>
 					<tr>
 						
-						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Merchant Name')}" />
+						<g:sortableColumn property="merchantName" title="${message(code: 'applicationForm.merchantName.label', default: 'Merchant Name')}" />
 
 						<g:sortableColumn property="dateCreated" title="${message(code: 'applicationForm.dateCreated.label', default: 'Date Created')}" />
 					
