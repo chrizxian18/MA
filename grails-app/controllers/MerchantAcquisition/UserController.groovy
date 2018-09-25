@@ -26,8 +26,18 @@ class UserController {
 
     def showUsers(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model:[userInstanceCount: User.count()]
-
+        def userInstanceList
+        def userInstanceCount
+        def username = "%${params.username}%"
+        if (params.username) {
+            userInstanceList = User.findAllByUsernameLike(username)
+            userInstanceCount = User.findAllByUsernameLike(username, params)
+        }
+        else {
+            userInstanceList = User.list(params)
+            userInstanceCount = User.list()
+        }
+        [userInstanceList:userInstanceList, userInstanceCount: userInstanceCount.size()]  
     }
 
     def viewSelected(User userInstance) {
