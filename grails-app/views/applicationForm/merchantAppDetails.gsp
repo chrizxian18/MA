@@ -48,20 +48,26 @@
 					<span class="property-value">${applicationFormInstance?.createdBy.username}</span>
 				</li>
 
+				<g:if test="${applicationFormInstance?.catManagerDecision}">
 				<li class="fieldcontain">
-					<label class="property-label">Category Manager's Decision</label>
-					<span class="property-value">${applicationFormInstance?.catManagerDecision}</span>
+					<small><label class="property-label">Category Manager's Decision</label>
+					<span class="property-value">${applicationFormInstance?.catManagerDecision} by ${applicationFormInstance?.catManagerApprover}</span> </small>
 				</li>
+				</g:if>
 
+				<g:if test="${applicationFormInstance?.secManagerDecision}">
 				<li class="fieldcontain">
-					<label class="property-label">Section Manager's Decision</label>
-					<span class="property-value">${applicationFormInstance?.secManagerDecision}</span>
+					<small><label class="property-label">Section Manager's Decision</label>
+					<span class="property-value">${applicationFormInstance?.secManagerDecision} by ${applicationFormInstance?.secManagerApprover}</span> </small>
 				</li>
+				</g:if>
 
+				<g:if test="${applicationFormInstance?.divHeadDecision}">
 				<li class="fieldcontain">
-					<label class="property-label">Division Head's Decision</label>
-					<span class="property-value">${applicationFormInstance?.divHeadDecision}</span>
+					<small><label class="property-label">Division Head's Decision</label>
+					<span class="property-value">${applicationFormInstance?.divHeadDecision} by ${applicationFormInstance?.divHeadApprover}</span> </small>
 				</li>
+				</g:if>
 
 		<div><h1></h1></div>
 

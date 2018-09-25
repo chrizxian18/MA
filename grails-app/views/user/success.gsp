@@ -9,7 +9,11 @@
 		<div id="create-user" class="content scaffold-create" role="main">
     <h1></h1>
      <div>
-        ${message}
+     	 <g:if test="${message}">
+     	<ul class="errors" role="alert">
+        <li>${message}</li>
+    	</ul>
+    </g:if>
         <g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>

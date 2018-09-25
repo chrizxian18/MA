@@ -210,6 +210,7 @@ class ApplicationFormController {
         }
 
         sendMail {
+            async true
              def recipient = user.email
             to recipient
             subject "7-Connect Application - Status: ${applicationFormInstance.status}"
@@ -227,6 +228,7 @@ class ApplicationFormController {
         emails.add(ug.user.email)
         }
         sendMail {
+            async true
             to emails
             subject "7-Connect Application For Review - ${user.username} - Status: ${applicationFormInstance.status}"
             html g.render(template:"newApplicationEmail", model:[user:user.username, id:applicationFormInstance.id])
@@ -297,6 +299,7 @@ class ApplicationFormController {
         }
 
         sendMail {
+            async true
             to emails
             subject "7-Connect Application Withdrawn - ${user.username}"
             html g.render(template:"applicationWithdrawnEmail", model:[user:user.username, id:applicationFormInstance.id, remarks:applicationFormInstance.remarks])
@@ -356,6 +359,7 @@ class ApplicationFormController {
         }
 
         sendMail {
+            async true
              def recipient = merchant.email
             to recipient
             subject "7-Connect Application - Status: On-hold"
@@ -399,6 +403,7 @@ class ApplicationFormController {
         log.info "mylog.emails:" + emails
 
         sendMail {
+            async true
             to emails 
             subject "7-Connect Application For Approval - ${merchant.username}"
             html g.render(template:"applicationForApprovalEmail", model:[user:merchant.username, id:applicationFormInstance.id] )
@@ -417,11 +422,50 @@ class ApplicationFormController {
         }
 
         User merchant = applicationFormInstance.createdBy
-        User admin = authenticatedUser
-        applicationFormInstance.updatedBy = admin
+        User approver = authenticatedUser
+        applicationFormInstance.updatedBy = approver
         applicationFormInstance.lastUpdated = new Date()
         applicationFormInstance.status = "Declined"
         applicationFormInstance.save flush:true
+
+        def categoryManager = MyGroup.findByName("Category_Manager")
+        def categoryManagers = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", categoryManager)
+            }
+        }
+        if (categoryManagers) {
+            applicationFormInstance.catManagerDecision = "Declined"
+            applicationFormInstance.catManagerApprover = approver.username
+            log.info "categoryManagers:Declined"
+        } else {log.info "categoryManagers:null"}
+
+        def sectionManager = MyGroup.findByName("Section_Manager")
+        def sectionManagers = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", sectionManager)
+            }
+        }
+        if (sectionManagers) {
+            applicationFormInstance.secManagerDecision = "Declined"
+            applicationFormInstance.secManagerApprover = approver.username
+            log.info "sectionManagers:Declined"
+        } else {log.info "sectionManagers:null"}
+
+        def divisionHead = MyGroup.findByName("Division_Head")
+        def divisionHeads = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", divisionHead)
+            }
+        }
+        if (divisionHeads) {
+            applicationFormInstance.divHeadDecision = "Declined"
+            log.info "divisionHeads:Declined"
+            applicationFormInstance.divHeadApprover = approver.username
+        } else {log.info "divisionHeads:null"}
 
         request.withFormat {
             form multipartForm {
@@ -431,9 +475,10 @@ class ApplicationFormController {
         }
 
         sendMail {
+            async true
              def recipient = merchant.email
             to recipient
-            cc admin.email
+            cc approver.email
             subject "7-Connect Application - Status: Declined"
             html g.render(template:"applicationDeclinedEmail", model:[remarks:applicationFormInstance.remarks])
         }
@@ -465,6 +510,7 @@ class ApplicationFormController {
         }
         if (categoryManagers) {
             applicationFormInstance.catManagerDecision = "Approved"
+            applicationFormInstance.catManagerApprover = approver.username
             log.info "categoryManagers:Approved"
         } else {log.info "categoryManagers:null"}
 
@@ -477,6 +523,7 @@ class ApplicationFormController {
         }
         if (sectionManagers) {
             applicationFormInstance.secManagerDecision = "Approved"
+            applicationFormInstance.secManagerApprover = approver.username
             log.info "sectionManagers:Approved"
         } else {log.info "sectionManagers:null"}
 
@@ -490,6 +537,7 @@ class ApplicationFormController {
         if (divisionHeads) {
             applicationFormInstance.divHeadDecision = "Approved"
             log.info "divisionHeads:Approved"
+            applicationFormInstance.divHeadApprover = approver.username
         } else {log.info "divisionHeads:null"}
 
 
@@ -503,6 +551,7 @@ class ApplicationFormController {
         if (applicationFormInstance.catManagerDecision == 'Approved' && applicationFormInstance.secManagerDecision == 'Approved' && applicationFormInstance.divHeadDecision == 'Approved') {
             applicationFormInstance.status = "Approved"
             sendMail {
+                async true
                  def recipient = merchant.email
                 to recipient
                 // cc approver.email

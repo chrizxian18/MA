@@ -47,6 +47,9 @@ class ApplicationForm {
 	String catManagerDecision
 	String secManagerDecision
 	String divHeadDecision
+	String catManagerApprover
+	String secManagerApprover
+	String divHeadApprover
 	
 
 

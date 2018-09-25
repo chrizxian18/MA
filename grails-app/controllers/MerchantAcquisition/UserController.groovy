@@ -156,6 +156,7 @@ class UserController {
         }
 
         sendMail {
+            async true
             to userInstance.email
             subject "Merchant Acquisition Account Creation"
             html g.render(template:"mailtemplate",model:[code:userInstance.confirmCode])
