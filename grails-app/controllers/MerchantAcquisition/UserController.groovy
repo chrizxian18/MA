@@ -105,11 +105,8 @@ class UserController {
             respond userInstance.errors, view:'forgotPassword'
             return
         }
-        def pool = ['a'..'k','m'..'z','A'..'N','P'..'Z',2..9].flatten()
-        Random rand = new Random(System.currentTimeMillis())
-        def randChars = (0..5).collect { pool[rand.nextInt(pool.size())] }
-        def randPass = randChars.join()
-        userInstance.password = randPass
+
+        userInstance.confirmCode= UUID.randomUUID().toString()
         userInstance.save flush:true
         flash.message = "An email will be sent to the registered email"
         redirect(action: "success")
@@ -118,7 +115,7 @@ class UserController {
             async true
             to userInstance.email
             subject "Forgot Password"
-            html g.render(template:"forgotPasswordEmail",model:[randomPassword:randPass])
+            html g.render(template:"forgotPasswordEmail",model:[code:userInstance.confirmCode])
         }
 
     }
@@ -173,6 +170,33 @@ class UserController {
     def success(){
     }   
 
+
+    def confirmForgotPassword(String id)
+    {
+
+        User userInstance= User.findByConfirmCode(id)
+        if(!userInstance)
+        {
+            render(view: "success", model: [message: 'Session expired or invalid link.'])
+            return
+        }
+
+        def pool = ['a'..'k','m'..'z','A'..'N','P'..'Z',2..9].flatten()
+        Random rand = new Random(System.currentTimeMillis())
+        def randChars = (0..5).collect { pool[rand.nextInt(pool.size())] }
+        def randPass = randChars.join()
+        userInstance.password = randPass
+        userInstance.save flush:true
+        flash.message = "Your password has been reset successfully! Your new password has been sent to your registered email address."
+        redirect(action: "success")
+
+          sendMail {
+            async true
+            to userInstance.email
+            subject "Forgot Password Confirmed"
+            html g.render(template:"confirmForgotPasswordEmail",model:[randomPassword:randPass])
+        }
+    }
 
     def confirm(String id)
     {

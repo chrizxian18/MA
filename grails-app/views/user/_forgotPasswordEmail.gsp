@@ -1,5 +1,5 @@
 <div>
     <p>You are receiving this email because you have used the Forgot Password feature.</p>
-    <p>Your password has been reset to: ${randomPassword}</p>
-    <p>After logging in, it is recommended that you change your password.</p>
+    <p>Once you click the link below, your current password will be changed to a random password and you will receive another email with your new password.</p>
+    <g:link absolute="true" controller="user" action="confirmForgotPassword" id="${code}">Confirm Forgot Password</g:link>
 </div>

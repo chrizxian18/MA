@@ -76,9 +76,9 @@
 	                     	<li><a href="${createLink(uri: '/user/showUsers')}" style="width:172px;"><g:message code="User List"/></a></li>
 							<li><a href="${createLink(uri: '/role/index')}" style="width:172px;"><g:message code="User Role"/></a></li>
 							<li><a href="${createLink(uri: '/myGroup/index')}" style="width:172px;"><g:message code="Group Role"/></a></li>
-							<li><a href="${createLink(uri: '/user/contactEmail')}" style="width:172px;"><g:message code="Set Contact Email"/></a></li>
 	                    </ul>
 	                 </li>%{-- end of dropdown --}%
+					<li><a href="${createLink(uri: '/user/contactEmail')}"><g:message code="Set Contact Email"/></a></li>
 				</sec:ifAnyGranted>	
 				<li><a href="${createLink(uri: '/user/contactUs')}"><g:message code="Contact Us"/></a></li>
 					 %{-- Dropdown for logout and change pass  --}%
