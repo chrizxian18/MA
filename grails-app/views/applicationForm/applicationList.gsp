@@ -18,7 +18,7 @@
 			<g:form method="post">
 	            <div style="margin-left: 14%; margin-bottom:20px; ">
 	                <input type="text" placeholder="Search merchant..." id="merchantName" name="merchantName">
-	  				<span></span><g:actionSubmit class="btn btn-sm btn-default" action="applicationList" value="Search" />
+	  				<g:actionSubmit class="btn btn-sm btn-default" action="applicationList" value="Search" />
 	  				<span style="display:inline"><a href="${createLink(uri: '/applicationForm/applicationList')}">Reset</a></span>
 	            </div>
 					

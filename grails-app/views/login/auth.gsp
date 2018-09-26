@@ -17,7 +17,7 @@
 				<div class="col-md-6 login_left" > %{-- outer column1 --}%
 					<div class="row"> %{-- row1-1 --}%
 						<div class="col-md-11 col-md-offset-1">
-							<h4 style="font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Please Login</h4>
+							<h4 style="font-family: 'Candal';font-size: 22px;;">Please Login</h4>
 							<g:if test='${flash.message}'>
 								%{-- <div class='login_message'>${flash.message}</div> --}%
 								<div style="background-color:#FFF3F3; color:red; border: solid thin; padding: 10px;" clas="material-icons" id="message"><i class="material-icons" style="color:red; font-size:15px;">warning</i> ${flash.message}</div>
@@ -39,20 +39,27 @@
 										<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
 									</p>
 
-									<p>
+									%{-- <p>
 										<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
-									</p>
-								</form>
+									</p> --}%
+								
 						
 						</div>
 					</div>%{-- end row1-1 --}%	
 
-					<div class="row"> %{-- row 1-2 --}%
-						<div class="col-md-5 col-md-offset-1">
-							<p><g:link action="forgotPassword" controller="user" style="color:black">Forgot Password</g:link></p>
+					<div class="row" > %{-- row 1-2 --}%
+						<div class="col-md-4 col-md-offset-1">
+							<input type='submit'  id="submit" value='${message(code: "springSecurity.login.button")}' />
 						</div>
+						</form>
 						<div class="col-md-5 col-md-offset-1">
-							<p><g:link action="create" controller="user" style="color:black">Sign Up</g:link></p>
+							<p style="text-align:center;"><g:link action="forgotPassword" controller="user" style="color:#006B41">Forgot Password</g:link></p>
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<p style="text-align:center;"><g:link action="create" controller="user" style="color:#006B41">Sign Up</g:link></p>
+						</div>
+						<div class="col-md-7 col-md-offset-1">
+							<p style="text-align:center;"><g:link action="contactUs" controller="user" style="color:#006B41">Contact Us</g:link></p>
 							<br>
 							<br>
 						</div>
@@ -64,9 +71,10 @@
 					%{-- <div class="row">row 2-1
 						<div class="col-md-12"> --}%
 							<br><br>
-							<h4 style="text-align:center; font-family: Palatino Linotype, Book Antiqua, Palatino, serif;">Merchant Acquisition</h4>
+							<g:img class="images" dir="images" file="7elevenTranspa.png" />
+							<h4 style="text-align:center; font-family: 'Candal';font-size: 22px;;">Merchant Acquisition</h4>
 							<br><br><br>
-							<p style="text-align:center;"><g:link action="contactUs" controller="user" style="color:black">Contact Us</g:link></p>
+							%{-- <p style="text-align:center;"><g:link action="contactUs" controller="user" style="color:#006B41">Contact Us</g:link></p> --}%
 						%{-- </div>
 
 					</div> end row 2-1 --}%

@@ -2,11 +2,14 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url(https://code.getmdl.io/1.3.0/material.yellow-green.min.css);
 @import url(https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css);
+@import url(https://fonts.googleapis.com/css?family=Candal);
 
 * {
     /*background-color: #DEFCDE;*/
-    color:black;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color:#005B41;
+    /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+    font-family: 'Candal';font-size: 12px;
+
 }
 
 .wrapper {
@@ -14,14 +17,17 @@
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom:  10px;
-    background-color: #CAFFDE;
+    /*background-color: #CAFFDE;*/
+    background-color: #F7F7F7;
     border-radius: 40px;
 
     /*padding: 2%;*/
 }
 
 .container-fluid {
-	background-color: #FC9E58;
+  /*background-color: #FC9E58;*/
+  background-color: #067C4E;
+	/*background-color: #006B41;*/
 	margin-top: 5%;
     margin-left: 32%;
     margin-right: 32%;
@@ -56,3 +62,13 @@
   background-color: #CAFFDE;
 
 }*/
+
+.images {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+body {
+  background-color: #FDF6E3;
+}

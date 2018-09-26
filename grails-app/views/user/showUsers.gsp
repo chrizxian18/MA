@@ -20,7 +20,7 @@
 			<g:form method="post">
 	            <div style="margin-left: 10%; margin-bottom:20px; ">
 	                <input type="text" placeholder="Search Username" id="username" name="username">
-	  				<span></span><g:actionSubmit class="btn btn-sm btn-default" action="showUsers" value="Search" />
+	  				<g:actionSubmit class="btn btn-sm btn-default" action="showUsers" value="Search" />
 	  				<span style="display:inline"><a href="${createLink(uri: '/user/showUsers')}">Reset</a></span>
 	            </div>
 					
