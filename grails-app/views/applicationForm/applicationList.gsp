@@ -14,6 +14,18 @@
 				<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
+			<g:form method="post">
+	            <div style="margin-left: 14%; margin-bottom:20px; ">
+	                <input type="text" placeholder="Search merchant..." id="merchantName" name="merchantName">
+	  				<span></span><g:actionSubmit class="btn btn-sm btn-default" action="applicationList" value="Search" />
+	  				<span style="display:inline"><a href="${createLink(uri: '/applicationForm/applicationList')}">Reset</a></span>
+	            </div>
+					
+	            <div class="buttons">
+	            </div>
+            </g:form>
+
 			<table>
 			<thead>
 					<tr>
@@ -21,9 +33,7 @@
 						<g:sortableColumn property="merchantName" title="${message(code: 'applicationForm.merchantName.label', default: 'Merchant Name')}" />
 						<g:sortableColumn property="status" title="${message(code: 'applicationForm.status.label', default: 'Status')}" />
 						<g:sortableColumn property="dateApplied" title="${message(code: 'applicationForm.dateApplied.label', default: 'Date Applied')}" />
-					
 						<g:sortableColumn property="companyType" title="${message(code: 'applicationForm.companyType.label', default: 'Company Type')}" />
-					
 						
 					</tr>
 				</thead>
@@ -35,9 +45,6 @@
 						<td><p>${fieldValue(bean: applicationFormInstance, field: "status")}</p></td>
 						<td>${fieldValue(bean: applicationFormInstance, field: "dateApplied")}</td>
 						<td><p>${fieldValue(bean: applicationFormInstance, field: "companyType")}</p></td>
-					
-					
-						
 					
 					</tr>
 				</g:each>

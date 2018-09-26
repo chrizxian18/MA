@@ -17,16 +17,16 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			 <g:form method="post">
-            <div style="margin-left: 10%; margin-bottom:20px; ">
-                <input type="text" placeholder="Search Username" id="username" name="username">
-  				<span></span><g:actionSubmit class="btn btn-sm btn-default" action="showUsers" value="Search" />
-  				<span style="display:inline"><a href="${createLink(uri: '/user/showUsers')}">Reset</a></span>
-            </div>
-				
-            <div class="buttons">
-            </div>
-            </g:form>
+			<g:form method="post">
+	            <div style="margin-left: 10%; margin-bottom:20px; ">
+	                <input type="text" placeholder="Search Username" id="username" name="username">
+	  				<span></span><g:actionSubmit class="btn btn-sm btn-default" action="showUsers" value="Search" />
+	  				<span style="display:inline"><a href="${createLink(uri: '/user/showUsers')}">Reset</a></span>
+	            </div>
+					
+	            <div class="buttons">
+	            </div>
+            </g:form>	
 
 			<table>
 			<thead>
@@ -34,6 +34,7 @@
 						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'User Name')}" />
 						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
 						<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.label', default: 'Enabled')}" />
+						<g:sortableColumn property="dateCreated" title="${message(code: 'user.dateCreated.label', default: 'Date Created')}" />
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -44,6 +45,7 @@
 						<td>${fieldValue(bean: userInstance, field: "username")}</td>
 						<td>${fieldValue(bean: userInstance, field: "email")}</td>
 						<td>${fieldValue(bean: userInstance, field: "enabled")}</td>
+						<td>${fieldValue(bean: userInstance, field: "dateCreated")}</td>
 						<td><g:link action="viewSelected" id="${userInstance.id}">VIEW</g:link> | <g:link action="edit" id="${userInstance.id}">EDIT</g:link></td>
 					
 					</tr>

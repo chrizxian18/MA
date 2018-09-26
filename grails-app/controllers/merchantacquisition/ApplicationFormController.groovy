@@ -32,11 +32,18 @@ class ApplicationFormController {
     @Secured(['ROLE_REVIEW_FORM', 'ROLE_APPROVE_FORM'])
     def applicationList(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        // def statusList = ApplicationForm.executeQuery("select distinct a.status from ApplicationForm a where a.status != ? and status != ?", ['Withdrawn', 'None'])
-        def applicationFormInstanceList = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn", params)
-        def appFormInstanceCount = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn")
+        def applicationFormInstanceList
+        def appFormInstanceCount
+        def merchantName = "%${params.merchantName}%"
+        if (params.merchantName) {
+            applicationFormInstanceList = ApplicationForm.findAllByDraftsAndStatusNotEqualAndMerchantNameLike(false, "Withdrawn", merchantName)
+            appFormInstanceCount = ApplicationForm.findAllByDraftsAndStatusNotEqualAndMerchantNameLike(false, "Withdrawn", merchantName, params)
+        } else {
+            // def statusList = ApplicationForm.executeQuery("select distinct a.status from ApplicationForm a where a.status != ? and status != ?", ['Withdrawn', 'None'])
+            applicationFormInstanceList = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn", params)
+            appFormInstanceCount = ApplicationForm.findAllByDraftsAndStatusNotEqual(false, "Withdrawn")
+        }
         [applicationFormInstanceList:applicationFormInstanceList, appFormInstanceCount:appFormInstanceCount.size()]
-
     }
 
     def show(ApplicationForm applicationFormInstance) {
