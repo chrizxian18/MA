@@ -34,6 +34,9 @@ class ApplicationFormService {
                     corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.count()+1}_${birCorFullPath.originalFilename}"
                 }
                 else {corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.id}_${birCorFullPath.originalFilename}"
+                def path = new File(appFiles.birCorFullPath)
+                path.delete()
+
                 }
                 
                 appFiles.birCorFullPath = uploadFolder + corfilename
@@ -41,7 +44,7 @@ class ApplicationFormService {
         }
 
         if(dtiCertFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } 
         else if(dtiCertFullPath.empty) {
                 appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
@@ -51,6 +54,8 @@ class ApplicationFormService {
                 }
                 else {
                      dtiCertfilename = "${applicationFormInstance.merchantName}-dtiCert${appFiles.id}_${dtiCertFullPath.originalFilename}"
+                     def path = new File(appFiles.dtiCertFullPath)
+                     path.delete()
                 }
             
             appFiles.dtiCertFullPath = uploadFolder + dtiCertfilename
@@ -58,7 +63,7 @@ class ApplicationFormService {
         }
 
         if(bizPermFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.bizPermFullPath = appFiles.bizPermFullPath
         } 
         else if(bizPermFullPath.empty) {
                 appFiles.bizPermFullPath = appFiles.bizPermFullPath
@@ -68,6 +73,8 @@ class ApplicationFormService {
                 }
                 else {
                      bizPermfilename = "${applicationFormInstance.merchantName}-bizPerm${appFiles.id}_${bizPermFullPath.originalFilename}"
+                     def path = new File(appFiles.bizPermFullPath)
+                     path.delete()
                 }
             
             appFiles.bizPermFullPath = uploadFolder + bizPermfilename
@@ -75,7 +82,7 @@ class ApplicationFormService {
         }
 
         if(govIdFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.govIdFullPath = appFiles.govIdFullPath
         } 
         else if(govIdFullPath.empty) {
                 appFiles.govIdFullPath = appFiles.govIdFullPath
@@ -85,6 +92,8 @@ class ApplicationFormService {
                 }
                 else {
                      govIdfilename = "${applicationFormInstance.merchantName}-govId${appFiles.id}_${govIdFullPath.originalFilename}"
+                     def path = new File(appFiles.govIdFullPath)
+                     path.delete()                     
                 }
             
             appFiles.govIdFullPath = uploadFolder + govIdfilename
@@ -93,7 +102,7 @@ class ApplicationFormService {
 
 
         if(secCertFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.secCertFullPath = appFiles.secCertFullPath
         } 
         else if(secCertFullPath.empty) {
                 appFiles.secCertFullPath = appFiles.secCertFullPath
@@ -103,6 +112,8 @@ class ApplicationFormService {
                 }
                 else {
                      secCertfilename = "${applicationFormInstance.merchantName}-secCert${appFiles.id}_${secCertFullPath.originalFilename}"
+                     def path = new File(appFiles.secCertFullPath)
+                     path.delete() 
                 }
             
             appFiles.secCertFullPath = uploadFolder + secCertfilename
@@ -110,7 +121,7 @@ class ApplicationFormService {
             }
 
         if(gisFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.gisFullPath = appFiles.gisFullPath
         } 
         else if(gisFullPath.empty) {
                 appFiles.gisFullPath = appFiles.gisFullPath
@@ -120,6 +131,8 @@ class ApplicationFormService {
                 }
                 else {
                      gisfilename = "${applicationFormInstance.merchantName}-gis${appFiles.id}_${gisFullPath.originalFilename}"
+                     def path = new File(appFiles.gisFullPath)
+                     path.delete()
                 }
             
             appFiles.gisFullPath = uploadFolder + gisfilename
@@ -127,7 +140,7 @@ class ApplicationFormService {
             }
         
         if(articleFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.articleFullPath = appFiles.articleFullPath
         } 
         else if(articleFullPath.empty) {
                 appFiles.articleFullPath = appFiles.articleFullPath
@@ -137,6 +150,8 @@ class ApplicationFormService {
                 }
                 else {
                      articlefilename = "${applicationFormInstance.merchantName}-article${appFiles.id}_${articleFullPath.originalFilename}"
+                     def path = new File(appFiles.articleFullPath)
+                     path.delete()
                 }
             
             appFiles.articleFullPath = uploadFolder + articlefilename
@@ -144,7 +159,7 @@ class ApplicationFormService {
         }
 
         if(byLawFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.byLawFullPath = appFiles.byLawFullPath
         } 
         else if(byLawFullPath.empty) {
                 appFiles.byLawFullPath = appFiles.byLawFullPath
@@ -154,6 +169,8 @@ class ApplicationFormService {
                 }
                 else {
                      byLawfilename = "${applicationFormInstance.merchantName}-byLaw${appFiles.id}_${byLawFullPath.originalFilename}"
+                     def path = new File(appFiles.byLawFullPath)
+                     path.delete()
                 }
             
             appFiles.byLawFullPath = uploadFolder + byLawfilename
@@ -161,7 +178,7 @@ class ApplicationFormService {
         }
 
         if(finStateFullPath == null) {
-        appFiles.birCorFullPath = appFiles.birCorFullPath
+        appFiles.finStateFullPath = appFiles.finStateFullPath
         } 
         else if(finStateFullPath.empty) {
                 appFiles.finStateFullPath = appFiles.finStateFullPath
@@ -171,6 +188,8 @@ class ApplicationFormService {
                 }
                 else {
                      finStatefilename = "${applicationFormInstance.merchantName}-finState${appFiles.id}_${finStateFullPath.originalFilename}"
+                     def path = new File(appFiles.finStateFullPath)
+                     path.delete()
                 }
             
             appFiles.finStateFullPath = uploadFolder + finStatefilename

@@ -96,5 +96,8 @@ class ApplicationForm {
 			catManagerDecision(nullable:true)
 			secManagerDecision(nullable:true)
 			divHeadDecision(nullable:true)
+			catManagerApprover(nullable:true)
+			secManagerApprover(nullable:true)
+			divHeadApprover(nullable:true)
     }
 }

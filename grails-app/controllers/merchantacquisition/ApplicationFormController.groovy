@@ -58,6 +58,7 @@ class ApplicationFormController {
         respond applicationFormInstance
     }
 
+    @Secured(['ROLE_REVIEW_FORM', 'ROLE_APPROVE_FORM'])
     def merchantAppDetails(ApplicationForm applicationFormInstance) {
         respond applicationFormInstance
     }

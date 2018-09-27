@@ -211,7 +211,7 @@
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset> --}%
 
-				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="put" >
+				<g:form resource="${applicationFormInstance}" controller="applicationForm" enctype="multipart/form-data" method="post" >
 
 				<fieldset class="form">
 					<g:render template="form"/>
