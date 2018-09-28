@@ -249,6 +249,11 @@ class ApplicationFormController {
     }
 
     def editApplication(ApplicationForm applicationFormInstance) {
+         if (applicationFormInstance.status == "Approved") {
+            flash.error = "Application has already been Approved, Action denied!"
+                redirect uri:"/applicationForm/viewSelectedApplication/${applicationFormInstance.id}"
+                return
+        }
         respond applicationFormInstance
     }
 
@@ -279,6 +284,12 @@ class ApplicationFormController {
         if (applicationFormInstance.hasErrors()) {
             respond applicationFormInstance.errors, view:'create'
             return
+        }
+
+        if (applicationFormInstance.status == "Approved") {
+            flash.error = "Application has already been Approved, Action denied!"
+                redirect uri:"/applicationForm/viewSelectedApplication/${applicationFormInstance.id}"
+                return
         }
 
 
@@ -325,6 +336,11 @@ class ApplicationFormController {
             return
         }
 
+        if (applicationFormInstance.status == "For Approval") {
+            flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
+        }
 
         User user = authenticatedUser
         applicationFormInstance.updatedBy = user
@@ -350,6 +366,12 @@ class ApplicationFormController {
         if (applicationFormInstance.hasErrors()) {
             respond applicationFormInstance.errors, view:'merchantAppDetails'
             return
+        }
+
+         if (applicationFormInstance.status == "For Approval") {
+            flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
         }
 
         User merchant = applicationFormInstance.createdBy
@@ -384,6 +406,12 @@ class ApplicationFormController {
         if (applicationFormInstance.hasErrors()) {
             respond applicationFormInstance.errors, view:'merchantAppDetails'
             return
+        }
+
+        if (applicationFormInstance.status == "For Approval") {
+            flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
         }
 
         User merchant = applicationFormInstance.createdBy
@@ -433,9 +461,7 @@ class ApplicationFormController {
         User approver = authenticatedUser
         applicationFormInstance.updatedBy = approver
         applicationFormInstance.lastUpdated = new Date()
-        applicationFormInstance.status = "Declined"
-        applicationFormInstance.save flush:true
-
+        
         def categoryManager = MyGroup.findByName("Category_Manager")
         def categoryManagers = UserMyGroup.createCriteria().list {
             and {
@@ -475,6 +501,25 @@ class ApplicationFormController {
             applicationFormInstance.divHeadApprover = approver.username
         } else {log.info "divisionHeads:null"}
 
+        def reviewer = MyGroup.findByName("Reviewer")
+        def reviewers = UserMyGroup.createCriteria().list {
+            and {
+                eq("user", approver)
+                eq("myGroup", reviewer)
+            }
+        }
+        if (reviewers) {
+                    log.info "reviewers" + reviewers 
+                if (applicationFormInstance.status == "For Approval") {
+                flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
+
+                }else  {log.info "reviewers:null"}
+        } else {log.info "reviewers:null"}
+
+        applicationFormInstance.status = "Declined"
+        applicationFormInstance.save flush:true
         request.withFormat {
             form multipartForm {
                 flash.message = "Application has been Declined"
