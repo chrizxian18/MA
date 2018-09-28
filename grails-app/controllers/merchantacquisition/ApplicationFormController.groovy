@@ -341,6 +341,11 @@ class ApplicationFormController {
                 redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
                 return
         }
+         if (applicationFormInstance.status == "Approved") {
+            flash.error = "Application has already been Approved, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
+        }
 
         User user = authenticatedUser
         applicationFormInstance.updatedBy = user
@@ -370,6 +375,11 @@ class ApplicationFormController {
 
          if (applicationFormInstance.status == "For Approval") {
             flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
+        }
+         if (applicationFormInstance.status == "Approved") {
+            flash.error = "Application has already been Approved, Action denied!"
                 redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
                 return
         }
@@ -410,6 +420,12 @@ class ApplicationFormController {
 
         if (applicationFormInstance.status == "For Approval") {
             flash.error = "Application has already been sent for approval, Action denied!"
+                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                return
+        }
+
+         if (applicationFormInstance.status == "Approved") {
+            flash.error = "Application has already been Approved, Action denied!"
                 redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
                 return
         }
@@ -511,11 +527,16 @@ class ApplicationFormController {
         if (reviewers) {
                     log.info "reviewers" + reviewers 
                 if (applicationFormInstance.status == "For Approval") {
-                flash.error = "Application has already been sent for approval, Action denied!"
-                redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
-                return
+                    flash.error = "Application has already been sent for approval, Action denied!"
+                    redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                    return
 
                 }else  {log.info "reviewers:null"}
+                 if (applicationFormInstance.status == "Approved") {
+                     flash.error = "Application has already been Approved, Action denied!"
+                    redirect uri:"/applicationForm/merchantAppDetails/${applicationFormInstance.id}"
+                    return
+                }
         } else {log.info "reviewers:null"}
 
         applicationFormInstance.status = "Declined"
