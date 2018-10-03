@@ -19,6 +19,93 @@
 			  }
 			});
 
+			 var secCertFullPath = document.getElementById('secCertFullPath')
+			 var gisFullPath = document.getElementById('gisFullPath')
+			 var articleFullPath = document.getElementById('articleFullPath')
+			 var byLawFullPath = document.getElementById('byLawFullPath')
+			 var finStateFullPath = document.getElementById('finStateFullPath')
+			  	
+			 var birCorFullPath = document.getElementById('birCorFullPath')
+			 var dtiCertFullPath = document.getElementById('dtiCertFullPath')
+			 var bizPermFullPath = document.getElementById('bizPermFullPath')
+			 var govIdFullPath = document.getElementById('govIdFullPath')
+
+			secCertFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+
+			gisFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+			articleFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+			byLawFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+			finStateFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+
+			govIdFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+
+			bizPermFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+
+			dtiCertFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
+			birCorFullPath.onchange = function() {
+			    if(this.files[0].size > 2097152){
+			       alert("File is too big!");
+			       this.value = "";
+			        $(this).next().text("Choose File");
+			        $(this).next().css('color', 'red'); 
+			    };
+			};
 
 
 		});
