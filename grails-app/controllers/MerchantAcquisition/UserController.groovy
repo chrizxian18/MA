@@ -250,7 +250,7 @@ class UserController {
         }
 
         if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'edit'
+            respond userInstance.errors, view:'account'
             return
         }
 

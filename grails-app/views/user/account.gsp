@@ -52,7 +52,7 @@
 						<label for="mobileNo">
 							<g:message code="user.mobileNo.label" default="Mobile No" />
 						</label>
-						<input class="number" type="tel" minlength="13" maxlength="13" placeholder="+63xxxxxxxxxx" pattern="[+]{1}[6]{1}[3]{1}[0-9]{10}" name="mobileNo" value="${userInstance.mobileNo}"/>
+						<input required="" class="number" type="tel" minlength="13" maxlength="13" placeholder="+63xxxxxxxxxx" pattern="[+]{1}[6]{1}[3]{1}[0-9]{10}" name="mobileNo" value="${userInstance.mobileNo}"/>
 					</div>
 
 
