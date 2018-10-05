@@ -256,7 +256,7 @@ class MyGroupController {
         }
         catch(Exception e) {
                 flash.error = "Please remove the authorities before deleting! If it's empty, this group might be currently used by a user please remove it from the user before deleting."
-            flash.message = e
+            // flash.message = e
             redirect uri:"/myGroup/show/${myGroupInstance.id}"
              log.info "mylog.error:failed to delete"
         }
