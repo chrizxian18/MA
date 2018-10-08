@@ -47,19 +47,19 @@
 						</div>
 					</div>%{-- end row1-1 --}%	
 
-					<div class="row" > %{-- row 1-2 --}%
-						<div class="col-md-4 col-md-offset-1">
+					<div class="row" style="margin-left:auto;" > %{-- row 1-2 --}%
+						<div class="col-md-5 col-md-offset-0">
 							<p style="text-align:center; margin-top:10px;"> <input type='submit'  id="submit" value='${message(code: "springSecurity.login.button")}' /></p>
 						</div>
 						</form>
 						<div class="col-md-5 col-md-offset-1">
 							<p style="text-align:center;"><g:link action="forgotPassword" controller="user" style="color:#006B41">Forgot Password</g:link></p>
 						</div>
-						<div class="col-md-6 col-md-offset-0">
+						<div class="col-md-5 col-md-offset-0">
 							<p style="text-align:center;"><g:link action="create" controller="user" style="color:#006B41">Sign Up</g:link></p>
 						</div>
-						<div class="col-md-5 col-md-offset-0">
-							<p style="text-align:center;"><g:link action="contactUs" controller="user" style="color:#006B41">Contact Us</g:link></p>
+						<div class="col-md-6 col-md-offset-1">
+							<p style="text-align:center; margin-left:-20%;"><g:link action="contactUs" controller="user" style="color:#006B41">Contact Us</g:link></p>
 							<br>
 							<br>
 						</div>
