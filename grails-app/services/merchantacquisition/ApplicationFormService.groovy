@@ -30,7 +30,7 @@ class ApplicationFormService {
                 appFiles.birCorFullPath = appFiles.birCorFullPath
         } 
          else {
-                if (appFiles.id == null) {
+                if (appFiles.id == null || appFiles.birCorFullPath == null) {
                     corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.count()+1}_${birCorFullPath.originalFilename}"
                 }
                 else {corfilename = "${applicationFormInstance.merchantName}-cor${appFiles.id}_${birCorFullPath.originalFilename}"
@@ -49,7 +49,7 @@ class ApplicationFormService {
         else if(dtiCertFullPath.empty) {
                 appFiles.dtiCertFullPath = appFiles.dtiCertFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.dtiCertFullPath == null) {
                     dtiCertfilename = "${applicationFormInstance.merchantName}-dtiCert${appFiles.count()+1}_${dtiCertFullPath.originalFilename}"
                 }
                 else {
@@ -68,7 +68,7 @@ class ApplicationFormService {
         else if(bizPermFullPath.empty) {
                 appFiles.bizPermFullPath = appFiles.bizPermFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.bizPermFullPath == null) {
                     bizPermfilename = "${applicationFormInstance.merchantName}-bizPerm${appFiles.count()+1}_${bizPermFullPath.originalFilename}"
                 }
                 else {
@@ -87,7 +87,7 @@ class ApplicationFormService {
         else if(govIdFullPath.empty) {
                 appFiles.govIdFullPath = appFiles.govIdFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.govIdFullPath == null) {
                     govIdfilename = "${applicationFormInstance.merchantName}-govId${appFiles.count()+1}_${govIdFullPath.originalFilename}"
                 }
                 else {
@@ -107,7 +107,7 @@ class ApplicationFormService {
         else if(secCertFullPath.empty) {
                 appFiles.secCertFullPath = appFiles.secCertFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.secCertFullPath == null) {
                     secCertfilename = "${applicationFormInstance.merchantName}-secCert${appFiles.count()+1}_${secCertFullPath.originalFilename}"
                 }
                 else {
@@ -126,7 +126,7 @@ class ApplicationFormService {
         else if(gisFullPath.empty) {
                 appFiles.gisFullPath = appFiles.gisFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.gisFullPath == null) {
                     gisfilename = "${applicationFormInstance.merchantName}-gis${appFiles.count()+1}_${gisFullPath.originalFilename}"
                 }
                 else {
@@ -145,7 +145,7 @@ class ApplicationFormService {
         else if(articleFullPath.empty) {
                 appFiles.articleFullPath = appFiles.articleFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.articleFullPath == null) {
                     articlefilename = "${applicationFormInstance.merchantName}-article${appFiles.count()+1}_${articleFullPath.originalFilename}"
                 }
                 else {
@@ -164,7 +164,7 @@ class ApplicationFormService {
         else if(byLawFullPath.empty) {
                 appFiles.byLawFullPath = appFiles.byLawFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.byLawFullPath == null) {
                     byLawfilename = "${applicationFormInstance.merchantName}-byLaw${appFiles.count()+1}_${byLawFullPath.originalFilename}"
                 }
                 else {
@@ -183,7 +183,7 @@ class ApplicationFormService {
         else if(finStateFullPath.empty) {
                 appFiles.finStateFullPath = appFiles.finStateFullPath
         } else {
-                 if (appFiles.id == null) {
+                 if (appFiles.id == null || appFiles.finStateFullPath == null) {
                     finStatefilename = "${applicationFormInstance.merchantName}-finState${appFiles.count()+1}_${finStateFullPath.originalFilename}"
                 }
                 else {
