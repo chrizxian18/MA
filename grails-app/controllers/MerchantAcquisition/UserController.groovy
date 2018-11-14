@@ -6,6 +6,7 @@ package MerchantAcquisition
 import static org.springframework.http.HttpStatus.*
 import org.springframework.security.access.annotation.Secured
 import grails.plugin.springsecurity.SpringSecurityUtils
+// import grails.converters.JSON
 
 
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
@@ -351,4 +352,108 @@ class UserController {
         return
 
     }
+
+    // def changePasswordViaWebService() {
+    //         def output = [:]
+    //         try {
+    //             def requestData = request.JSON
+    //            log.info "Change Password API: ${requestData}"
+    //             if(requestData.username && requestData.currentPassword && requestData.newPassword) {
+    //                 String username
+    //                 String base64Username = requestData.username
+    //                 def result = getValidUsername(base64Username)
+    //                 if(result.status == 0) {
+    //                     username = result.username
+    //                     def userInstance = User.findByUsername(username)
+    //                     if(userInstance) {
+    //                         def decodedCurrentPassword = new String(requestData.currentPassword.decodeBase64())
+    //                         log.info "decodedCurrentPassword:" + decodedCurrentPassword
+    //                         def decodedNewPassword = new String(requestData.newPassword.decodeBase64())
+    //                         log.info "decodedNewPassword:" + decodedNewPassword
+    //                         if (springSecurityService.passwordEncoder.isPasswordValid(userInstance.password, decodedCurrentPassword, null)) {
+    //                                 userInstance.password = decodedNewPassword
+    //                                 if(userInstance.save(flush:true)) {
+    //                                 output.status = 0
+    //                                 output.message = "Sucessfully updated password for user: ${requestData.username}"
+    //                                 log.info "Change Password API: Sucessfully updated password for user: ${requestData.username}"
+    //                                 response.status = 200
+    //                             } else {
+    //                                 output.status = 1
+    //                                 output.message = "Error saving password."
+    //                                 log.error "Error saving password: ${userInstance.errors}"
+    //                                 response.status = 404
+    //                             }
+    //                         }
+    //                         else {
+    //                             output.status = 1
+    //                             output.message = "CurrentPassword is incorrect."
+    //                             response.status = 401
+    //                         }
+    //                     } else {
+    //                         output.status = 1
+    //                         output.message = "User not found."
+    //                         response.status = 401
+    //                     }
+    //                 } else {
+    //                     output.status = 1
+    //                     output.message = result.message
+    //                     response.status = 404
+    //                 }
+    //             } else {
+    //                 output.status = 1
+    //                 output.message = "Invalid request parameters."
+    //                 response.status = 404
+    //             }
+    //         } catch(Exception e) {
+    //             output.status = 1
+    //             output.message = "Error updating password."
+    //             log.error "Error updating password.", e
+    //             response.status = 404
+    //         }
+    //         render output as JSON
+    //     }
+
+    // def getValidUsername(String base64Username) {
+    //      def hashCode = "2k18merchantapikey"//Holders.config.dashboardApiKey
+    //     def data = [:]
+    //    log.info "hashCode: ${hashCode}"
+    //     def decodedBase64Username = new String(base64Username.decodeBase64())
+    //    log.info "decodedBase64Username: ${decodedBase64Username}"
+    //     def userData = decodedBase64Username.split(":")
+    //     if(userData.size() == 2) {
+    //         def apikey = userData[0]
+    //         def username = userData[1]
+    //         log.info "apikey: ${apikey}"
+    //         log.info "username: ${username}"
+    //         if(apikey.equals(hashCode)) {
+    //             data.status = 0
+    //             data.username = username
+    //             data.message = "success"
+    //         } else {
+    //             data.status = 1
+    //             data.message = "Invalid api key."
+    //         }
+    //     } else {
+    //         data.status = 1
+    //         data.message = "Invalid request Parameters."
+    //     }
+    //     return data
+    // }
+
+    // def test(params) {
+        
+    //     def a = params.a
+    //     def b = params.b
+    //     // def currentPassword = springSecurityService.encodePassword(a)
+    //     def currentPassword = a?.bytes.encodeBase64().toString()
+    //     // def newPassword = springSecurityService.encodePassword(b)
+    //     def newPassword = b.bytes.encodeBase64().toString()
+    //      // def username = "admin"
+    //      def username = params.u
+    //     def hashCode = "2k18merchantapikey"
+    //     def verificationCode = "${hashCode}:${username}"
+    //     String encodedUser = verificationCode.bytes.encodeBase64().toString()
+    //     render "username: ${encodedUser}, currentPass: ${currentPassword}, newPass: ${newPassword}"
+    // }
+
 }
